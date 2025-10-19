@@ -1,14 +1,17 @@
-<img align="right" src="https://media.giphy.com/media/WFZvB7VIXBgiz3oDXE/giphy.gif" width="240" alt="coding">
-
-# Hello~ 我是于淼 (Yumiao)
-
-**211院校计算机-人工智能专业 | 2026 届硕士应届生**
-
-**角色: JS/TS 全栈开发 | AI 应用开发**
-
----
-
-熟悉TS前后端开发生态，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定AI算法和应用调优经验，综合赋能AI应用全栈开发。
+<table>
+  <tr>
+    <td valign="top">
+      <h1>Hello~ 我是于淼</h1>
+      <p><strong>211院校计算机-人工智能专业 | 2026 届硕士应届生</strong></p>
+      <p><strong>角色: JS/TS 全栈开发 | AI 应用开发</strong></p>
+      <hr>
+      <p>熟悉TS前后端开发生态，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定AI算法和应用调优经验，综合赋能AI应用全栈开发。</p>
+    </td>
+    <td valign="top" align="right">
+      <img src="https://media.giphy.com/media/WFZvB7VIXBgiz3oDXE/giphy.gif" width="400" alt="coding">
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -17,6 +20,7 @@
 <p align="left">
   <a href="mailto:boat2moon@proton.me" target="_blank">
     <img src="https://img.shields.io/badge/ProtonMail-8B89CC?style=for-the-badge&logo=protonmail&logoColor=white" alt="Email">
+  </a>
   <a href="https://boat2moon.com" target="_blank">
     <img src="https://img.shields.io/badge/Website-4A90E2?style=for-the-badge&logo=About.me&logoColor=white" alt="Website">
   </a>
@@ -67,18 +71,4 @@
   <a href="#"><img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub_Actions-2088FF.svg?style=for-the-badge&logo=GitHub-Actions&logoColor=white"></a>
   <a href="#"><img alt="Alibaba Cloud" src="https://img.shields.io/badge/Alibaba_Cloud-FF6A00.svg?style=for-the-badge&logo=alibabacloud&logoColor=white"></a>
   <a href="#"><img alt="Serverless" src="https://img.shields.io/badge/Serverless-FD5750.svg?style=for-the-badge&logo=Serverless&logoColor=white"></a>
-</p>
-
----
-
-### 📊 GitHub 统计 (GitHub Stats)
-
-<p align="center">
-  <a href="https://github.com/boat2moon">
-    <img src="https://github-readme-stats.vercel.app/api?username=boat2moon&show_icons=true&theme=tokyonight&count_private=true" alt="Yumiao's GitHub Stats">
-  </a>
-  <br>
-  <a href="https://github.com/boat2moon">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=boat2moon&layout=compact&theme=tokyonight" alt="Yumiao's Top Languages">
-  </a>
 </p>
