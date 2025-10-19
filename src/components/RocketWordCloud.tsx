@@ -6,6 +6,7 @@ import * as echarts from "echarts";
 interface WordCloudData {
   name: string;
   value: number;
+  description?: string;
 }
 
 // 二进制尾焰组件 - 横向扩散效果
@@ -123,38 +124,38 @@ export default function RocketWordCloud() {
     maskImage.src = "/rocket2_black.png";
 
     maskImage.onload = () => {
-      // 基础词云数据 - 技能词汇
+      // 基础词云数据 - 技能词汇及其描述
       const baseWords: WordCloudData[] = [
-        { name: "React", value: 80 },
-        { name: "Next.js", value: 75 },
-        { name: "TypeScript", value: 85 },
-        { name: "Node.js", value: 70 },
-        { name: "NestJS", value: 65 },
-        { name: "Express", value: 60 },
-        { name: "PostgreSQL", value: 55 },
-        { name: "Redis", value: 50 },
-        { name: "MongoDB", value: 55 },
-        { name: "TailwindCSS", value: 65 },
-        { name: "React Native", value: 60 },
-        { name: "Electron", value: 55 },
-        { name: "WebSocket", value: 50 },
-        { name: "GraphQL", value: 60 },
-        { name: "REST API", value: 65 },
-        { name: "Docker", value: 70 },
-        { name: "Kubernetes", value: 60 },
-        { name: "CI/CD", value: 65 },
-        { name: "微前端", value: 55 },
-        { name: "全端协同", value: 50 },
-        { name: "Serverless", value: 55 },
-        { name: "AI/AIGC", value: 75 },
-        { name: "Web3", value: 60 },
-        { name: "安全", value: 50 },
-        { name: "性能", value: 55 },
-        { name: "Vue", value: 45 },
-        { name: "Python", value: 40 },
-        { name: "Go", value: 35 },
-        { name: "Rust", value: 30 },
-        { name: "Java", value: 40 },
+        { name: "React", value: 80, description: "用于构建用户界面的 JavaScript 库" },
+        { name: "Next.js", value: 75, description: "基于 React 的全栈框架，支持 SSR/SSG" },
+        { name: "TypeScript", value: 85, description: "JavaScript 的超集，提供类型安全" },
+        { name: "Node.js", value: 70, description: "基于 Chrome V8 的 JavaScript 运行时" },
+        { name: "NestJS", value: 65, description: "企业级 Node.js 后端框架" },
+        { name: "Express", value: 60, description: "轻量级 Node.js Web 应用框架" },
+        { name: "PostgreSQL", value: 55, description: "强大的开源关系型数据库" },
+        { name: "Redis", value: 50, description: "高性能键值对内存数据库" },
+        { name: "MongoDB", value: 55, description: "灵活的文档型 NoSQL 数据库" },
+        { name: "TailwindCSS", value: 65, description: "实用优先的 CSS 框架" },
+        { name: "React Native", value: 60, description: "使用 React 构建原生移动应用" },
+        { name: "Electron", value: 55, description: "使用 Web 技术构建桌面应用" },
+        { name: "WebSocket", value: 50, description: "实时双向通信协议" },
+        { name: "GraphQL", value: 60, description: "灵活高效的 API 查询语言" },
+        { name: "REST API", value: 65, description: "基于 HTTP 的 API 架构风格" },
+        { name: "Docker", value: 70, description: "容器化应用部署平台" },
+        { name: "Kubernetes", value: 60, description: "容器编排与管理系统" },
+        { name: "CI/CD", value: 65, description: "持续集成与持续部署" },
+        { name: "微前端", value: 55, description: "前端应用的微服务架构" },
+        { name: "全端协同", value: 50, description: "前后端全栈协作开发" },
+        { name: "Serverless", value: 55, description: "无服务器架构，按需计费" },
+        { name: "AI/AIGC", value: 75, description: "人工智能与 AI 生成内容" },
+        { name: "Web3", value: 60, description: "基于区块链的去中心化网络" },
+        { name: "安全", value: 50, description: "应用安全与数据保护" },
+        { name: "性能", value: 55, description: "性能优化与监控" },
+        { name: "Vue", value: 45, description: "渐进式 JavaScript 框架" },
+        { name: "Python", value: 40, description: "简洁强大的通用编程语言" },
+        { name: "Go", value: 35, description: "高效的并发编程语言" },
+        { name: "Rust", value: 30, description: "内存安全的系统编程语言" },
+        { name: "Java", value: 40, description: "企业级面向对象编程语言" },
       ];
 
       // 复制词汇多次以填充更密集
@@ -165,16 +166,32 @@ export default function RocketWordCloud() {
             // 使用零宽字符创建唯一但视觉上相同的名称
             name: i === 0 ? word.name : word.name + "\u200B".repeat(i),
             value: word.value - i * 10, // 每次重复降低权重
+            description: word.description, // 保留描述
           });
         });
       }
+
+      // 创建名称到描述的映射表
+      const descriptionMap = new Map<string, string>();
+      baseWords.forEach((word) => {
+        if (word.description) {
+          descriptionMap.set(word.name, word.description);
+        }
+      });
 
       chart.setOption({
         tooltip: {
           show: true,
           formatter: (params: { name?: string }) => {
-            // tooltip 中显示去掉零宽字符的名称
-            return params.name ? params.name.replace(/\u200B/g, "") : "";
+            if (!params.name) return "";
+            // 去掉零宽字符获取原始名称
+            const cleanName = params.name.replace(/\u200B/g, "");
+            const description = descriptionMap.get(cleanName);
+            // 返回格式化的 tooltip
+            return `<div style="padding: 4px 8px;">
+              <div style="font-weight: bold; margin-bottom: 4px; color: #22d3ee;">${cleanName}</div>
+              <div style="font-size: 12px; color: #94a3b8;">${description || "暂无描述"}</div>
+            </div>`;
           },
         },
         series: [

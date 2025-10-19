@@ -186,7 +186,7 @@ export default function Home() {
             <div className="flex items-center justify-center">
               <div className="relative w-full max-w-lg h-[500px]">
                 <h2 className="mb-6 text-center text-sm uppercase tracking-[0.3em] text-zinc-400">
-                  技能飞船 · Skill Rocket
+                  JS/TS全栈开发 · AIGC应用开发 · WEB3探索
                 </h2>
                 <RocketWordCloud />
               </div>
@@ -292,6 +292,28 @@ export default function Home() {
                 />
               </div>
             </div>
+          </div>
+
+          {/* 向下滚动提示 */}
+          <div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2
+              animate-bounce"
+          >
+            <span className="text-sm text-zinc-400 tracking-widest">
+              {/* 能赏一个 Offer 嘛 😃 要恰饭的嘛 ~~ */}
+              盼星星 盼月亮 终于盼到你来给我发Offer 🙋‍♂️
+            </span>
+            <svg
+              className="w-6 h-6 text-zinc-400"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
           </div>
         </div>
       </section>
