@@ -8,7 +8,7 @@
       <p>熟悉TS前后端开发生态，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定AI算法和应用调优经验，综合赋能AI应用全栈开发。</p>
     </td>
     <td valign="top" align="right">
-      <img src="https://media.giphy.com/media/WFZvB7VIXBgiz3oDXE/giphy.gif" width="400" alt="coding">
+      <img src="https://media.giphy.com/media/WFZvB7VIXBgiz3oDXE/giphy.gif" width="300" alt="coding">
     </td>
   </tr>
 </table>
