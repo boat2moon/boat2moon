@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import RocketWordCloud from "@/components/RocketWordCloud";
 
 type ProjectMeta = {
   title: string;
@@ -15,20 +16,6 @@ type ProjectMeta = {
   tags: string[];
   reference?: string;
 };
-
-// 词云飞船 - 更具体的飞船形状布局
-const heroWordCloud = [
-  { offset: "ml-[200px]", words: ["React"], size: "text-xs" }, // 船头
-  { offset: "ml-[180px]", words: ["Next.js", "TypeScript"], size: "text-sm" },
-  { offset: "ml-[160px]", words: ["Node.js", "NestJS", "Express"], size: "text-sm" },
-  { offset: "ml-[140px]", words: ["PostgreSQL", "Redis", "MongoDB"], size: "text-xs" },
-  { offset: "ml-[120px]", words: ["TailwindCSS", "React Native", "Electron"], size: "text-sm" },
-  { offset: "ml-[100px]", words: ["WebSocket", "GraphQL", "REST API"], size: "text-xs" },
-  { offset: "ml-[80px]", words: ["Docker", "Kubernetes", "CI/CD"], size: "text-sm" }, // 船体
-  { offset: "ml-[60px]", words: ["微前端", "全端协同", "Serverless"], size: "text-sm" },
-  { offset: "ml-[40px]", words: ["AI/AIGC", "Web3"], size: "text-sm" },
-  { offset: "ml-[20px]", words: ["安全", "性能"], size: "text-xs" }, // 船尾
-];
 
 const projects: ProjectMeta[] = [
   {
@@ -197,52 +184,11 @@ export default function Home() {
           >
             {/* 左侧 - 词云飞船 */}
             <div className="flex items-center justify-center">
-              <div className="relative w-full max-w-lg">
-                <div className="space-y-2">
-                  <h2 className="mb-6 text-center text-sm uppercase tracking-[0.3em] text-zinc-400">
-                    技能飞船 · Skill Rocket
-                  </h2>
-                  {/* 飞船词云 */}
-                  <div className="relative">
-                    {heroWordCloud.map((row, idx) => (
-                      <div key={idx} className={`flex gap-2 ${row.offset} mb-2`}>
-                        {row.words.map((word) => (
-                          <span
-                            key={word}
-                            className={`${row.size} inline-block rounded-lg border
-                            border-cyan-400/40 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 px-3
-                            py-1.5 font-medium text-cyan-100 shadow-[0_0_15px_rgba(34,211,238,0.3)]
-                            backdrop-blur transition-all hover:scale-105
-                            hover:shadow-[0_0_25px_rgba(34,211,238,0.5)]`}
-                          >
-                            {word}
-                          </span>
-                        ))}
-                      </div>
-                    ))}
-
-                    {/* 尾焰效果 - 动态二进制数字 */}
-                    <div className="mt-4 flex flex-col items-start gap-1 pl-4">
-                      {[0, 1, 2, 3, 4].map((i) => (
-                        <div
-                          key={i}
-                          className="flex gap-1 text-[8px] font-mono tracking-wider
-                            text-orange-400/80 animate-pulse"
-                          style={{
-                            animationDelay: `${i * 0.2}s`,
-                            animationDuration: "1.5s",
-                          }}
-                        >
-                          {Array.from({ length: 8 - i }).map((_, j) => (
-                            <span key={j} className="opacity-70">
-                              {Math.random() > 0.5 ? "1" : "0"}
-                            </span>
-                          ))}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+              <div className="relative w-full max-w-lg h-[500px]">
+                <h2 className="mb-6 text-center text-sm uppercase tracking-[0.3em] text-zinc-400">
+                  技能飞船 · Skill Rocket
+                </h2>
+                <RocketWordCloud />
               </div>
             </div>
 
