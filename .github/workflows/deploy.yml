@@ -1,0 +1,29 @@
+name: Deploy to Aliyun FC
+
+# 触发条件：当代码被 push 到 main 分支时触发
+on:
+  push:
+    branches:
+      - main # 这里改成你的主分支名，通常是 main 或 master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # 使用最新的 Ubuntu 虚拟机环境
+    steps:
+      # 第一步：检出（下载）你的代码到虚拟机
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 第二步：安装和配置 Serverless Devs 工具
+      - name: Setup Serverless Devs
+        uses: serverless-devs/setup-serverless-devs@v1
+        with:
+          version: latest # 使用最新版本的工具
+
+      # 第三步：运行部署命令
+      - name: Deploy to Function Compute
+        run: s deploy --use-local -y
+        env:
+          # 将我们存在 GitHub Secrets 中的密钥注入到环境变量中
+          ALICLOUD_ACCESS_KEY_ID: ${{ secrets.ALI_ACCESS_KEY_ID }}
+          ALICLOUD_ACCESS_KEY_SECRET: ${{ secrets.ALI_ACCESS_KEY_SECRET }}
