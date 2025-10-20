@@ -300,8 +300,8 @@ export default function Home() {
               animate-bounce"
           >
             <span className="text-sm text-zinc-400 tracking-widest">
-              能赏一个 Offer 嘛 😃 要恰饭的嘛 ~~
-              {/* 盼星星 盼月亮 盼Offer 🙋‍♂️ */}
+              {/* 能赏一个 Offer 嘛 😃 要恰饭的嘛 ~~ */}
+              盼星星 盼月亮 盼Offer 🙋‍♂️
             </span>
             <svg
               className="w-6 h-6 text-zinc-400"
