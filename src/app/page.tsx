@@ -185,8 +185,8 @@ export default function Home() {
             {/* 左侧 - 词云飞船 */}
             <div className="flex items-center justify-center">
               <div className="relative w-full max-w-lg h-[500px]">
-                <h2 className="mb-6 text-center text-sm uppercase tracking-[0.3em] text-zinc-400">
-                  JS/TS全栈开发 · AIGC应用开发 · WEB3探索
+                <h2 className="mb-6 text-center text-sm tracking-[0.3em] text-zinc-400">
+                  JS/TS全栈开发 · 大模型应用开发 · AIGC · Web3探索
                 </h2>
                 <RocketWordCloud />
               </div>
@@ -301,7 +301,7 @@ export default function Home() {
           >
             <span className="text-sm text-zinc-400 tracking-widest">
               {/* 能赏一个 Offer 嘛 😃 要恰饭的嘛 ~~ */}
-              盼星星 盼月亮 终于盼到你来给我发Offer 🙋‍♂️
+              盼星星 盼月亮 盼Offer 🙋‍♂️
             </span>
             <svg
               className="w-6 h-6 text-zinc-400"
