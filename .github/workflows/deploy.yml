@@ -1,10 +1,10 @@
-name: Deploy to Aliyun FC
+name: Deploy to Aliyun FC via Serverless Devs
 
 # 触发条件：当代码被 push 到 main 分支时触发
 on:
   push:
     branches:
-      - main # 这里改成你的主分支名，通常是 main 或 master
+      - main # 确保这里的 'main' 是你的主分支名称
 
 jobs:
   deploy:
@@ -14,16 +14,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 第二步：安装和配置 Serverless Devs 工具
+      # 第二步：设置 Node.js 环境，这对于运行 npm install 至关重要
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20" # 推荐使用与您函数环境匹配的 Node.js 版本
+
+      # 第三步：安装项目依赖。您的 s.yaml 文件中的 build 命令需要这些依赖
+      - name: Install Dependencies
+        run: npm install
+
+      # 第四步：安装和配置 Serverless Devs 工具 (注意这里的大小写)
       - name: Setup Serverless Devs
-        uses: serverless-devs/setup-serverless-devs@v1
+        uses: Serverless-Devs/setup-serverless-devs@v1 # <-- 修正了大小写
         with:
           version: latest # 使用最新版本的工具
 
-      # 第三步：运行部署命令
+      # 第五步：运行部署命令
       - name: Deploy to Function Compute
         run: s deploy --use-local -y
         env:
-          # 将我们存在 GitHub Secrets 中的密钥注入到环境变量中
+          # 从 GitHub Secrets 注入阿里云的密钥
           ALICLOUD_ACCESS_KEY_ID: ${{ secrets.ALI_ACCESS_KEY_ID }}
           ALICLOUD_ACCESS_KEY_SECRET: ${{ secrets.ALI_ACCESS_KEY_SECRET }}
