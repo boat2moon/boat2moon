@@ -18,8 +18,8 @@ export default function StickyFooter({ showFooter, friendLinks }: StickyFooterPr
 
   return (
     <footer
-      className={`fixed bottom-0 left-0 z-20 w-full bg-white/80 text-zinc-600
-        shadow-[0_-2px_10px_rgba(0,0,0,0.05)] backdrop-blur-sm transition-transform duration-300
+      className={`fixed bottom-0 left-0 z-20 w-full bg-slate-900/95 text-zinc-100
+        shadow-[0_-2px_12px_rgba(12,24,36,0.2)] backdrop-blur-sm transition-transform duration-300
         ease-in-out ${showFooter ? "translate-y-0" : "translate-y-full"}`}
     >
       <div
@@ -30,7 +30,7 @@ export default function StickyFooter({ showFooter, friendLinks }: StickyFooterPr
         <div className="flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-10 xl:gap-14">
           <a
             href="mailto:boat2moon@proton.me"
-            className="flex items-center gap-1.5 transition hover:text-cyan-600"
+            className="flex items-center gap-1.5 transition hover:text-cyan-300"
           >
             <Mail size={16} />
             <span>邮箱：boat2moon@proton.me</span>
@@ -39,12 +39,12 @@ export default function StickyFooter({ showFooter, friendLinks }: StickyFooterPr
             href="https://github.com/boat2moon"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-1.5 transition hover:text-cyan-600"
+            className="flex items-center gap-1.5 transition hover:text-cyan-300"
           >
             <Github size={16} />
             <span>GitHub</span>
           </a>
-          <Link href="/resume" className="flex items-center gap-1.5 transition hover:text-cyan-600">
+          <Link href="/resume" className="flex items-center gap-1.5 transition hover:text-cyan-300">
             <FileText size={16} />
             <span>简历</span>
           </Link>
@@ -58,7 +58,7 @@ export default function StickyFooter({ showFooter, friendLinks }: StickyFooterPr
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-xs transition hover:text-cyan-600 hover:underline sm:text-sm"
+                  className="text-xs transition hover:text-cyan-300 hover:underline sm:text-sm"
                 >
                   {link.label}
                 </a>
