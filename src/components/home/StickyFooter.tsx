@@ -22,36 +22,48 @@ export default function StickyFooter({ showFooter, friendLinks }: StickyFooterPr
         shadow-[0_-2px_12px_rgba(12,24,36,0.2)] backdrop-blur-sm transition-transform duration-300
         ease-in-out ${showFooter ? "translate-y-0" : "translate-y-full"}`}
     >
-      <div
-        className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 sm:gap-6
-          lg:gap-10 px-6 py-3 text-sm sm:px-10 lg:px-16"
-      >
-        <div className="font-semibold">© {currentYear} boat2moon</div>
-        <div className="flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-10 xl:gap-14">
-          <a
-            href="mailto:boat2moon@proton.me"
-            className="flex items-center gap-1.5 transition hover:text-cyan-300"
-          >
-            <Mail size={16} />
-            <span>邮箱：boat2moon@proton.me</span>
-          </a>
-          <a
-            href="https://github.com/boat2moon"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-1.5 transition hover:text-cyan-300"
-          >
-            <Github size={16} />
-            <span>GitHub</span>
-          </a>
-          <Link href="/resume" className="flex items-center gap-1.5 transition hover:text-cyan-300">
-            <FileText size={16} />
-            <span>简历</span>
-          </Link>
-          <div className="flex flex-wrap items-center gap-2">
-            <LinkIcon size={16} />
-            <span>友情链接：</span>
-            <div className="flex flex-wrap items-center gap-2">
+      <div className="mx-auto w-full max-w-6xl px-6 py-4 text-sm sm:px-10 lg:px-14">
+        <div
+          className="flex w-full flex-col items-center gap-5 text-center sm:flex-wrap
+            sm:justify-center sm:gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10"
+        >
+          <div className="flex flex-col items-center gap-3 lg:flex-1 lg:items-start lg:text-left">
+            <div className="font-semibold">© {currentYear} boat2moon</div>
+            <div
+              className="flex w-full flex-wrap justify-center gap-x-5 gap-y-2 sm:gap-x-6
+                lg:justify-start"
+            >
+              <a
+                href="mailto:boat2moon@proton.me"
+                className="flex items-center gap-1.5 transition hover:text-cyan-300"
+              >
+                <Mail size={16} />
+                <span className="whitespace-nowrap">邮箱：boat2moon@proton.me</span>
+              </a>
+              <a
+                href="https://github.com/boat2moon"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 transition hover:text-cyan-300"
+              >
+                <Github size={16} />
+                <span>GitHub</span>
+              </a>
+              <Link
+                href="/resume"
+                className="flex items-center gap-1.5 transition hover:text-cyan-300"
+              >
+                <FileText size={16} />
+                <span>我的简历</span>
+              </Link>
+            </div>
+          </div>
+          <div className="flex flex-col items-center gap-2 lg:flex-1">
+            <div className="flex flex-wrap items-center justify-center gap-2 text-sm">
+              <LinkIcon size={16} />
+              <span className="font-medium">友情链接：</span>
+            </div>
+            <div className="flex w-full flex-wrap justify-center gap-2 sm:gap-3">
               {friendLinks.map((link) => (
                 <a
                   key={link.href}

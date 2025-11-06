@@ -148,9 +148,10 @@ export const businessEmpowerment: TopicMeta[] = [
 ];
 
 export const friendLinks: FriendLink[] = [
-  { label: "博客", href: "https://juejin.cn/user/2928754707930126" },
+  { label: "我的博客", href: "https://juejin.cn/user/2928754707930126" },
   { label: "3R社区", href: "https://3rcd.com/" },
   { label: "前端面试派", href: "https://www.mianshipai.com/" },
+  { label: "Moment的博客", href: "https://juejin.cn/user/3782764966460398/posts" },
 ];
 
 export const recentNotes: string[] = [
