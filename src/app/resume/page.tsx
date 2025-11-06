@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 
 import { FaGithub } from "react-icons/fa";
 import { FaGlobe } from "react-icons/fa";
@@ -7,8 +8,8 @@ import { PiPhoneCallFill } from "react-icons/pi";
 import { BiSolidNetworkChart } from "react-icons/bi";
 import { VscRobot } from "react-icons/vsc";
 import { TfiWrite } from "react-icons/tfi";
-import { BiServer } from "react-icons/bi";
 import { GiMedicines } from "react-icons/gi";
+import { FiGithub } from "react-icons/fi";
 
 import styles from "./resume.module.scss";
 
@@ -22,11 +23,13 @@ export default function ResumePage() {
         <header className={styles.header}>
           <div>
             <h1>张于淼</h1>
-            <div className={styles.tagline}>男 | 211院校计算机-人工智能专业 | 2026硕士应届生</div>
-            <div className={styles.tagline}>求职意向：JS/TS全栈开发 | AI应用开发</div>
+            <div className={styles.tagline}>
+              男 &nbsp;|&nbsp; 211院校计算机-人工智能专业 &nbsp;|&nbsp; 2026硕士应届生
+            </div>
+            <div className={styles.tagline}>求职意向：JS/TS全栈开发 &nbsp;|&nbsp; AI应用开发</div>
             <p className={styles.summary}>
               <strong>简历摘要：</strong>
-              熟悉TS前后端开发生态，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定AI算法和应用调优经验，综合赋能AI应用全栈开发。
+              熟悉TS前后端开发生态，积极参与开源，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定AI算法和应用调优经验，综合赋能AI应用全栈开发。
             </p>
           </div>
           <Image
@@ -64,13 +67,13 @@ export default function ResumePage() {
               </a>
               <a
                 className={`${styles.contactItem} ${styles.contactLink}`}
-                href="https://boat2moon.com"
+                href="https://www.boat2moon.com"
                 rel="noopener noreferrer"
                 target="_blank"
               >
                 <FaGlobe aria-hidden="true" className={styles.contactIcon} />
                 <span>个人网站：</span>
-                <span className={styles.contactValue}>https://boat2moon.com</span>
+                <span className={styles.contactValue}>boat2moon.com</span>
               </a>
             </div>
           </div>
@@ -83,7 +86,7 @@ export default function ResumePage() {
           </p>
           <p>
             硕士就读于 <strong>安徽大学</strong>　<strong>人工智能专业</strong>
-            　课题方向涉及复杂网络与深度学习应用　预计2026年毕业
+            　课题方向涉及复杂网络与深度学习应用　2026年毕业
           </p>
         </section>
 
@@ -97,7 +100,7 @@ export default function ResumePage() {
               <strong>前端：</strong>HTML，Scss / Tailwind，AntD / Shadcn，React / Next.js，Redux
             </li>
             <li>
-              <strong>后端：</strong>Node.js / Nest.js / hono，RESTful API，Prisma，Pgsql
+              <strong>后端：</strong>Node.js / Nest.js，RESTful API，Prisma，Pgsql
             </li>
             <li>
               <strong>AI 相关：</strong>Vercel AI，LangChain.JS
@@ -109,8 +112,8 @@ export default function ResumePage() {
               <strong>外语水平：</strong>通过英语六级
             </li>
             <li>
-              <strong>日常办公：</strong>熟悉常用办公工具，擅长材料文档撰写与数据可视化，负责 PPT
-              制作及汇报材料润色。
+              <strong>日常办公：</strong>{" "}
+              熟悉常用办公工具，有良好的材料文档撰写水平，具备数据处理能力产出美观图表，常负责组内工作中各种ppt制作和汇报材料润色。
             </li>
           </ul>
         </section>
@@ -122,7 +125,29 @@ export default function ResumePage() {
               <div className={styles.node}>
                 <span className={styles.nodeTitle}>
                   <TfiWrite aria-hidden="true" className={styles.nodeIcon} />
-                  入木 AI　大模型协同写作平台 —— 社区合作开发
+                  <span className={styles.titleText}>
+                    <span>入木 AI</span>
+                    <span aria-hidden="true" className={styles.inlineSeparator} />
+                    <span>大模型协同写作平台</span>
+                    <span
+                      aria-hidden="true"
+                      className={styles.inlineSeparator}
+                      style={{ "--inline-separator-width": "2.5em" } as CSSProperties}
+                    />
+                    <span>
+                      社区合作开发，
+                      <a
+                        className={styles.inlineLink}
+                        href="https://github.com/xun082/DocFlow"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        前端开源
+                        <FiGithub aria-hidden="true" />
+                      </a>
+                      ，后端闭源
+                    </span>
+                  </span>
                 </span>
                 <span aria-hidden="true" className={styles.nodeSeparator} />
                 <span className={styles.nodeTime}>2023.03 - 2023.06</span>
@@ -140,10 +165,10 @@ export default function ResumePage() {
                 <li>
                   <div className={styles.node}>
                     <span>
-                      <strong>项目介绍：</strong>一个 Node 全栈 AIGC
-                      知识库平台，覆盖文档创建、文档管理、AI 写作、AI
-                      文本处理与多人协同编辑。负责项目一期从 0 到 1
-                      的架构设计、开发、上线、监控与运维。
+                      <strong>项目介绍：</strong>一个 Node 全栈开发的 AIGC
+                      知识库平台，包括文档创建，文档管理，AI 写作，AI
+                      处理文本，还有多人协同编辑。我作为项目一期开发人员，参与了从 0
+                      搭建项目，设计、开发、上线，以及统计、监控和运维项目。
                     </span>
                   </div>
                 </li>
@@ -170,7 +195,17 @@ export default function ResumePage() {
               <div className={styles.node}>
                 <span className={styles.nodeTitle}>
                   <VscRobot aria-hidden="true" className={styles.nodeIcon} />
-                  伯乐 Talk　AI 智能体面试模拟站 —— 社区合作开发
+                  <span className={styles.titleText}>
+                    <span>伯乐 Talk</span>
+                    <span aria-hidden="true" className={styles.inlineSeparator} />
+                    <span>AI 智能体面试模拟站</span>
+                    <span
+                      aria-hidden="true"
+                      className={styles.inlineSeparator}
+                      style={{ "--inline-separator-width": "2.5em" } as CSSProperties}
+                    />
+                    <span>社区合作开发</span>
+                  </span>
                 </span>
                 <span aria-hidden="true" className={styles.nodeSeparator} />
                 <span className={styles.nodeTime}>2023.03 - 2023.06</span>
@@ -206,7 +241,7 @@ export default function ResumePage() {
               </ul>
             </li>
 
-            <li>
+            {/* <li>
               <div className={styles.node}>
                 <span className={styles.nodeTitle}>
                   <BiServer aria-hidden="true" className={styles.nodeIcon} />
@@ -252,13 +287,21 @@ export default function ResumePage() {
                   </div>
                 </li>
               </ul>
-            </li>
+            </li> */}
 
             <li>
               <div className={styles.node}>
                 <span className={styles.nodeTitle}>
                   <BiSolidNetworkChart aria-hidden="true" className={styles.nodeIcon} />
-                  城市巨系统网络攻防建模（一期）—— 合肥国家科学中心数据科学研究院
+                  <span className={styles.titleText}>
+                    <span>城市巨系统网络攻防建模（一期）</span>
+                    <span
+                      aria-hidden="true"
+                      className={styles.inlineSeparator}
+                      style={{ "--inline-separator-width": "2.5em" } as CSSProperties}
+                    />
+                    <span>合肥国家科学中心数据科学研究院</span>
+                  </span>
                 </span>
                 <span aria-hidden="true" className={styles.nodeSeparator} />
                 <span className={styles.nodeTime}>2024.03 - 2024.06</span>
@@ -300,7 +343,15 @@ export default function ResumePage() {
               <div className={styles.node}>
                 <span className={styles.nodeTitle}>
                   <GiMedicines aria-hidden="true" className={styles.nodeIcon} />
-                  AI 赋能 ADC 药物全链路研发（一期）—— 觉微软件科技（苏州）有限公司
+                  <span className={styles.titleText}>
+                    <span>AI 赋能 ADC 药物全链路研发（一期）</span>
+                    <span
+                      aria-hidden="true"
+                      className={styles.inlineSeparator}
+                      style={{ "--inline-separator-width": "2.5em" } as CSSProperties}
+                    />
+                    <span>觉微软件科技（苏州）有限公司</span>
+                  </span>
                 </span>
                 <span aria-hidden="true" className={styles.nodeSeparator} />
                 <span className={styles.nodeTime}>2023.09 - 2023.12</span>
@@ -344,7 +395,7 @@ export default function ResumePage() {
           <ul className={styles.skillList}>
             <li>
               论文（GitHub · PPT）：《一种 AI
-              赋能电网潮流分析的计算框架》，并在第二十届全国网络科学与工程论坛做报告。
+              赋能电网潮流分析的计算框架》，并在第二十届全国网络科学与工程论坛做学生报告。
             </li>
             <li>专利（GitHub · PPT）：《一种 AI 赋能电网扰动监测的算法方案》。</li>
           </ul>
@@ -354,10 +405,7 @@ export default function ResumePage() {
           <h2 className={styles.sectionTitle}>获奖情况</h2>
           <ul className={styles.awardList}>
             <li>
-              院校奖学金　<span className={styles.awardDate}>2023.11</span>
-            </li>
-            <li>
-              优秀毕业生　<span className={styles.awardDate}>2023.09</span>
+              校二等奖学金　<span className={styles.awardDate}>2023.11</span>
             </li>
           </ul>
         </section>

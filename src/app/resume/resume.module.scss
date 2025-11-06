@@ -43,7 +43,7 @@
 }
 
 .summary {
-  margin: 0 0 24px;
+  margin: 0 0 12px;
   font-size: 14px;
 }
 
@@ -229,7 +229,7 @@
 .node {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 3px;
   align-items: baseline;
 }
 
@@ -249,9 +249,52 @@
   color: var(--text);
 }
 
+.titleText {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
 .nodeIcon {
   font-size: 1.1em;
+  color: #000000;
+}
+
+.inlineSeparator {
+  --inline-separator-width: 1em;
+
+  display: inline-block;
+  flex: 0 0 var(--inline-separator-width);
+  min-width: var(--inline-separator-width);
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.159);
+  margin: 0 4px;
+  height: 0;
+  align-self: center;
+}
+
+.inlineLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+  margin: 0 2px;
+  border-radius: 4px;
   color: var(--primary);
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.inlineLink:hover {
+  color: var(--accent);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.inlineLink :global(svg) {
+  width: 14px;
+  height: 14px;
 }
 
 .nodeTags {
