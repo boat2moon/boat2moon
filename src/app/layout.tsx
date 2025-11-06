@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "boat2moon · 启程，从工程化奔向月球",
+  title: "Let's boat2moon !",
   description: "TypeScript全栈工程师，实现A/B/C端业务闭环交付，AI应用全栈开发",
 };
 
