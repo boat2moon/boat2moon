@@ -532,11 +532,11 @@ export default function Home() {
           ease-in-out ${showFooter ? "translate-y-0" : "translate-y-full"}`}
       >
         <div
-          className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-3
-            text-sm sm:px-10 lg:px-16"
+          className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 sm:gap-6
+            lg:gap-10 px-6 py-3 text-sm sm:px-10 lg:px-16"
         >
           <div className="font-semibold">© {new Date().getFullYear()} boat2moon</div>
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-10 xl:gap-14">
             <a
               href="mailto:boat2moon@proton.me"
               className="flex items-center gap-1.5 transition hover:text-cyan-600"
