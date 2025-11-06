@@ -21,7 +21,7 @@
   <a href="mailto:boat2moon@proton.me" target="_blank">
     <img src="https://img.shields.io/badge/ProtonMail-8B89CC?style=for-the-badge&logo=protonmail&logoColor=white" alt="Email">
   </a>
-  <a href="https://boat2moon.com" target="_blank">
+  <a href="https://www.boat2moon.com" target="_blank">
     <img src="https://img.shields.io/badge/Website-4A90E2?style=for-the-badge&logo=About.me&logoColor=white" alt="Website">
   </a>
 </p>
