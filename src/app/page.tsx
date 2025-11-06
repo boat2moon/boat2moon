@@ -1,3 +1,5 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -8,6 +10,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import RocketWordCloud from "@/components/RocketWordCloud";
+import { Mail, Github, FileText, Link as LinkIcon } from "lucide-react";
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
 type ProjectMeta = {
   title: string;
@@ -143,6 +148,12 @@ const businessEmpowerment = [
   },
 ];
 
+const friendLinks = [
+  { label: "博客", href: "https://juejin.cn/user/2928754707930126" },
+  { label: "3R社区", href: "https://3rcd.com/" },
+  { label: "前端面试派", href: "https://www.mianshipai.com/" },
+];
+
 const recentNotes = [
   "LLM 深入业务前需先明确价值指标，技术演示≠商业闭环。",
   "多端研发的本质是规范协作，工具只是加速器。",
@@ -150,6 +161,25 @@ const recentNotes = [
 ];
 
 export default function Home() {
+  const [showFooter, setShowFooter] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // 当滚动距离超过首屏高度减去一个小的偏移量时，显示页脚
+      if (window.scrollY > window.innerHeight - 50) {
+        setShowFooter(true);
+      } else {
+        setShowFooter(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    // 组件卸载时移除事件监听
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-50">
       {/* 装饰面板 - 太空背景区域 */}
@@ -490,26 +520,66 @@ export default function Home() {
             </div>
           </section>
 
-          <footer className="border-t border-dashed border-zinc-200 pt-6 text-sm text-zinc-500">
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-              <span>© {new Date().getFullYear()} boat2moon</span>
-              <span className="space-x-4">
-                <a className="transition hover:text-zinc-700" href="mailto:hey@boat2moon.dev">
-                  邮件
-                </a>
-                <a
-                  className="transition hover:text-zinc-700"
-                  href="https://github.com/boat2moon"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                </a>
-              </span>
-            </div>
-          </footer>
+          {/* 占位符，避免内容被粘性页脚遮挡 */}
+          <div className="h-20" />
         </div>
       </main>
+
+      {/* 粘性页脚 */}
+      <footer
+        className={`fixed bottom-0 left-0 z-20 w-full bg-white/80 text-zinc-600
+          shadow-[0_-2px_10px_rgba(0,0,0,0.05)] backdrop-blur-sm transition-transform duration-300
+          ease-in-out ${showFooter ? "translate-y-0" : "translate-y-full"}`}
+      >
+        <div
+          className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-3
+            text-sm sm:px-10 lg:px-16"
+        >
+          <div className="font-semibold">© {new Date().getFullYear()} boat2moon</div>
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            <a
+              href="mailto:boat2moon@proton.me"
+              className="flex items-center gap-1.5 transition hover:text-cyan-600"
+            >
+              <Mail size={16} />
+              <span>邮箱：boat2moon@proton.me</span>
+            </a>
+            <a
+              href="https://github.com/boat2moon"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 transition hover:text-cyan-600"
+            >
+              <Github size={16} />
+              <span>GitHub</span>
+            </a>
+            <Link
+              href="/resume"
+              className="flex items-center gap-1.5 transition hover:text-cyan-600"
+            >
+              <FileText size={16} />
+              <span>简历</span>
+            </Link>
+            <div className="flex flex-wrap items-center gap-2">
+              <LinkIcon size={16} />
+              <span>友情链接：</span>
+              <div className="flex flex-wrap items-center gap-2">
+                {friendLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs transition hover:text-cyan-600 hover:underline sm:text-sm"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
