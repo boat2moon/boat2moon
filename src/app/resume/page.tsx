@@ -1,9 +1,14 @@
 import Image from "next/image";
 
 import { FaGithub } from "react-icons/fa";
+import { FaGlobe } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { PiPhoneCallFill } from "react-icons/pi";
-import { FaGlobe } from "react-icons/fa";
+import { BiSolidNetworkChart } from "react-icons/bi";
+import { VscRobot } from "react-icons/vsc";
+import { TfiWrite } from "react-icons/tfi";
+import { BiServer } from "react-icons/bi";
+import { GiMedicines } from "react-icons/gi";
 
 import styles from "./resume.module.scss";
 
@@ -111,13 +116,15 @@ export default function ResumePage() {
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>项目 / 实习经历</h2>
+          <h2 className={styles.sectionTitle}>项目 | 实习经历</h2>
           <ul className={styles.tree}>
             <li>
               <div className={styles.node}>
                 <span className={styles.nodeTitle}>
+                  <TfiWrite aria-hidden="true" className={styles.nodeIcon} />
                   入木 AI　大模型协同写作平台 —— 社区合作开发
                 </span>
+                <span aria-hidden="true" className={styles.nodeSeparator} />
                 <span className={styles.nodeTime}>2023.03 - 2023.06</span>
               </div>
               <ul>
@@ -162,8 +169,10 @@ export default function ResumePage() {
             <li>
               <div className={styles.node}>
                 <span className={styles.nodeTitle}>
+                  <VscRobot aria-hidden="true" className={styles.nodeIcon} />
                   伯乐 Talk　AI 智能体面试模拟站 —— 社区合作开发
                 </span>
+                <span aria-hidden="true" className={styles.nodeSeparator} />
                 <span className={styles.nodeTime}>2023.03 - 2023.06</span>
               </div>
               <ul>
@@ -199,7 +208,11 @@ export default function ResumePage() {
 
             <li>
               <div className={styles.node}>
-                <span className={styles.nodeTitle}>基于 Nest 的后端管理系统</span>
+                <span className={styles.nodeTitle}>
+                  <BiServer aria-hidden="true" className={styles.nodeIcon} />
+                  基于 Nest 的后端管理系统
+                </span>
+                <span aria-hidden="true" className={styles.nodeSeparator} />
                 <span className={styles.nodeTime}>2023.03 - 2023.06</span>
               </div>
               <ul>
@@ -244,8 +257,10 @@ export default function ResumePage() {
             <li>
               <div className={styles.node}>
                 <span className={styles.nodeTitle}>
+                  <BiSolidNetworkChart aria-hidden="true" className={styles.nodeIcon} />
                   城市巨系统网络攻防建模（一期）—— 合肥国家科学中心数据科学研究院
                 </span>
+                <span aria-hidden="true" className={styles.nodeSeparator} />
                 <span className={styles.nodeTime}>2024.03 - 2024.06</span>
               </div>
               <ul>
@@ -284,8 +299,10 @@ export default function ResumePage() {
             <li>
               <div className={styles.node}>
                 <span className={styles.nodeTitle}>
+                  <GiMedicines aria-hidden="true" className={styles.nodeIcon} />
                   AI 赋能 ADC 药物全链路研发（一期）—— 觉微软件科技（苏州）有限公司
                 </span>
+                <span aria-hidden="true" className={styles.nodeSeparator} />
                 <span className={styles.nodeTime}>2023.09 - 2023.12</span>
               </div>
               <ul>

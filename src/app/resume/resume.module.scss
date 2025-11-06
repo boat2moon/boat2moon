@@ -115,6 +115,9 @@
 
 .sectionTitle {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin: 0 0 16px;
   font-size: 20px;
   color: var(--primary);
@@ -130,6 +133,13 @@
   left: 0;
   top: 2px;
   font-weight: 700;
+}
+
+.sectionTitle::after {
+  content: "";
+  flex: 1 1 auto;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+  margin-left: 8px;
 }
 
 .skillList,
@@ -223,9 +233,25 @@
   align-items: baseline;
 }
 
+.nodeSeparator {
+  flex: 1 1 auto;
+  align-self: center;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.159);
+  min-width: 48px;
+  height: 0;
+}
+
 .nodeTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-weight: 700;
   color: var(--text);
+}
+
+.nodeIcon {
+  font-size: 1.1em;
+  color: var(--primary);
 }
 
 .nodeTags {
