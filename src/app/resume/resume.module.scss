@@ -274,6 +274,8 @@
 }
 
 .inlineLink {
+  --inline-icon-size: 14px;
+
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -293,8 +295,12 @@
 }
 
 .inlineLink :global(svg) {
-  width: 14px;
-  height: 14px;
+  width: var(--inline-icon-size);
+  height: var(--inline-icon-size);
+}
+
+.inlineIconSmall {
+  --inline-icon-size: 12px;
 }
 
 .nodeTags {

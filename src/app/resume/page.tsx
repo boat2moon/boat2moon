@@ -143,7 +143,7 @@ export default function ResumePage() {
                         target="_blank"
                       >
                         前端开源
-                        <FiGithub aria-hidden="true" />
+                        <FiGithub aria-hidden="true" className={styles.inlineIconSmall} />
                       </a>
                       ，后端闭源
                     </span>
