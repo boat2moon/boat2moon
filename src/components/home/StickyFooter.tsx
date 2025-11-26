@@ -16,11 +16,34 @@ type StickyFooterProps = {
 export default function StickyFooter({ showFooter, friendLinks }: StickyFooterProps) {
   const currentYear = new Date().getFullYear();
 
+  // --- 暗黑模式月光主题配置 (请根据喜好取消注释其中一套) ---
+
+  // 方案 A：暖黄月光 (当前激活) - 营造温暖、柔和的月色氛围，偏向淡琥珀色
+  const darkTheme = `
+    dark:bg-zinc-950/40 dark:backdrop-blur-xl dark:border-t dark:border-yellow-100/20
+    dark:bg-[linear-gradient(180deg,rgba(253,224,71,0.08)_0%,rgba(253,224,71,0)_100%)]
+    dark:shadow-[0_-8px_30px_-6px_rgba(253,224,71,0.15)]
+  `;
+
+  // 方案 B：清冷蓝月光 - 科技感强，契合深空主题
+  // const darkTheme = `
+  //   dark:bg-zinc-950/40 dark:backdrop-blur-xl dark:border-t dark:border-cyan-100/20
+  //   dark:bg-[linear-gradient(180deg,rgba(165,243,252,0.1)_0%,rgba(165,243,252,0)_100%)]
+  //   dark:shadow-[0_-8px_30px_-6px_rgba(34,211,238,0.15)]
+  // `;
+
+  // 方案 C：皎洁白月光 - 纯净透亮，高对比度
+  // const darkTheme = `
+  //   dark:bg-zinc-950/30 dark:backdrop-blur-xl dark:border-t dark:border-white/20
+  //   dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0)_100%)]
+  //   dark:shadow-[0_-8px_30px_-6px_rgba(255,255,255,0.25)]
+  // `;
+
   return (
     <footer
       className={`fixed bottom-0 left-0 z-20 w-full bg-slate-900/95 text-zinc-100
         shadow-[0_-2px_12px_rgba(12,24,36,0.2)] backdrop-blur-sm transition-transform duration-300
-        ease-in-out ${showFooter ? "translate-y-0" : "translate-y-full"}`}
+        ease-in-out ${darkTheme} ${showFooter ? "translate-y-0" : "translate-y-full"}`}
     >
       <div className="mx-auto w-full max-w-6xl px-6 py-4 text-sm sm:px-10 lg:px-14">
         <div

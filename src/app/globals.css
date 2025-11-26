@@ -33,3 +33,21 @@ html {
 * {
   scroll-behavior: smooth;
 }
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+.animate-twinkle-slow {
+  animation: twinkle 7s ease-in-out infinite;
+}

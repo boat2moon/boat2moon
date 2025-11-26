@@ -46,9 +46,41 @@ export default function Home() {
 
       {/* 主体内容区：浅色背景承载核心信息模块 */}
       <main
-        className="relative z-10 bg-gradient-to-b from-zinc-100 via-zinc-50 to-white pb-24 pt-16
-          text-zinc-900"
+        className="relative z-10 bg-gradient-to-b from-zinc-100 via-zinc-50 to-white
+          dark:from-zinc-950 dark:via-zinc-900 dark:to-black pb-24 pt-16 text-zinc-900
+          dark:text-zinc-100"
       >
+        {/* 暗黑模式下的星星背景装饰 */}
+        <div className="absolute inset-0 hidden dark:block pointer-events-none overflow-hidden">
+          {/* 第一层星星：慢速呼吸 */}
+          <div
+            className="absolute inset-0 opacity-40 animate-twinkle-slow"
+            style={{
+              backgroundImage: `radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.7), transparent),
+                              radial-gradient(2px 2px at 60% 70%, rgba(255,255,255,0.7), transparent),
+                              radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.6), transparent),
+                              radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.7), transparent),
+                              radial-gradient(2px 2px at 90% 60%, rgba(255,255,255,0.6), transparent),
+                              radial-gradient(1px 1px at 33% 50%, rgba(255,255,255,0.7), transparent),
+                              radial-gradient(1px 1px at 66% 33%, rgba(255,255,255,0.6), transparent)`,
+              backgroundSize: "800px 800px",
+              backgroundRepeat: "repeat",
+            }}
+          />
+          {/* 第二层星星：稍快呼吸，增加层次感 */}
+          <div
+            className="absolute inset-0 opacity-30 animate-twinkle"
+            style={{
+              backgroundImage: `radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6), transparent),
+                              radial-gradient(2px 2px at 40% 45%, rgba(255,255,255,0.6), transparent),
+                              radial-gradient(1px 1px at 70% 85%, rgba(255,255,255,0.6), transparent),
+                              radial-gradient(2px 2px at 85% 25%, rgba(255,255,255,0.6), transparent)`,
+              backgroundSize: "650px 650px",
+              backgroundRepeat: "repeat",
+            }}
+          />
+        </div>
+
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-6 sm:px-10 lg:px-16">
           <ProfileSection />
           <ProjectsSection projects={projects} />

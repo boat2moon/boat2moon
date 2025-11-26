@@ -15,22 +15,27 @@ export default function FullStackSection({ topics }: FullStackSectionProps) {
   return (
     <section id="fullstack" className="space-y-8">
       <div className="space-y-3">
-        <h2 className="text-3xl font-bold text-zinc-900">全栈技术</h2>
+        <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">全栈技术</h2>
         <div className="h-1 w-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" />
-        <p className="text-sm text-zinc-600">核心技术支柱，覆盖研发链路的关键节点</p>
+        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+          核心技术支柱，覆盖研发链路的关键节点
+        </p>
       </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {topics.map((topic) => (
           <Card
             key={topic.title}
-            className="border border-zinc-200/80 bg-white shadow-md transition-all duration-300
-              hover:shadow-lg hover:border-cyan-400/50"
+            className="border border-zinc-200/80 bg-white dark:bg-zinc-900 dark:border-zinc-800
+              shadow-md transition-all duration-300 hover:shadow-lg hover:border-cyan-400/50
+              dark:hover:bg-zinc-800/80"
           >
             <CardHeader>
-              <CardTitle className="text-lg">{topic.title}</CardTitle>
+              <CardTitle className="text-lg dark:text-zinc-100">{topic.title}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-zinc-600 leading-relaxed">{topic.description}</p>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                {topic.description}
+              </p>
             </CardContent>
           </Card>
         ))}

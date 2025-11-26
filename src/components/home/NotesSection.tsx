@@ -12,14 +12,14 @@ export default function NotesSection({ notes }: NotesSectionProps) {
   return (
     <section
       id="notes"
-      className="rounded-3xl border border-zinc-200/80 bg-gradient-to-br from-white to-zinc-50 p-10
-        shadow-lg"
+      className="rounded-3xl border border-zinc-200/80 bg-gradient-to-br from-white to-zinc-50
+        dark:from-zinc-900 dark:to-zinc-950 dark:border-zinc-800 p-10 shadow-lg"
     >
       <div className="space-y-3 mb-6">
-        <h2 className="text-3xl font-bold text-zinc-900">杂记</h2>
+        <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">杂记</h2>
         <div className="h-1 w-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" />
       </div>
-      <div className="space-y-4 text-sm text-zinc-700">
+      <div className="space-y-4 text-sm text-zinc-700 dark:text-zinc-300">
         {notes.map((note, idx) => (
           <div key={idx} className="flex items-start gap-3">
             <span
