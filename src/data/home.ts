@@ -138,12 +138,12 @@ export const businessEmpowerment: TopicMeta[] = [
     description: "面向业务流程构建提示工程、模型评测、上线监控三件套，帮助团队快速验证并持续优化。",
   },
   {
-    title: "全栈开发之 WEB3（慎重点击）",
-    description: "聚焦 DID、NFT、智能合约审计，攻击面评估 + 合规研究并行，确保品牌资产安全落链。",
-  },
-  {
     title: "全栈开发之电商独立站",
     description: "营销漏斗 + SEO 优化双线推进，沉淀数据飞轮与自动化营销工具，实现增长闭环。",
+  },
+  {
+    title: "全栈开发之 WEB3（观望...）",
+    description: "聚焦 DID、NFT、智能合约审计，攻击面评估 + 合规研究并行，确保品牌资产安全落链。",
   },
 ];
 

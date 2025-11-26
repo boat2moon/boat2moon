@@ -2,12 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import * as echarts from "echarts";
-
-interface WordCloudData {
-  name: string;
-  value: number;
-  description?: string;
-}
+import { wordCloudData as baseWords, type WordCloudData } from "../data/wordCloudData";
 
 // 二进制尾焰组件 - 横向扩散效果
 function BinaryFlame() {
@@ -124,43 +119,9 @@ export default function RocketWordCloud() {
     maskImage.src = "/rocket2_black.png";
 
     maskImage.onload = () => {
-      // 基础词云数据 - 技能词汇及其描述
-      const baseWords: WordCloudData[] = [
-        { name: "React", value: 80, description: "用于构建用户界面的 JavaScript 库" },
-        { name: "Next.js", value: 75, description: "基于 React 的全栈框架，支持 SSR/SSG" },
-        { name: "TypeScript", value: 85, description: "JavaScript 的超集，提供类型安全" },
-        { name: "Node.js", value: 70, description: "基于 Chrome V8 的 JavaScript 运行时" },
-        { name: "NestJS", value: 65, description: "企业级 Node.js 后端框架" },
-        { name: "Express", value: 60, description: "轻量级 Node.js Web 应用框架" },
-        { name: "PostgreSQL", value: 55, description: "强大的开源关系型数据库" },
-        { name: "Redis", value: 50, description: "高性能键值对内存数据库" },
-        { name: "MongoDB", value: 55, description: "灵活的文档型 NoSQL 数据库" },
-        { name: "TailwindCSS", value: 65, description: "实用优先的 CSS 框架" },
-        { name: "React Native", value: 60, description: "使用 React 构建原生移动应用" },
-        { name: "Electron", value: 55, description: "使用 Web 技术构建桌面应用" },
-        { name: "WebSocket", value: 50, description: "实时双向通信协议" },
-        { name: "GraphQL", value: 60, description: "灵活高效的 API 查询语言" },
-        { name: "REST API", value: 65, description: "基于 HTTP 的 API 架构风格" },
-        { name: "Docker", value: 70, description: "容器化应用部署平台" },
-        { name: "Kubernetes", value: 60, description: "容器编排与管理系统" },
-        { name: "CI/CD", value: 65, description: "持续集成与持续部署" },
-        { name: "微前端", value: 55, description: "前端应用的微服务架构" },
-        { name: "全端协同", value: 50, description: "前后端全栈协作开发" },
-        { name: "Serverless", value: 55, description: "无服务器架构，按需计费" },
-        { name: "AI/AIGC", value: 75, description: "人工智能与 AI 生成内容" },
-        { name: "Web3", value: 60, description: "基于区块链的去中心化网络" },
-        { name: "安全", value: 50, description: "应用安全与数据保护" },
-        { name: "性能", value: 55, description: "性能优化与监控" },
-        { name: "Vue", value: 45, description: "渐进式 JavaScript 框架" },
-        { name: "Python", value: 40, description: "简洁强大的通用编程语言" },
-        { name: "Go", value: 35, description: "高效的并发编程语言" },
-        { name: "Rust", value: 30, description: "内存安全的系统编程语言" },
-        { name: "Java", value: 40, description: "企业级面向对象编程语言" },
-      ];
-
       // 复制词汇多次以填充更密集
       const wordCloudData: WordCloudData[] = [];
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 2; i++) {
         baseWords.forEach((word) => {
           wordCloudData.push({
             // 使用零宽字符创建唯一但视觉上相同的名称
@@ -206,10 +167,10 @@ export default function RocketWordCloud() {
             height: "100%",
             right: null,
             bottom: null,
-            sizeRange: [10, 32], // 减小字体大小范围: 最小10px, 最大32px
+            sizeRange: [11, 32], // 减小字体大小范围: 最小10px, 最大32px
             rotationRange: [0, 0], // 不旋转,保持水平
             rotationStep: 0,
-            gridSize: 6, // 减小网格大小以允许更密集的布局
+            gridSize: 7, // 减小网格大小以允许更密集的布局
             drawOutOfBound: false,
             shrinkToFit: true,
             layoutAnimation: true,
