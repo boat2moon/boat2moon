@@ -39,7 +39,10 @@ export default function HeroSection() {
           {/* 左侧词云火箭：突出技能栈与视觉记忆点 */}
           <div className="flex items-center justify-center">
             <div className="relative w-full max-w-lg h-[500px]">
-              <h2 className="mb-6 text-center text-sm tracking-[0.3em] text-zinc-400">
+              <h2
+                className="mb-6 text-center text-sm tracking-[0.3em] text-zinc-400
+                  whitespace-nowrap"
+              >
                 JS/TS全栈开发 · 大模型应用开发 · AIGC · 网站逐步构建中···
               </h2>
               <RocketWordCloud />
