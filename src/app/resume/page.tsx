@@ -29,7 +29,7 @@ export default function ResumePage() {
             <div className={styles.tagline}>求职意向：JS/TS全栈开发 &nbsp;|&nbsp; AI应用开发</div>
             <p className={styles.summary}>
               <strong>简历摘要：</strong>
-              熟悉TS前后端开发生态，积极参与开源，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定AI算法和应用调优经验，综合赋能AI应用全栈开发。
+              AI复合型程序员，熟悉JS/TS前后端开发生态，积极参与开源，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定AI算法和应用调优经验，综合赋能AI大模型应用全栈开发。
             </p>
           </div>
           <Image
@@ -94,16 +94,19 @@ export default function ResumePage() {
           <h2 className={styles.sectionTitle}>专业技能</h2>
           <ul className={styles.skillList}>
             <li>
-              <strong>编程语言：</strong>主 TypeScript / JavaScript，副 Python
+              <strong>编程语言：</strong>主 JavaScript / TypeScript，副 Python
             </li>
             <li>
-              <strong>前端：</strong>HTML，Scss / Tailwind，AntD / Shadcn，React / Next.js，Redux
+              <strong>前端：</strong>HTML，Scss / Tailwind，AntD / Shadcn，React，Redux /
+              Zustand，Next
             </li>
             <li>
-              <strong>后端：</strong>Node.js / Nest.js，RESTful API，Prisma，Pgsql
+              <strong>后端：</strong>Node.js / Hono / Nest，RESTful API，Prisma /
+              Drizzle，PostgreSQL
             </li>
             <li>
-              <strong>AI 相关：</strong>Vercel AI，LangChain.JS
+              <strong>AI 相关：</strong>Prompt Engineering，LangChain.JS，Function_Call /
+              MCP，Agent，RAG，向量数据库, Vercel AI，
             </li>
             <li>
               <strong>CI/CD：</strong>Github Actions，serverless
@@ -294,7 +297,7 @@ export default function ResumePage() {
                 <span className={styles.nodeTitle}>
                   <BiSolidNetworkChart aria-hidden="true" className={styles.nodeIcon} />
                   <span className={styles.titleText}>
-                    <span>城市巨系统网络攻防建模（一期）</span>
+                    <span>城市巨系统网络攻防建模（横向，一期）</span>
                     <span
                       aria-hidden="true"
                       className={styles.inlineSeparator}
@@ -344,7 +347,7 @@ export default function ResumePage() {
                 <span className={styles.nodeTitle}>
                   <GiMedicines aria-hidden="true" className={styles.nodeIcon} />
                   <span className={styles.titleText}>
-                    <span>AI 赋能 ADC 药物全链路研发（一期）</span>
+                    <span>AI 赋能 ADC 药物全链路研发（横向，一期）</span>
                     <span
                       aria-hidden="true"
                       className={styles.inlineSeparator}
@@ -391,7 +394,7 @@ export default function ResumePage() {
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>科研成果 · 交叉行业 AI 赋能</h2>
+          <h2 className={styles.sectionTitle}>纵向科研成果 · 交叉行业 AI 赋能</h2>
           <ul className={styles.skillList}>
             <li>
               论文（GitHub · PPT）：《一种 AI
