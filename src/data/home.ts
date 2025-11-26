@@ -5,10 +5,10 @@
  */
 export type ProjectMeta = {
   title: string;
-  subtitle: string;
   description: string;
   tags: string[];
-  reference?: string;
+  images?: string[];
+  link?: string;
 };
 
 export type TopicMeta = {
@@ -24,82 +24,79 @@ export type FriendLink = {
 export const projects: ProjectMeta[] = [
   {
     title: "入木 AI",
-    subtitle: "AIGC 工具链，沉淀企业知识的多模态生产力平台",
     description:
-      "构建语义检索、提示治理与多模态素材管线，交付运营侧快速搭建营销资产的闭环工具，支撑日常上新效率提升 3 倍。",
-    tags: ["AIGC", "全栈", "B 端"],
+      "一个 TS 全栈开发的现代化 AIGC 协同文档编辑平台，集成了丰富的编辑能力与多人实时协作功能，支持知识库管理、插件扩展与持久化存储。",
+    images: ["/public/rumu1.png", "/public/rumu2.png"],
+    tags: [
+      "Next.js",
+      "React",
+      "ShadcnUI",
+      "Zustand",
+      "Auth.js",
+      "Prisma",
+      "PostgreSQL",
+      "Tiptap",
+      "ChatGPT API",
+      "Docker",
+      "阿里云 Serverless",
+    ],
+    link: "#",
   },
   {
-    title: "伯乐 Talk",
-    subtitle: "人才服务对话机器人，AI 驱动的 HR 智能助手",
+    title: "伯乐 Talk（待上线）",
     description:
-      "打造候选人画像 + 岗位画像的匹配评分模型，落地候选人问答与推荐推送，实现客服人力节省 60%。",
-    tags: ["AI 应用", "前端", "服务端"],
+      "基于 ReAct 范式的垂直领域 AI Agent 面试模拟平台。利用大模型推理能力，通过工作流编排实现简历深度解析、结构化诊断及多轮个性化面试问答，提供实时评分反馈与改进建议。",
+    images: ["/public/bole1.png", "/public/bole2.png", "/public/bole3.png", "/public/bole4.png"],
+    tags: [
+      "Next.js",
+      "React",
+      "Zustand",
+      "Drizzle",
+      "PostgreSQL",
+      "LangChain.js",
+      "RAG",
+      "Vercel AI SDK",
+      "ChatGPT API",
+      "Zod",
+    ],
+    link: "#",
   },
   {
-    title: "Nest 后端基座",
-    subtitle: "面向多业务线的领域驱动服务 Skeleton",
-    description:
-      "集中封装认证、配置化 RBAC、审计日志、消息队列适配等能力，统一部署流程，让新业务线上架周期由周降至天。",
-    tags: ["NestJS", "后端", "CI/CD"],
-  },
-  {
-    title: "多端协同项目",
-    subtitle: "一套业务逻辑覆盖 Web / 桌面 / 小程序",
-    description:
-      "通过微前端 + BFF 组合拳，统一接口契约与状态管理，交付营销活动的多端体验，新增渠道 2 周内完成上线。",
-    tags: ["全端", "微前端", "A/B/C"],
-    reference: "https://gemini.google.com/app/fd9ab82994ff0d1b",
-  },
-  {
-    title: "仿扣子 / Dify 工作流",
-    subtitle: "低门槛可视化 AI 工作流",
-    description:
-      "实现可视化节点编排、变量调试与推理模板化，帮助运营团队在无工程师介入的情况下上线对话流程。",
-    tags: ["Workflow", "AIGC", "低代码"],
-  },
-  {
-    title: "数字孪生",
-    subtitle: "城市级 3D 资产管理 / 驾培仿真平台",
-    description: "整合 WebGL + 实时数据同步，驱动多场景监控与模拟决策，构建 AI 推演迭代闭环。",
-    tags: ["数字孪生", "实时系统", "全栈"],
-  },
-  {
-    title: "Web3 即服务",
-    subtitle: "链上交互与后台运营一体化",
-    description:
-      "梳理 DID、NFT、交易看板的通用组件，建立上链合规流程与灰度策略，为品牌活动提供可信激励。",
-    tags: ["Web3", "全栈", "合规"],
+    title: "开发中......",
+    description: "更多创意正在孵化中，敬请期待。",
+    tags: ["Coming Soon"],
+    link: "#",
+    images: ["/public/dev.png"],
   },
 ];
 
 export const fullStackFocus: TopicMeta[] = [
   {
-    title: "全栈开发之前端",
+    title: "前端",
     description:
       "以组件自治 + 状态分层为核心，构建可预期的交互体验，结合 Design Token 与 Storybook 保持风格统一。",
   },
   {
-    title: "全栈开发之大前端",
+    title: "大前端",
     description:
       "跨 Web / 小程序 / 桌面端复用业务模型，利用模块联邦与跨端渲染管线打造一致的研发体验。",
   },
   {
-    title: "全栈开发之微前端",
+    title: "微前端",
     description:
       "建设基于 Module Federation 的应用拼装平台，支持跨团队独立发布，同时引入观测与沙箱隔离策略。",
   },
   {
-    title: "全栈开发之后端",
+    title: "后端",
     description: "聚焦事件驱动 + DDD，拆解核心域、支撑域，建立统一的服务治理与可观测性基线。",
   },
   {
-    title: "全栈开发之 CI/CD",
+    title: "CI/CD",
     description:
       "流水线覆盖测试、扫描、部署、回滚四大环节，沉淀 GitOps 流程，实现灰度、蓝绿、热修复的自动化。",
   },
   {
-    title: "全栈开发之安全/性能",
+    title: "安全/性能",
     description: "自顶向下梳理安全策略（认证、权限、审计）与性能守护（压测、APM、前端体验分级）。",
   },
 ];
@@ -134,15 +131,15 @@ export const omniDeliveries: TopicMeta[] = [
 
 export const businessEmpowerment: TopicMeta[] = [
   {
-    title: "全栈开发之 AI 应用",
+    title: "AI 应用开发",
     description: "面向业务流程构建提示工程、模型评测、上线监控三件套，帮助团队快速验证并持续优化。",
   },
   {
-    title: "全栈开发之电商独立站",
+    title: "电商独立站开发",
     description: "营销漏斗 + SEO 优化双线推进，沉淀数据飞轮与自动化营销工具，实现增长闭环。",
   },
   {
-    title: "全栈开发之 WEB3（观望...）",
+    title: "WEB3 开发（观望...）",
     description: "聚焦 DID、NFT、智能合约审计，攻击面评估 + 合规研究并行，确保品牌资产安全落链。",
   },
 ];

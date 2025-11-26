@@ -16,7 +16,9 @@ export default function NotesSection({ notes }: NotesSectionProps) {
         dark:from-zinc-900 dark:to-zinc-950 dark:border-zinc-800 p-10 shadow-lg"
     >
       <div className="space-y-3 mb-6">
-        <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">杂记</h2>
+        <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+          杂记（整理迁移中...）
+        </h2>
         <div className="h-1 w-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" />
       </div>
       <div className="space-y-4 text-sm text-zinc-700 dark:text-zinc-300">

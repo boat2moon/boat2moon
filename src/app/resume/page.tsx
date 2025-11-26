@@ -150,15 +150,15 @@ export default function ResumePage() {
                 <strong>编程语言：</strong>主 JavaScript / TypeScript，副 Python
               </li>
               <li>
-                <strong>熟悉前端：</strong>HTML，Sass / Tailwind，AntD / Shadcn，React，Redux /
-                Zustand，Next
+                <strong>熟悉前端：</strong>HTML，Sass / Tailwind，工程化，AntD /
+                Shadcn，React，Redux / Zustand，Next
               </li>
               <li>
                 <strong>了解后端：</strong>Node.js / Hono / Nest，RESTful API，Prisma / Drizzle
               </li>
               <li>
                 <strong>AI 相关：</strong>Prompt Engineering，LangChain.JS，Function_Call /
-                MCP，Agent，RAG，向量数据库, Vercel AI
+                MCP，Agent，RAG，向量数据库
               </li>
               <li>
                 <strong>CI/CD：</strong>Github Actions，Serverless
@@ -285,7 +285,7 @@ export default function ResumePage() {
                     <div className={styles.node}>
                       <span className={styles.nodeTags}>
                         <strong>全栈开发</strong> | Next.js · React · Zustand · Drizzle · PostgreSQL
-                        · LangChain.js · RAG · Vercel AI SDK · ChatGPT API · Zod
+                        · LangChain.js · RAG · ChatGPT API · Zod
                       </span>
                     </div>
                   </li>
@@ -373,8 +373,9 @@ export default function ResumePage() {
                         独立完成交通网络中港口模块的 PetriNet 事件网络仿真并基于 PyQt
                         搭建数据可视化界面
                       </li>
-                      <li>参与设计指标体系评估机理仿真合理性，以及攻击效果与恢复效率</li>
-                      <li>协助安排定期会议汇报与任务协调</li>
+                      <li>
+                        协助安排定期会议汇报与任务协调；参与设计指标体系评估机理仿真合理性，以及攻击效果与恢复效率
+                      </li>
                     </ul>
                   </li>
                 </ul>

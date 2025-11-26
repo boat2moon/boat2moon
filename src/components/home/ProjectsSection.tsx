@@ -1,14 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import ProjectCarousel from "@/components/home/ProjectCarousel";
 import type { ProjectMeta } from "@/data/home";
 
 /**
@@ -31,47 +26,45 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
       </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
         {projects.map((project) => (
-          <Card
+          <Link
             key={project.title}
-            className="group border border-zinc-200/80 bg-white dark:bg-zinc-900
-              dark:border-zinc-800 shadow-md transition-all duration-300 hover:shadow-xl
-              hover:scale-[1.02] hover:border-cyan-400/50 dark:hover:bg-zinc-800/80"
+            href={project.link || "#"}
+            target={project.link === "#" ? "_self" : "_blank"}
+            className="block h-full"
           >
-            <CardHeader>
-              <CardTitle
-                className="text-xl group-hover:text-cyan-600 transition-colors dark:text-zinc-100"
-              >
-                {project.title}
-              </CardTitle>
-              <CardDescription className="text-sm dark:text-zinc-400">
-                {project.subtitle}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
-              <p>{project.description}</p>
-            </CardContent>
-            <CardFooter className="flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <Badge
-                  key={`${project.title}-${tag}`}
-                  className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
+            <Card
+              className="group flex h-full flex-col overflow-hidden border border-zinc-200/80
+                bg-white shadow-md transition-all duration-300 hover:scale-[1.02]
+                hover:border-cyan-400/50 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900
+                dark:hover:bg-zinc-800/80"
+            >
+              {/* 图片轮播区域 */}
+              <ProjectCarousel images={project.images || []} title={project.title} />
+
+              <CardHeader>
+                <CardTitle
+                  className="text-xl transition-colors group-hover:text-cyan-600 dark:text-zinc-100"
                 >
-                  {tag}
-                </Badge>
-              ))}
-              {project.reference ? (
-                <a
-                  className="text-xs text-zinc-500 underline-offset-4 transition hover:text-cyan-600
-                    hover:underline"
-                  href={project.reference}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  参考链接 →
-                </a>
-              ) : null}
-            </CardFooter>
-          </Card>
+                  {project.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="flex-grow space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
+                <p className="leading-relaxed">{project.description}</p>
+              </CardContent>
+              <CardFooter className="flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <Badge
+                    key={`${project.title}-${tag}`}
+                    className="border border-zinc-200 bg-zinc-50 text-zinc-600 hover:bg-zinc-100
+                      dark:border-zinc-700 dark:bg-zinc-800/40 dark:text-zinc-300
+                      dark:hover:bg-zinc-800 transition-colors font-normal px-2.5 py-0.5 text-xs"
+                  >
+                    {tag}
+                  </Badge>
+                ))}
+              </CardFooter>
+            </Card>
+          </Link>
         ))}
       </div>
     </section>

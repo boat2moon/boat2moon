@@ -17,7 +17,7 @@ export default function ProfileSection() {
       </div>
       <div className="space-y-4 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
         <p>
-          Hello~，我是一名AI复合型程序员。熟悉JS/TS前后端开发生态，积极参与开源，实现A/B/C端业务闭环交付，了解项目工程化及CI/CD线上部署流程，并具有一定交叉行业不同业务场景下的AI算法和应用调优经验，综合赋能AI大模型应用全栈开发。
+          Hello~，我是一名AI复合型程序员。熟悉JS/TS前后端开发生态，积极参与开源，实现A/B/C端业务闭环交付，了解项目工程化及CI/CD线上部署流程，并具有一定交叉行业不同场景下的AI算法和应用调优经验，热衷于AI大模型应用全栈开发。
         </p>
       </div>
     </section>
