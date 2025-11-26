@@ -41,9 +41,9 @@ export default function StickyFooter({ showFooter, friendLinks }: StickyFooterPr
 
   return (
     <footer
-      className={`fixed bottom-0 left-0 z-20 w-full bg-slate-900/95 text-zinc-100
-        shadow-[0_-2px_12px_rgba(12,24,36,0.2)] backdrop-blur-sm transition-transform duration-300
-        ease-in-out ${darkTheme} ${showFooter ? "translate-y-0" : "translate-y-full"}`}
+      className={`fixed bottom-0 left-0 z-20 w-full bg-slate-900/85 text-zinc-100 backdrop-blur-md
+        border-t border-white/10 shadow-[0_-8px_30px_rgba(0,0,0,0.2)] transition-transform
+        duration-300 ease-in-out ${darkTheme} ${showFooter ? "translate-y-0" : "translate-y-full"}`}
     >
       <div className="mx-auto w-full max-w-6xl px-6 py-4 text-sm sm:px-10 lg:px-14">
         <div

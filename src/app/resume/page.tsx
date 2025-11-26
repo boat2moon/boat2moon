@@ -191,7 +191,8 @@ export default function ResumePage() {
                         style={{ "--inline-separator-width": "2.5em" } as CSSProperties}
                       />
                       <span>
-                        社区合作开发，
+                        社区合作开发
+                        {/* ， */}
                         {/* <a
                         className={styles.inlineLink}
                         href="https://github.com/xun082/DocFlow"
