@@ -98,13 +98,13 @@ export default function ResumePage() {
                 </a>
                 <a
                   className={`${styles.contactItem} ${styles.contactLink}`}
-                  href="https://GitHub.com/boat2moon"
+                  href="https://github.com/boat2moon"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
                   <FaGithub aria-hidden="true" className={styles.contactIcon} />
                   <span>GitHub：</span>
-                  <span className={styles.contactValue}>https://GitHub.com/boat2moon</span>
+                  <span className={styles.contactValue}>https://github.com/boat2moon</span>
                 </a>
                 <a
                   className={`${styles.contactItem} ${styles.contactLink}`}
@@ -152,7 +152,7 @@ export default function ResumePage() {
                 <strong>了解后端：</strong>Node.js / Hono / Nest，RESTful API，Prisma / Drizzle
               </li>
               <li>
-                <strong>AI 相关：</strong>Prompt Engineering，LangChain.JS，Function Calling /
+                <strong>AI 相关：</strong>Prompt Engineering，LangChain.js，Function Calling /
                 MCP，Agent，RAG，向量数据库
               </li>
               <li>
@@ -190,12 +190,12 @@ export default function ResumePage() {
                         {/* ， */}
                         {/* <a
                         className={styles.inlineLink}
-                        href="https://GitHub.com/xun082/DocFlow"
+                        href="https://github.com/xun082/DocFlow"
                         rel="noopener noreferrer"
                         target="_blank"
                       >
                         前端开源
-                        <FiGitHub aria-hidden="true" className={styles.inlineIconSmall} />
+                        <FiGithub aria-hidden="true" className={styles.inlineIconSmall} />
                       </a> */}
                       </span>
                     </span>
@@ -230,13 +230,13 @@ export default function ResumePage() {
                     </div>
                     <ul>
                       <li>
-                        定制封装 fetch ，将包括参数整理、响应解析、SSE、超时与重试控制、Token
+                        定制封装 fetch，将包括参数整理、响应解析、SSE、超时与重试控制、Token
                         刷新及统一错误处理——完整串联成一个高内聚、可观测的闭环体系，简洁统一了业务请求行为，提升了
                         HTTP 客户端的健壮性与扩展性。
                       </li>
                       <li>
                         调研对比国内外 Serverless 平台，选择了阿里云 FC 函数计算；并规避了 Next.js
-                        Server Action 触发阿里云 Serverless maxMemoryUsage 报错。
+                        Server Actions 触发阿里云 Serverless 的 maxMemoryUsage 错误。
                       </li>
                       <li>紧急修复网站无法访问问题，云函数区域从香港迁移到新加坡。</li>
                       <li>
@@ -316,7 +316,7 @@ export default function ResumePage() {
                       </li>
                       <li>
                         实现全链路 Stream 流式响应，基于 SSE 协议打通服务端 LangChain
-                        流与前端打字机效果，大幅降低了用户等待长文本生成的心理延迟。
+                        流与前端流式逐字渲染，大幅降低了用户等待长文本生成的心理延迟。
                       </li>
                     </ul>
                   </li>
@@ -407,8 +407,7 @@ export default function ResumePage() {
                       <span>
                         {/* {毒性预测、疗效预测、生成模型} */}
                         <strong>项目介绍：</strong>期望通过 AI 技术赋能 ADC
-                        （抗癌靶向药）的全链路研发，包括
-                        分子/蛋白生成模型生成药物候选分子、疗效预测模型筛选高效分子、毒性预测模型过滤高毒分子等环节，从而提升研发效率，降低研发成本，加速新药上市进程。
+                        （抗癌靶向药）的全链路研发，包括分子/蛋白生成模型生成药物候选分子、疗效预测模型筛选高效分子、毒性预测模型过滤高毒分子等环节，从而提升研发效率，降低研发成本，加速新药上市。
                       </span>
                     </div>
                   </li>

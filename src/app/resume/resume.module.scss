@@ -11,6 +11,10 @@
   line-height: 1.5;
   font-family: var(--body-font);
   padding: 32px 0 48px;
+
+  @media (prefers-color-scheme: dark) {
+    background: #1a1a1a;
+  }
 }
 
 /* 容器用于处理缩放时的溢出隐藏 */
@@ -399,6 +403,18 @@
   .tree li::after {
     border-left-width: 0.5pt !important;
     border-color: #e0e0e0 !important;
+  }
+
+  .nodeTime {
+    color: #7a7a7a !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .nodeTags {
+    color: #2a4058 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   // .nodeSeparator,
