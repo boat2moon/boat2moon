@@ -31,7 +31,7 @@ export default function ResumePage() {
             <p className={styles.summary}>
               <strong>简历摘要：</strong>
               {/* AI复合型程序员，熟悉JS/TS前后端开发生态，积极参与开源，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定AI算法和应用调优经验，综合赋能AI大模型应用全栈开发。 */}
-              AI复合型程序员，熟悉JS/TS前后端开发生态，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定AI算法和应用调优经验，综合赋能AI大模型应用全栈开发。
+              AI复合型程序员，熟悉JS/TS前后端开发生态，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定交叉行业AI算法和应用调优经验，热衷于AI大模型应用全栈开发。
             </p>
           </div>
           <Image
@@ -123,15 +123,15 @@ export default function ResumePage() {
         </section>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>项目 | 实习经历</h2>
+          <h2 className={styles.sectionTitle}>项目经历</h2>
           <ul className={styles.tree}>
             <li>
               <div className={styles.node}>
                 <span className={styles.nodeTitle}>
                   <TfiWrite aria-hidden="true" className={styles.nodeIcon} />
                   <span className={styles.titleText}>
-                    {/* <span>入木 AI</span> */}
-                    <span>DocFlow</span>
+                    <span>入木 AI</span>
+                    {/* <span>DocFlow</span> */}
                     <span aria-hidden="true" className={styles.inlineSeparator} />
                     <span>AI大模型协同文档平台</span>
                     <span
@@ -141,7 +141,7 @@ export default function ResumePage() {
                     />
                     <span>
                       社区合作开发，
-                      <a
+                      {/* <a
                         className={styles.inlineLink}
                         href="https://github.com/xun082/DocFlow"
                         rel="noopener noreferrer"
@@ -149,7 +149,7 @@ export default function ResumePage() {
                       >
                         前端开源
                         <FiGithub aria-hidden="true" className={styles.inlineIconSmall} />
-                      </a>
+                      </a> */}
                     </span>
                   </span>
                 </span>
@@ -188,13 +188,21 @@ export default function ResumePage() {
                       HTTP 客户端的健壮性与扩展性。
                     </li>
                     <li>
-                      使用 Tiptap + 自研 Prompt 模板实现 AI 写作流水线，平均生成速度提升 35%。
+                      调研对比国内外 Serverless 平台，选择了阿里云 FC 函数计算；并规避了 Next.js
+                      Server Action 触发阿里云 Serverless maxMemoryUsage 报错。
+                    </li>
+                    <li>紧急修复网站无法访问问题，云函数区域从香港迁移到新加坡。</li>
+                    <li>请求 ChatGPT API 时，轮询使用多个实例，成功避免被 OpenAI 限制调用频率。</li>
+                    <li>优化 AI 接口鉴权，防止 token 泄漏被盗用，保障安全性。</li>
+                    <li>
+                      把 AI 生成的 markdown 格式转换为 HTML 插入到编辑器，实现了 AI
+                      稳定生成富文本的效果。
                     </li>
                     <li>
-                      引入 Zustand 状态模块化与 Prisma Schema 代码生成，减少 40% 模型重复定义。
+                      排查修复 editor 编辑卡顿的问题，修复了导致内存泄漏的副作用 Bug，测试深度使用 2
+                      小时以上再无异常。
                     </li>
-                    <li>自建监控面板结合 OSS CDN 日志，降低静态资源成本 28%。</li>
-                    <li>撰写部署手册并输出 CI/CD 流程规范，支撑后续团队迭代。</li>
+                    <li>性能和体验优化。</li>
                   </ul>
                 </li>
               </ul>
@@ -223,17 +231,16 @@ export default function ResumePage() {
                 <li>
                   <div className={styles.node}>
                     <span className={styles.nodeTags}>
-                      <strong>全栈开发</strong> | Go · gRPC · etcd
+                      <strong>全栈开发</strong> | Next.js · React · Zustand · Drizzle · PostgreSQL ·
+                      LangChain.js · RAG · Vercel AI SDK · ChatGPT API · Zod
                     </span>
                   </div>
                 </li>
                 <li>
                   <div className={styles.node}>
                     <span>
-                      <strong>项目介绍：</strong>一个 Node 全栈 AIGC
-                      知识库平台，覆盖文档创建、文档管理、AI 写作、AI
-                      文本处理与多人协同编辑。负责项目一期从 0 到 1
-                      的架构设计、开发、上线、监控与运维。
+                      <strong>项目介绍：</strong>基于 ReAct 范式的垂直领域 AI Agent
+                      面试模拟平台。利用大模型推理能力，通过工作流编排实现简历深度解析、结构化诊断及多轮个性化面试问答，提供实时评分反馈与改进建议。
                     </span>
                   </div>
                 </li>
@@ -242,9 +249,25 @@ export default function ResumePage() {
                     <span className={styles.nodeTitle}>亮点成就：</span>
                   </div>
                   <ul>
-                    <li>设计 gRPC 微服务拆分问答、评估、素材三个域模块。</li>
-                    <li>基于 etcd 实现会话状态共享，保障多节点一致性。</li>
-                    <li>编写 Prompt 组合策略，面试评分准确率提升 17%。</li>
+                    <li>
+                      设计并实现基于 LangGraph
+                      的状态机工作流，将面试流程拆分为简历解析、问题生成、追问、评分等独立串行节点，解决了长文本处理中
+                      LLM 注意力分散的问题；通过条件边控制流转，实现了可扩展、可调试的面试对话系统。
+                    </li>
+                    <li>
+                      搭建 RAG（检索增强生成）管道，使用文本嵌入模型对 PDF 简历/JD
+                      进行分块向量化并存入向量数据库，实现基于语义相似度的精准上下文检索，对话时动态注入
+                      Prompt，提升用户个性化针对性。
+                    </li>
+                    <li>
+                      利用 Zod + Structured Output 技术规范化 AI 输出，确保 AI
+                      返回的评分、追问决策、反馈建议等字段格式稳定可解析，解决了 LLM
+                      输出不可控的问题，保障下游业务逻辑正常运行。
+                    </li>
+                    <li>
+                      实现全链路 Stream 流式响应，基于 SSE 协议打通服务端 LangChain
+                      流与前端打字机效果，大幅降低了用户等待长文本生成的心理延迟。
+                    </li>
                   </ul>
                 </li>
               </ul>
@@ -289,14 +312,15 @@ export default function ResumePage() {
                   </div>
                   <ul>
                     <li>
-                      调研并撰写方案材料、收集数据、制作PPT，为多个行业网络的机理与相关算法做技术储备。
+                      调研并撰写方案材料、收集数据、制作PPT，为多个行业网络的机理与相关算法做技术储备
                     </li>
                     <li>基于 Python 爬虫库 PySpider，编码汇总目标地区电力行业网络基础设施数据</li>
                     <li>
-                      独立完成交通网络中港口模块的 PetriNet 事件网络仿真并基于 PyQt 可视化数据界面。
+                      独立完成交通网络中港口模块的 PetriNet 事件网络仿真并基于 PyQt
+                      搭建数据可视化界面
                     </li>
-                    <li>参与设计指标体系评估机理仿真合理性，以及攻击效果与恢复效率。</li>
-                    <li>协助安排定期会议汇报与任务协调。</li>
+                    <li>参与设计指标体系评估机理仿真合理性，以及攻击效果与恢复效率</li>
+                    <li>协助安排定期会议汇报与任务协调</li>
                   </ul>
                 </li>
               </ul>
@@ -317,7 +341,7 @@ export default function ResumePage() {
                   </span>
                 </span>
                 <span aria-hidden="true" className={styles.nodeSeparator} />
-                <span className={styles.nodeTime}>2025.04 - 2025.5</span>
+                <span className={styles.nodeTime}>2025.03 - 2025.4</span>
               </div>
               <ul>
                 <li>
@@ -332,7 +356,7 @@ export default function ResumePage() {
                     <span>
                       {/* {毒性预测、疗效预测、生成模型} */}
                       <strong>项目介绍：</strong>期望通过 AI 技术赋能 ADC
-                      （一类抗癌靶向药）的全链路研发，包括
+                      （抗癌靶向药）的全链路研发，包括
                       分子/蛋白生成模型生成药物候选分子、疗效预测模型筛选高效分子、毒性预测模型过滤高毒分子等环节，从而提升研发效率，降低研发成本，加速新药上市进程。
                     </span>
                   </div>
@@ -343,10 +367,10 @@ export default function ResumePage() {
                   </div>
                   <ul>
                     <li>
-                      项目初期技术调研，包括毒性预测、疗效预测及生成模型。分析项目关键难点并与数据团队沟通。
+                      项目初期技术调研，包括毒性预测、疗效预测及生成模型；分析项目关键难点并与数据团队沟通
                     </li>
-                    <li>负责毒性预测模块的算法复现。</li>
-                    <li>撰写调研报告并协助安排周会汇报。</li>
+                    <li>负责毒性预测模块的算法复现</li>
+                    <li>撰写调研报告并协助安排周会汇报</li>
                   </ul>
                 </li>
               </ul>
@@ -358,31 +382,33 @@ export default function ResumePage() {
           <h2 className={styles.sectionTitle}>纵向科研成果 · 交叉行业 AI 赋能</h2>
           <ul className={styles.skillList}>
             <li>
-              论文1：《A Spatial Multi-Scale Reservoir Computing Framework for Power Flow Analysis
-              in Power Grids》，一种数据驱动的AI计算框架解决电网潮流计算问题，现期刊Complex
-              Engineering Systems在投，并曾在第二十届全国网络科学与工程论坛做分组报告。
+              <strong>论文1：</strong>《A Spatial Multi-Scale Reservoir Computing Framework for
+              Power Flow Analysis in Power
+              Grids》，一种数据驱动的AI计算框架解决电网潮流计算问题，现期刊 Complex Engineering
+              Systems 在投，并曾在第二十届全国网络科学与工程论坛做分组报告。
             </li>
             <li>
-              论文2：《When, Where, and What: A Graph Reservoir Computing Framework for
-              Spatiotemporal Power Grid Disturbance
-              Monitoring》，一种解决电网扰动监测“何时-何处-何事”问题的一体化协同AI计算方案，一区Top期刊
+              <strong>论文2：</strong>《When, Where, and What: A Graph Reservoir Computing Framework
+              for Spatiotemporal Power Grid Disturbance
+              Monitoring》，一种解决有限观测下电网扰动监测“何时-何处-何事”问题的一体化协同AI计算方案，一区Top期刊
               IEEE Transactions on Industrial Informatics 在投。
             </li>
             <li>
-              专利1：《基于图储备池计算的有限观测下电网扰动时空协同监测方法》，申请号
+              <strong>专利1：</strong>
+              《基于图储备池计算的有限观测下电网扰动时空协同监测方法》，申请号
               202511169552X，已受理。
             </li>
           </ul>
         </section>
 
-        <section className={styles.section}>
+        {/* <section className={styles.section}>
           <h2 className={styles.sectionTitle}>获奖情况</h2>
           <ul className={styles.awardList}>
             <li>
               校二等奖学金　<span className={styles.awardDate}>2025</span>
             </li>
           </ul>
-        </section>
+        </section> */}
       </main>
     </div>
   );
