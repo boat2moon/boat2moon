@@ -79,37 +79,15 @@ export default function ResumePage() {
               </div>
               {/* <div className={styles.tagline}>求职意向：JS/TS全栈开发 &nbsp;|&nbsp; AI应用开发</div> */}
               <div className={styles.tagline}>实习意向：前端开发 &nbsp;|&nbsp; AI应用开发</div>
-              <p className={styles.summary}>
+              {/* <p className={styles.summary}>
                 <strong>简历摘要：</strong>
-                {/* AI复合型程序员，熟悉JS/TS前后端开发生态，积极参与开源，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定AI算法和应用调优经验，综合赋能AI大模型应用全栈开发。 */}
                 AI复合型程序员，熟悉JS/TS前后端开发生态，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定交叉行业AI算法和应用调优经验，热衷于AI大模型应用全栈开发。
-              </p>
-            </div>
-            <Image
-              src="/resume/avatar.jpg"
-              alt="头像"
-              width={294}
-              height={377}
-              className={styles.avatar}
-            />
-            <div className={styles.contacts}>
-              <div className={styles.contactsColumn}>
+              </p> */}
+              <div className={styles.contacts}>
                 <div className={styles.contactItem}>
                   <PiPhoneCallFill aria-hidden="true" className={styles.contactIcon} />
                   <span>电话：17354991160</span>
                 </div>
-                <a
-                  className={`${styles.contactItem} ${styles.contactLink}`}
-                  href="https://github.com/boat2moon"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <FaGithub aria-hidden="true" className={styles.contactIcon} />
-                  <span>Github：</span>
-                  <span className={styles.contactValue}>https://github.com/boat2moon</span>
-                </a>
-              </div>
-              <div className={styles.contactsColumn}>
                 <a
                   className={`${styles.contactItem} ${styles.contactLink}`}
                   href="mailto:boat2moon@proton.me"
@@ -117,6 +95,16 @@ export default function ResumePage() {
                   <MdEmail aria-hidden="true" className={styles.contactIcon} />
                   <span>邮箱：</span>
                   <span className={styles.contactValue}>boat2moon@proton.me</span>
+                </a>
+                <a
+                  className={`${styles.contactItem} ${styles.contactLink}`}
+                  href="https://GitHub.com/boat2moon"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <FaGithub aria-hidden="true" className={styles.contactIcon} />
+                  <span>GitHub：</span>
+                  <span className={styles.contactValue}>https://GitHub.com/boat2moon</span>
                 </a>
                 <a
                   className={`${styles.contactItem} ${styles.contactLink}`}
@@ -130,6 +118,13 @@ export default function ResumePage() {
                 </a>
               </div>
             </div>
+            <Image
+              src="/resume/avatar.jpg"
+              alt="头像"
+              width={294}
+              height={377}
+              className={styles.avatar}
+            />
           </header>
 
           <section className={`${styles.section} ${styles.education}`}>
@@ -157,19 +152,19 @@ export default function ResumePage() {
                 <strong>了解后端：</strong>Node.js / Hono / Nest，RESTful API，Prisma / Drizzle
               </li>
               <li>
-                <strong>AI 相关：</strong>Prompt Engineering，LangChain.JS，Function_Call /
+                <strong>AI 相关：</strong>Prompt Engineering，LangChain.JS，Function Calling /
                 MCP，Agent，RAG，向量数据库
               </li>
               <li>
-                <strong>CI/CD：</strong>Github Actions，Serverless
+                <strong>CI/CD：</strong>GitHub Actions，Serverless
               </li>
               <li>
                 <strong>外语水平：</strong>通过英语六级
               </li>
-              <li>
+              {/* <li>
                 <strong>日常办公：</strong>{" "}
-                熟悉常用办公工具，有良好的材料文档撰写水平，具备数据处理能力产出美观图表，常兼顾组内工作中各种ppt制作和汇报材料润色。
-              </li>
+                熟悉常用办公工具，有良好的材料文档撰写水平，具备数据处理能力产出美观图表，常兼顾组内工作中各种PPT制作和汇报材料润色。
+              </li> */}
             </ul>
           </section>
 
@@ -195,12 +190,12 @@ export default function ResumePage() {
                         {/* ， */}
                         {/* <a
                         className={styles.inlineLink}
-                        href="https://github.com/xun082/DocFlow"
+                        href="https://GitHub.com/xun082/DocFlow"
                         rel="noopener noreferrer"
                         target="_blank"
                       >
                         前端开源
-                        <FiGithub aria-hidden="true" className={styles.inlineIconSmall} />
+                        <FiGitHub aria-hidden="true" className={styles.inlineIconSmall} />
                       </a> */}
                       </span>
                     </span>
@@ -247,9 +242,9 @@ export default function ResumePage() {
                       <li>
                         请求 ChatGPT API 时，轮询使用多个实例，成功避免被 OpenAI 限制调用频率。
                       </li>
-                      <li>优化 AI 接口鉴权，防止 token 泄漏被盗用，保障安全性。</li>
+                      <li>优化 AI 接口鉴权，防止 Token 泄漏被盗用，保障安全性。</li>
                       <li>
-                        把 AI 生成的 markdown 格式转换为 HTML 插入到编辑器，实现了 AI
+                        把 AI 生成的 Markdown 格式转换为 HTML 插入到编辑器，实现了 AI
                         稳定生成富文本的效果。
                       </li>
                       <li>
@@ -397,7 +392,7 @@ export default function ResumePage() {
                     </span>
                   </span>
                   <span aria-hidden="true" className={styles.nodeSeparator} />
-                  <span className={styles.nodeTime}>2025.03 - 2025.4</span>
+                  <span className={styles.nodeTime}>2025.3 - 2025.4</span>
                 </div>
                 <ul>
                   <li>
