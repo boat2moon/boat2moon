@@ -338,7 +338,7 @@ export default function ResumePage() {
                     </span>
                   </span>
                   <span aria-hidden="true" className={styles.nodeSeparator} />
-                  <span className={styles.nodeTime}>2023.10 - 2024.07</span>
+                  <span className={styles.nodeTime}>2023.10 - 2024.7</span>
                 </div>
                 <ul>
                   <li>
@@ -430,7 +430,7 @@ export default function ResumePage() {
 
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>纵向科研成果 · 交叉行业 AI 赋能</h2>
-            <ul className={styles.skillList}>
+            <ul className={styles.awardList}>
               <li>
                 <strong>论文1：</strong>《A Spatial Multi-Scale Reservoir Computing Framework for
                 Power Flow Analysis in Power

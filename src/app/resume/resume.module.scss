@@ -148,7 +148,7 @@
 .sectionTitle::after {
   content: "";
   flex: 1 1 auto;
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.4); // rgba中四个参数代表：红、绿、蓝、透明度
   margin-left: 8px;
 }
 
@@ -159,12 +159,18 @@
   margin: 0;
 }
 
-.skillList li,
+.skillList li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 6px;
+  font-size: 13.5px; /* 可单独调整 skill 列表字体 */
+}
+
 .awardList li {
   position: relative;
   padding-left: 20px;
   margin-bottom: 6px;
-  font-size: 13px;
+  font-size: 13px; /* 可单独调整 award 列表字体 */
 }
 
 .skillList li::before,
@@ -215,7 +221,7 @@
   top: 14px;
   left: -14px;
   width: 14px;
-  border-top: 1px solid rgba(0, 0, 0, 0.15); /* 修改 第一个参数 即可调整树状连接水平线粗细 */
+  border-top: 1px solid rgba(0, 0, 0, 0.2); /* 修改 第一个参数 即可调整树状连接水平线粗细 */
 }
 
 .tree li::after {
@@ -224,7 +230,7 @@
   left: -14px;
   top: 0;
   height: 100%;
-  border-left: 1px solid rgba(0, 0, 0, 0.15); /* 修改 第一个参数 即可调整树状连接垂直线粗细 */
+  border-left: 1px solid rgba(0, 0, 0, 0.2); /* 修改 第一个参数 即可调整树状连接垂直线粗细 */
 }
 
 .tree li:last-child::after {
@@ -246,7 +252,7 @@
 .nodeSeparator {
   flex: 1 1 auto;
   align-self: center;
-  border-bottom: 1px dotted rgba(0, 0, 0, 0.159);
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
   min-width: 48px;
   height: 0;
 }
@@ -277,7 +283,7 @@
   display: inline-block;
   flex: 0 0 var(--inline-separator-width);
   min-width: var(--inline-separator-width);
-  border-bottom: 1px dotted rgba(0, 0, 0, 0.159);
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
   margin: 0 4px;
   height: 0;
   align-self: center;
@@ -397,31 +403,33 @@
   /* 打印时强制细线优化：颜色减淡是视觉变细的关键 */
   .tree li::before {
     border-top-width: 0.5pt !important;
-    border-color: #e0e0e0 !important; /* 极浅灰色 */
+    border-color: rgba(0, 0, 0, 0.1) !important; /* 打印时透明度要比网页中淡一点 */
   }
-
   .tree li::after {
     border-left-width: 0.5pt !important;
-    border-color: #e0e0e0 !important;
+    border-color: rgba(0, 0, 0, 0.1) !important; /* 网页中是0.2 */
+  }
+  .nodeSeparator {
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.225) !important; /* 网页中是0.3 */
+  }
+  .inlineSeparator {
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.225) !important; /* 网页中是0.3 */
+  }
+  .sectionTitle::after {
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.3) !important; /* 网页中是0.4 */
   }
 
   .nodeTime {
+    // 打印时保持"时间文本"颜色一致
     color: #7a7a7a !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
   .nodeTags {
+    // 打印时加深一点点"技术栈文本"颜色
     color: #2a4058 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
-
-  // .nodeSeparator,
-  // .inlineSeparator,
-  // .sectionTitle::after {
-  //   border-bottom-width: 0.5pt !important;
-  //   border-color: #e0e0e0 !important;
-  //   border-bottom-style: dashed !important; /* 打印时改用 dashed，比 dotted 渲染效果更可控且显细 */
-  // }
 }
