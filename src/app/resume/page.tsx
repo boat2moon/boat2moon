@@ -299,7 +299,7 @@ export default function ResumePage() {
                     </div>
                     <ul>
                       <li>
-                        设计并实现基于 LangGraph
+                        实现基于 LangGraph
                         的状态机工作流，将面试流程拆分为简历解析、问题生成、追问、评分等独立串行节点，解决了长文本处理中
                         LLM
                         注意力分散的问题；通过条件边控制流转，实现了可扩展、可调试的面试对话系统。

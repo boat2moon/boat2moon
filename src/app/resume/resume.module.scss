@@ -211,7 +211,7 @@
   top: 14px;
   left: -14px;
   width: 14px;
-  border-top: 1.5px solid rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(0, 0, 0, 0.15); /* 修改 第一个参数 即可调整树状连接水平线粗细 */
 }
 
 .tree li::after {
@@ -220,7 +220,7 @@
   left: -14px;
   top: 0;
   height: 100%;
-  border-left: 1.5px solid rgba(0, 0, 0, 0.15);
+  border-left: 1px solid rgba(0, 0, 0, 0.15); /* 修改 第一个参数 即可调整树状连接垂直线粗细 */
 }
 
 .tree li:last-child::after {
@@ -344,7 +344,7 @@
   @page {
     size: A4;
     /* 打印页边距：上下 xmm，左右由内容 padding 控制 */
-    margin: 8mm 0;
+    margin: 6mm 0;
   }
 
   .resumePage {
@@ -379,4 +379,33 @@
   .sectionTitle {
     margin-bottom: 12px;
   }
+
+  /*以此控制打印分页：avoid 避免在元素内部断页，auto 允许断页 */
+  .section {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+  .tree li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* 打印时强制细线优化：颜色减淡是视觉变细的关键 */
+  .tree li::before {
+    border-top-width: 0.5pt !important;
+    border-color: #e0e0e0 !important; /* 极浅灰色 */
+  }
+
+  .tree li::after {
+    border-left-width: 0.5pt !important;
+    border-color: #e0e0e0 !important;
+  }
+
+  // .nodeSeparator,
+  // .inlineSeparator,
+  // .sectionTitle::after {
+  //   border-bottom-width: 0.5pt !important;
+  //   border-color: #e0e0e0 !important;
+  //   border-bottom-style: dashed !important; /* 打印时改用 dashed，比 dotted 渲染效果更可控且显细 */
+  // }
 }
