@@ -26,7 +26,7 @@ export default function ResumePage() {
   useEffect(() => {
     const handleResize = () => {
       if (mainRef.current) {
-        const targetWidth = 820; // 简历固定宽度
+        const targetWidth = 794; // 简历固定宽度 A4 210mm approx 794px
         const screenWidth = window.innerWidth;
         const newScale = screenWidth < targetWidth ? screenWidth / targetWidth : 1;
 
@@ -61,7 +61,7 @@ export default function ResumePage() {
 
   return (
     <div className={styles.resumePage}>
-      <div style={{ height: height, overflow: "hidden" }}>
+      <div className={styles.container} style={{ height: height }}>
         <main
           ref={mainRef}
           className={styles.main}

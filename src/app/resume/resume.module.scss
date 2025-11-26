@@ -13,8 +13,15 @@
   padding: 32px 0 48px;
 }
 
+/* 容器用于处理缩放时的溢出隐藏 */
+.container {
+  overflow: hidden;
+}
+
 .main {
-  width: 820px;
+  /* 设置为 A4 纸张标准宽度，确保网页预览与打印效果一致 */
+  width: 210mm;
+  min-height: 297mm;
   margin: 0 auto;
   background: #fff;
   padding: 32px 44px 48px;
@@ -336,14 +343,31 @@
 }
 
 @media print {
+  @page {
+    size: A4;
+    /* 打印页边距：上下 18mm，左右由内容 padding 控制 */
+    margin: 10mm 0;
+  }
+
   .resumePage {
     background: #fff;
     padding: 0;
   }
 
+  .container {
+    /* 打印时移除高度限制和溢出隐藏，防止内容被截断 */
+    height: auto !important;
+    overflow: visible !important;
+  }
+
   .main {
     box-shadow: none;
-    padding: 0;
+    /* 打印时仅保留左右内边距 */
+    padding: 0 44px;
+    margin: 0 !important;
+    /* 禁用 JS 缩放，确保以 100% 比例打印 */
+    transform: none !important;
+    width: 100%;
   }
 
   .header {

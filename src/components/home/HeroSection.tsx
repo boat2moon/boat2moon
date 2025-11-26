@@ -40,7 +40,7 @@ export default function HeroSection() {
           <div className="flex items-center justify-center">
             <div className="relative w-full max-w-lg h-[500px]">
               <h2 className="mb-6 text-center text-sm tracking-[0.3em] text-zinc-400">
-                JS/TS全栈开发 · 大模型应用开发 · AIGC
+                JS/TS全栈开发 · 大模型应用开发 · AIGC · 网站逐步构建中···
               </h2>
               <RocketWordCloud />
             </div>
