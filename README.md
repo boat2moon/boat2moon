@@ -5,7 +5,7 @@
       <p><strong>211院校计算机-人工智能专业 | 2026 届硕士应届生</strong></p>
       <p><strong>角色: JS/TS 全栈开发 | AI 应用开发</strong></p>
       <hr>
-      <p>熟悉TS前后端开发生态，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定AI算法和应用调优经验，热衷于AI应用全栈开发。</p>
+      <p>熟悉TS前后端开发生态，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定AI算法和应用调优经验，热衷于AI大模型应用全栈开发。</p>
     </td>
     <td valign="top" align="right">
       <img src="https://media.giphy.com/media/WFZvB7VIXBgiz3oDXE/giphy.gif" width="300" alt="coding">
