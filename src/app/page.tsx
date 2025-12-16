@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import BusinessSection from "@/components/home/BusinessSection";
 import FullStackSection from "@/components/home/FullStackSection";
@@ -10,6 +10,7 @@ import OmniSection from "@/components/home/OmniSection";
 import ProfileSection from "@/components/home/ProfileSection";
 import ProjectsSection from "@/components/home/ProjectsSection";
 import StickyFooter from "@/components/home/StickyFooter";
+import Ladybug from "@/components/Ladybug";
 import {
   businessEmpowerment,
   friendLinks,
@@ -25,6 +26,7 @@ import {
  */
 export default function Home() {
   const [showFooter, setShowFooter] = useState(false);
+  const mainRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     // 监听滚动位置：当视口滚动离开首屏约 50px 时，触发底部导航上浮
@@ -46,10 +48,18 @@ export default function Home() {
 
       {/* 主体内容区：浅色背景承载核心信息模块 */}
       <main
+        ref={mainRef}
         className="relative z-10 bg-gradient-to-b from-zinc-100 via-zinc-50 to-white
           dark:from-zinc-950 dark:via-zinc-900 dark:to-black pb-24 pt-16 text-zinc-900
           dark:text-zinc-100"
       >
+        {/* 浅色模式下的瓢虫 - 在背景层爬行 */}
+        <div className="absolute inset-0 dark:hidden pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
+          <div className="pointer-events-auto">
+            <Ladybug containerRef={mainRef} />
+          </div>
+        </div>
+
         {/* 暗黑模式下的星星背景装饰 */}
         <div className="absolute inset-0 hidden dark:block pointer-events-none overflow-hidden">
           {/* 第一层星星：慢速呼吸 */}
