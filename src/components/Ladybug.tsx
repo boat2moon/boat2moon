@@ -169,10 +169,10 @@ export default function Ladybug({ containerRef }: LadybugProps) {
       setIsVisible(false);
       setIsDisappearing(false);
 
-      // 消息显示 2 秒后消失
+      // 消息显示 3 秒后消失
       setTimeout(() => {
         setShowMessage(false);
-      }, 2000);
+      }, 4000);
 
       // 8-15秒后重新出现
       respawnTimeoutRef.current = setTimeout(
@@ -257,8 +257,8 @@ export default function Ladybug({ containerRef }: LadybugProps) {
           {isDarkMode ? (
             /* UFO 虫子 SVG - 深色模式 */
             <svg
-              width="48"
-              height="36"
+              width="64"
+              height="48"
               viewBox="0 0 48 36"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
