@@ -1,12 +1,12 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 type ProjectCarouselProps = {
-  images: string[];
+  images: Array<string | StaticImageData>;
   title: string;
 };
 

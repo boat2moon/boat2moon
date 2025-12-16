@@ -1,5 +1,15 @@
 // home.ts
 
+import type { StaticImageData } from "next/image";
+
+import bole1 from "@/assets/projects/bole1.png";
+import bole2 from "@/assets/projects/bole2.png";
+import bole3 from "@/assets/projects/bole3.png";
+import bole4 from "@/assets/projects/bole4.png";
+import dev from "@/assets/projects/dev.png";
+import rumu1 from "@/assets/projects/rumu1.png";
+import rumu2 from "@/assets/projects/rumu2.png";
+
 /**
  * Home 页面所需的静态数据与类型定义，集中管理以便组件复用。
  */
@@ -7,9 +17,11 @@ export type ProjectMeta = {
   title: string;
   description: string;
   tags: string[];
-  images?: string[];
+  images?: ProjectImage[];
   link?: string;
 };
+
+export type ProjectImage = string | StaticImageData;
 
 export type TopicMeta = {
   title: string;
@@ -26,7 +38,7 @@ export const projects: ProjectMeta[] = [
     title: "入木 AI",
     description:
       "一个 TS 全栈开发的现代化 AIGC 协同文档编辑平台，集成了丰富的编辑能力与多人实时协作功能，支持知识库管理、插件扩展与持久化存储。",
-    images: ["/public/rumu1.png", "/public/rumu2.png"],
+    images: [rumu1, rumu2],
     tags: [
       "Next.js",
       "React",
@@ -46,7 +58,7 @@ export const projects: ProjectMeta[] = [
     title: "伯乐 Talk（待上线）",
     description:
       "基于 ReAct 范式的垂直领域 AI Agent 面试模拟平台。利用大模型推理能力，通过工作流编排实现简历深度解析、结构化诊断及多轮个性化面试问答，提供实时评分反馈与改进建议。",
-    images: ["/public/bole1.png", "/public/bole2.png", "/public/bole3.png", "/public/bole4.png"],
+    images: [bole1, bole2, bole3, bole4],
     tags: [
       "Next.js",
       "React",
@@ -66,7 +78,7 @@ export const projects: ProjectMeta[] = [
     description: "更多创意正在孵化中，敬请期待。",
     tags: ["Coming Soon"],
     link: "#",
-    images: ["/public/dev.png"],
+    images: [dev],
   },
 ];
 
