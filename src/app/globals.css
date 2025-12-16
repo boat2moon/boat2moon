@@ -52,27 +52,131 @@ html {
   animation: twinkle 7s ease-in-out infinite;
 }
 
-/* ========== 瓢虫动画 ========== */
+/* ========== 瓢虫/UFO 虫子动画 ========== */
+
+/* UFO 悬浮动画 */
+@keyframes ufo-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  25% {
+    transform: translateY(-4px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(0) rotate(2deg);
+  }
+  75% {
+    transform: translateY(-2px) rotate(0deg);
+  }
+}
+
+.ufo-float {
+  animation: ufo-float 2s ease-in-out infinite;
+}
+
+/* UFO 害怕时的抖动 */
+@keyframes ufo-shake {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  20% {
+    transform: translateX(-3px) rotate(-5deg);
+  }
+  40% {
+    transform: translateX(3px) rotate(5deg);
+  }
+  60% {
+    transform: translateX(-3px) rotate(-3deg);
+  }
+  80% {
+    transform: translateX(3px) rotate(3deg);
+  }
+}
+
+.ufo-shake {
+  animation: ufo-shake 0.15s ease-in-out infinite;
+}
+
+/* UFO 底部灯光闪烁 */
+@keyframes ufo-light-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.ufo-light {
+  animation: ufo-light-blink 0.5s ease-in-out infinite;
+}
+
+/* UFO 光束动画 */
+@keyframes ufo-beam-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.ufo-beam {
+  animation: ufo-beam-pulse 1s ease-in-out infinite;
+}
+
+.ufo-beam-outer {
+  animation: ufo-beam-pulse 1s ease-in-out infinite 0.5s;
+}
+
+/* UFO 特有的悬停效果 */
+.ladybug-ufo:hover {
+  filter: drop-shadow(0 0 12px rgba(100, 255, 218, 0.6));
+}
 
 /* 瓢虫行走动画 - 腿部交替摆动 */
 @keyframes ladybug-walk-left {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(-15deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-15deg);
+  }
 }
 
 @keyframes ladybug-walk-right {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(15deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
 }
 
 @keyframes ladybug-walk-left-alt {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(15deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
 }
 
 @keyframes ladybug-walk-right-alt {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(-15deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-15deg);
+  }
 }
 
 .ladybug-walk .ladybug-leg-left,
@@ -99,9 +203,16 @@ html {
 
 /* 害怕时的抖动动画 */
 @keyframes ladybug-shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-2px); }
-  75% { transform: translateX(2px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
 }
 
 .ladybug-shake {
@@ -186,8 +297,9 @@ html {
   border-radius: 20px;
   font-size: 16px;
   font-weight: 600;
-  box-shadow: 0 4px 20px rgba(229, 57, 53, 0.4),
-              0 0 0 3px rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 4px 20px rgba(229, 57, 53, 0.4),
+    0 0 0 3px rgba(255, 255, 255, 0.8);
   white-space: nowrap;
 }
 

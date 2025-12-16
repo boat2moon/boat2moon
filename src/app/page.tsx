@@ -53,8 +53,8 @@ export default function Home() {
           dark:from-zinc-950 dark:via-zinc-900 dark:to-black pb-24 pt-16 text-zinc-900
           dark:text-zinc-100"
       >
-        {/* 浅色模式下的瓢虫 - 在背景层爬行 */}
-        <div className="absolute inset-0 dark:hidden pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
+        {/* 虫子组件 - 浅色模式瓢虫/深色模式UFO */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
           <div className="pointer-events-auto">
             <Ladybug containerRef={mainRef} />
           </div>

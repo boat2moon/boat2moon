@@ -13,7 +13,9 @@ interface LadybugProps {
 }
 
 /**
- * 可爱的瓢虫组件 - 在浅色模式下爬来爬去
+ * 可爱的虫子组件
+ * - 浅色模式：红色瓢虫在地面爬行
+ * - 深色模式：驾驶 UFO 的虫子在太空飞行
  * - 随机移动
  * - 悬停时害怕（呆住）
  * - 点击消失（有动画）
@@ -34,28 +36,32 @@ export default function Ladybug({ containerRef }: LadybugProps) {
   const targetRef = useRef<Position>({ x: 100, y: 100 });
   const respawnTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // 检测暗黑模式
+  // 检测暗黑模式 - 使用媒体查询
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
     const checkDarkMode = () => {
-      setIsDarkMode(document.documentElement.classList.contains("dark"));
+      // 优先检查 html 上的 dark 类，其次使用媒体查询
+      const hasDarkClass = document.documentElement.classList.contains("dark");
+      const prefersDark = mediaQuery.matches;
+      setIsDarkMode(hasDarkClass || prefersDark);
     };
 
     checkDarkMode();
 
+    // 监听 html class 变化（兼容手动切换主题的场景）
     const observer = new MutationObserver(checkDarkMode);
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["class"],
     });
 
-    // 也监听媒体查询
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = () => checkDarkMode();
-    mediaQuery.addEventListener("change", handleChange);
+    // 监听系统主题变化
+    mediaQuery.addEventListener("change", checkDarkMode);
 
     return () => {
       observer.disconnect();
-      mediaQuery.removeEventListener("change", handleChange);
+      mediaQuery.removeEventListener("change", checkDarkMode);
     };
   }, []);
 
@@ -94,7 +100,7 @@ export default function Ladybug({ containerRef }: LadybugProps) {
       }
 
       // 计算移动方向和速度
-      const speed = 0.8;
+      const speed = isDarkMode ? 1.2 : 0.8; // UFO 飞得更快
       const newX = prev.x + (dx / distance) * speed;
       const newY = prev.y + (dy / distance) * speed;
 
@@ -106,12 +112,10 @@ export default function Ladybug({ containerRef }: LadybugProps) {
     });
 
     animationRef.current = requestAnimationFrame(animate);
-  }, [isScared, isDisappearing, isVisible, generateNewTarget]);
+  }, [isScared, isDisappearing, isVisible, generateNewTarget, isDarkMode]);
 
   // 初始化和动画
   useEffect(() => {
-    if (isDarkMode) return;
-
     generateNewTarget();
     animationRef.current = requestAnimationFrame(animate);
 
@@ -120,20 +124,21 @@ export default function Ladybug({ containerRef }: LadybugProps) {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [animate, generateNewTarget, isDarkMode]);
+  }, [animate, generateNewTarget]);
 
   // 定期更换目标
   useEffect(() => {
-    if (isDarkMode) return;
-
-    const interval = setInterval(() => {
-      if (!isScared && !isDisappearing && isVisible) {
-        generateNewTarget();
-      }
-    }, 3000 + Math.random() * 4000);
+    const interval = setInterval(
+      () => {
+        if (!isScared && !isDisappearing && isVisible) {
+          generateNewTarget();
+        }
+      },
+      3000 + Math.random() * 4000,
+    );
 
     return () => clearInterval(interval);
-  }, [generateNewTarget, isScared, isDisappearing, isVisible, isDarkMode]);
+  }, [generateNewTarget, isScared, isDisappearing, isVisible]);
 
   // 处理鼠标悬停 - 害怕
   const handleMouseEnter = () => {
@@ -147,13 +152,13 @@ export default function Ladybug({ containerRef }: LadybugProps) {
   // 处理点击 - 消失
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    
+
     // 保存点击时的视口位置用于显示消息（fixed 定位需要视口坐标）
     if (containerRef.current) {
       const containerRect = containerRef.current.getBoundingClientRect();
-      setMessagePosition({ 
-        x: containerRect.left + position.x, 
-        y: containerRect.top + position.y 
+      setMessagePosition({
+        x: containerRect.left + position.x,
+        y: containerRect.top + position.y,
       });
     }
     setIsDisappearing(true);
@@ -170,19 +175,22 @@ export default function Ladybug({ containerRef }: LadybugProps) {
       }, 2000);
 
       // 8-15秒后重新出现
-      respawnTimeoutRef.current = setTimeout(() => {
-        // 重新定位到随机位置
-        if (containerRef.current) {
-          const rect = containerRef.current.getBoundingClientRect();
-          const margin = 60;
-          setPosition({
-            x: margin + Math.random() * (rect.width - margin * 2),
-            y: margin + Math.random() * (containerRef.current.scrollHeight - margin * 2),
-          });
-        }
-        generateNewTarget();
-        setIsVisible(true);
-      }, 8000 + Math.random() * 7000);
+      respawnTimeoutRef.current = setTimeout(
+        () => {
+          // 重新定位到随机位置
+          if (containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect();
+            const margin = 60;
+            setPosition({
+              x: margin + Math.random() * (rect.width - margin * 2),
+              y: margin + Math.random() * (containerRef.current.scrollHeight - margin * 2),
+            });
+          }
+          generateNewTarget();
+          setIsVisible(true);
+        },
+        8000 + Math.random() * 7000,
+      );
     }, 600);
   };
 
@@ -195,173 +203,286 @@ export default function Ladybug({ containerRef }: LadybugProps) {
     };
   }, []);
 
-  // 暗黑模式下不显示
-  if (isDarkMode) return null;
+  // 根据模式选择不同的消息文案
+  const getMessage = () => {
+    return isDarkMode ? "消灭了一个BUG🐞！" : "消灭了一个BUG🐞！";
+  };
 
   return (
     <>
       {/* 消灭 BUG 提示消息 - 使用 Portal 渲染到 body 确保最顶层 */}
-      {showMessage && typeof document !== "undefined" && createPortal(
-        <div
-          className="ladybug-message"
-          style={{
-            position: "fixed",
-            left: messagePosition.x,
-            top: messagePosition.y,
-            transform: "translate(-50%, -50%)",
-            zIndex: 99999,
-            pointerEvents: "none",
-          }}
-        >
-          <div className="ladybug-message-content">
-            <span className="ladybug-message-icon">🎉</span>
-            <span className="ladybug-message-text">消灭了一个BUG🐞！</span>
-          </div>
-        </div>,
-        document.body
-      )}
+      {showMessage &&
+        typeof document !== "undefined" &&
+        createPortal(
+          <div
+            className="ladybug-message"
+            style={{
+              position: "fixed",
+              left: messagePosition.x,
+              top: messagePosition.y,
+              transform: "translate(-50%, -50%)",
+              zIndex: 99999,
+              pointerEvents: "none",
+            }}
+          >
+            <div className="ladybug-message-content">
+              <span className="ladybug-message-icon">{isDarkMode ? "🛸" : "🎉"}</span>
+              <span className="ladybug-message-text">{getMessage()}</span>
+            </div>
+          </div>,
+          document.body,
+        )}
 
-      {/* 瓢虫本体 */}
+      {/* 虫子本体 */}
       {isVisible && (
-    <div
-      ref={bugRef}
-      className={`ladybug ${isScared ? "ladybug-scared" : ""} ${isDisappearing ? "ladybug-disappearing" : ""}`}
-      style={{
-        position: "absolute",
-        left: position.x,
-        top: position.y,
-        transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
-        zIndex: 1, // 低于内容
-        pointerEvents: "auto",
-        cursor: "pointer",
-        transition: isScared ? "transform 0.1s ease-out" : "none",
-      }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
-      title="点击我试试~"
-    >
-      {/* 瓢虫 SVG */}
-      <svg
-        width="32"
-        height="40"
-        viewBox="0 0 32 40"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className={`ladybug-svg ${isScared ? "ladybug-shake" : "ladybug-walk"}`}
-      >
-        {/* 触角 */}
-        <path
-          d="M12 8 Q10 4 8 2"
-          stroke="#1a1a1a"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          fill="none"
-        />
-        <path
-          d="M20 8 Q22 4 24 2"
-          stroke="#1a1a1a"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          fill="none"
-        />
-
-        {/* 头部 */}
-        <ellipse cx="16" cy="10" rx="6" ry="5" fill="#1a1a1a" />
-
-        {/* 眼睛 */}
-        <circle cx="13" cy="9" r="2" fill="white" />
-        <circle cx="19" cy="9" r="2" fill="white" />
-        <circle
-          cx={isScared ? "13" : "13.5"}
-          cy={isScared ? "9" : "9.5"}
-          r="1"
-          fill="#1a1a1a"
-        />
-        <circle
-          cx={isScared ? "19" : "19.5"}
-          cy={isScared ? "9" : "9.5"}
-          r="1"
-          fill="#1a1a1a"
-        />
-
-        {/* 身体 */}
-        <ellipse cx="16" cy="25" rx="12" ry="14" fill="#e53935" />
-
-        {/* 中线 */}
-        <line x1="16" y1="12" x2="16" y2="38" stroke="#1a1a1a" strokeWidth="2" />
-
-        {/* 斑点 */}
-        <circle cx="10" cy="20" r="2.5" fill="#1a1a1a" />
-        <circle cx="22" cy="20" r="2.5" fill="#1a1a1a" />
-        <circle cx="8" cy="28" r="2" fill="#1a1a1a" />
-        <circle cx="24" cy="28" r="2" fill="#1a1a1a" />
-        <circle cx="12" cy="33" r="1.8" fill="#1a1a1a" />
-        <circle cx="20" cy="33" r="1.8" fill="#1a1a1a" />
-
-        {/* 腿 - 左侧 */}
-        <path
-          d="M5 18 Q2 16 0 14"
-          stroke="#1a1a1a"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          fill="none"
-          className="ladybug-leg-left"
-        />
-        <path
-          d="M4 25 Q1 25 -1 24"
-          stroke="#1a1a1a"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          fill="none"
-          className="ladybug-leg-left-2"
-        />
-        <path
-          d="M5 32 Q2 34 0 36"
-          stroke="#1a1a1a"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          fill="none"
-          className="ladybug-leg-left-3"
-        />
-
-        {/* 腿 - 右侧 */}
-        <path
-          d="M27 18 Q30 16 32 14"
-          stroke="#1a1a1a"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          fill="none"
-          className="ladybug-leg-right"
-        />
-        <path
-          d="M28 25 Q31 25 33 24"
-          stroke="#1a1a1a"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          fill="none"
-          className="ladybug-leg-right-2"
-        />
-        <path
-          d="M27 32 Q30 34 32 36"
-          stroke="#1a1a1a"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          fill="none"
-          className="ladybug-leg-right-3"
-        />
-      </svg>
-
-      {/* 害怕时的表情符号 */}
-      {isScared && (
-        <span
-          className="absolute -top-6 left-1/2 -translate-x-1/2 text-lg animate-bounce"
-          style={{ transform: `translateX(-50%) rotate(${-rotation}deg)` }}
+        <div
+          ref={bugRef}
+          className={`ladybug ${isDarkMode ? "ladybug-ufo" : ""} ${isScared ? "ladybug-scared" : ""}
+          ${isDisappearing ? "ladybug-disappearing" : ""}`}
+          style={{
+            position: "absolute",
+            left: position.x,
+            top: position.y,
+            transform: `translate(-50%, -50%) rotate(${isDarkMode ? 0 : rotation}deg)`,
+            zIndex: 1, // 低于内容
+            pointerEvents: "auto",
+            cursor: "pointer",
+            transition: isScared ? "transform 0.1s ease-out" : "none",
+          }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={handleClick}
+          title={isDarkMode ? "点击击落 UFO~" : "点击我试试~"}
         >
-          😰
-        </span>
-      )}
-    </div>
+          {isDarkMode ? (
+            /* UFO 虫子 SVG - 深色模式 */
+            <svg
+              width="48"
+              height="36"
+              viewBox="0 0 48 36"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className={`ufo-svg ${isScared ? "ufo-shake" : "ufo-float"}`}
+            >
+              {/* UFO 光束 */}
+              <path d="M18 32 L24 24 L30 32" fill="rgba(100, 255, 218, 0.3)" className="ufo-beam" />
+              <path
+                d="M15 36 L24 26 L33 36"
+                fill="rgba(100, 255, 218, 0.15)"
+                className="ufo-beam-outer"
+              />
+
+              {/* UFO 底盘 */}
+              <ellipse cx="24" cy="22" rx="16" ry="5" fill="url(#ufoGradient)" />
+
+              {/* UFO 底部灯光 */}
+              <circle cx="16" cy="22" r="2" fill="#64ffda" className="ufo-light" />
+              <circle
+                cx="24"
+                cy="23"
+                r="2"
+                fill="#64ffda"
+                className="ufo-light"
+                style={{ animationDelay: "0.2s" }}
+              />
+              <circle
+                cx="32"
+                cy="22"
+                r="2"
+                fill="#64ffda"
+                className="ufo-light"
+                style={{ animationDelay: "0.4s" }}
+              />
+
+              {/* UFO 舱体 - 玻璃罩 */}
+              <ellipse
+                cx="24"
+                cy="18"
+                rx="10"
+                ry="8"
+                fill="url(#glassGradient)"
+                stroke="#64ffda"
+                strokeWidth="1"
+              />
+
+              {/* 虫子驾驶员 */}
+              {/* 虫子身体 */}
+              <ellipse cx="24" cy="16" rx="5" ry="4" fill="#7cb342" />
+
+              {/* 虫子头部 */}
+              <circle cx="24" cy="11" r="4" fill="#8bc34a" />
+
+              {/* 虫子眼睛 */}
+              <circle cx="22" cy="10" r="2" fill="white" />
+              <circle cx="26" cy="10" r="2" fill="white" />
+              <circle
+                cx={isScared ? "22" : "22.5"}
+                cy={isScared ? "10" : "10.5"}
+                r="1"
+                fill="#1a1a1a"
+              />
+              <circle
+                cx={isScared ? "26" : "26.5"}
+                cy={isScared ? "10" : "10.5"}
+                r="1"
+                fill="#1a1a1a"
+              />
+
+              {/* 虫子触角 */}
+              <path
+                d="M21 7 Q19 4 17 2"
+                stroke="#7cb342"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                fill="none"
+              />
+              <path
+                d="M27 7 Q29 4 31 2"
+                stroke="#7cb342"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                fill="none"
+              />
+              {/* 触角尖端小球 */}
+              <circle cx="17" cy="2" r="1.5" fill="#aed581" />
+              <circle cx="31" cy="2" r="1.5" fill="#aed581" />
+
+              {/* 渐变定义 */}
+              <defs>
+                <linearGradient id="ufoGradient" x1="8" y1="22" x2="40" y2="22">
+                  <stop offset="0%" stopColor="#455a64" />
+                  <stop offset="50%" stopColor="#78909c" />
+                  <stop offset="100%" stopColor="#455a64" />
+                </linearGradient>
+                <radialGradient id="glassGradient" cx="50%" cy="30%" r="60%">
+                  <stop offset="0%" stopColor="rgba(100, 255, 218, 0.4)" />
+                  <stop offset="100%" stopColor="rgba(69, 90, 100, 0.6)" />
+                </radialGradient>
+              </defs>
+            </svg>
+          ) : (
+            /* 瓢虫 SVG - 浅色模式 */
+            <svg
+              width="32"
+              height="40"
+              viewBox="0 0 32 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className={`ladybug-svg ${isScared ? "ladybug-shake" : "ladybug-walk"}`}
+            >
+              {/* 触角 */}
+              <path
+                d="M12 8 Q10 4 8 2"
+                stroke="#1a1a1a"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                fill="none"
+              />
+              <path
+                d="M20 8 Q22 4 24 2"
+                stroke="#1a1a1a"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                fill="none"
+              />
+
+              {/* 头部 */}
+              <ellipse cx="16" cy="10" rx="6" ry="5" fill="#1a1a1a" />
+
+              {/* 眼睛 */}
+              <circle cx="13" cy="9" r="2" fill="white" />
+              <circle cx="19" cy="9" r="2" fill="white" />
+              <circle
+                cx={isScared ? "13" : "13.5"}
+                cy={isScared ? "9" : "9.5"}
+                r="1"
+                fill="#1a1a1a"
+              />
+              <circle
+                cx={isScared ? "19" : "19.5"}
+                cy={isScared ? "9" : "9.5"}
+                r="1"
+                fill="#1a1a1a"
+              />
+
+              {/* 身体 */}
+              <ellipse cx="16" cy="25" rx="12" ry="14" fill="#e53935" />
+
+              {/* 中线 */}
+              <line x1="16" y1="12" x2="16" y2="38" stroke="#1a1a1a" strokeWidth="2" />
+
+              {/* 斑点 */}
+              <circle cx="10" cy="20" r="2.5" fill="#1a1a1a" />
+              <circle cx="22" cy="20" r="2.5" fill="#1a1a1a" />
+              <circle cx="8" cy="28" r="2" fill="#1a1a1a" />
+              <circle cx="24" cy="28" r="2" fill="#1a1a1a" />
+              <circle cx="12" cy="33" r="1.8" fill="#1a1a1a" />
+              <circle cx="20" cy="33" r="1.8" fill="#1a1a1a" />
+
+              {/* 腿 - 左侧 */}
+              <path
+                d="M5 18 Q2 16 0 14"
+                stroke="#1a1a1a"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                fill="none"
+                className="ladybug-leg-left"
+              />
+              <path
+                d="M4 25 Q1 25 -1 24"
+                stroke="#1a1a1a"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                fill="none"
+                className="ladybug-leg-left-2"
+              />
+              <path
+                d="M5 32 Q2 34 0 36"
+                stroke="#1a1a1a"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                fill="none"
+                className="ladybug-leg-left-3"
+              />
+
+              {/* 腿 - 右侧 */}
+              <path
+                d="M27 18 Q30 16 32 14"
+                stroke="#1a1a1a"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                fill="none"
+                className="ladybug-leg-right"
+              />
+              <path
+                d="M28 25 Q31 25 33 24"
+                stroke="#1a1a1a"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                fill="none"
+                className="ladybug-leg-right-2"
+              />
+              <path
+                d="M27 32 Q30 34 32 36"
+                stroke="#1a1a1a"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                fill="none"
+                className="ladybug-leg-right-3"
+              />
+            </svg>
+          )}
+
+          {/* 害怕时的表情符号 */}
+          {isScared && (
+            <span
+              className="absolute -top-6 left-1/2 -translate-x-1/2 text-lg animate-bounce"
+              style={{ transform: `translateX(-50%) rotate(${isDarkMode ? 0 : -rotation}deg)` }}
+            >
+              {isDarkMode ? "😱" : "😰"}
+            </span>
+          )}
+        </div>
       )}
     </>
   );
