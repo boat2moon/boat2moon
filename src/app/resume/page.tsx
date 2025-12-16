@@ -77,8 +77,7 @@ export default function ResumePage() {
               <div className={styles.tagline}>
                 男 &nbsp;|&nbsp; 211院校计算机-人工智能专业 &nbsp;|&nbsp; 2026硕士应届生
               </div>
-              {/* <div className={styles.tagline}>求职意向：JS/TS全栈开发 &nbsp;|&nbsp; AI应用开发</div> */}
-              <div className={styles.tagline}>实习意向：前端开发 &nbsp;|&nbsp; AI应用开发</div>
+              <div className={styles.tagline}>岗位意向：大前端 &nbsp;|&nbsp; AI应用全栈开发</div>
               {/* <p className={styles.summary}>
                 <strong>简历摘要：</strong>
                 AI复合型程序员，熟悉JS/TS前后端开发生态，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定交叉行业AI算法和应用调优经验，热衷于AI大模型应用全栈开发。
@@ -146,17 +145,18 @@ export default function ResumePage() {
               </li>
               <li>
                 <strong>熟悉前端：</strong>HTML，Sass / Tailwind，工程化，AntD /
-                Shadcn，React，Redux / Zustand，Next
+                Shadcn，React，Redux / Zustand，Next.js
               </li>
               <li>
-                <strong>了解后端：</strong>Node.js / Hono / Nest，RESTful API，Prisma / Drizzle
+                <strong>了解后端：</strong>Node / Hono / Nest，RESTful API，ORM 与
+                关系型/内存/向量数据库，消息队列
               </li>
               <li>
-                <strong>AI 相关：</strong>Prompt Engineering，LangChain.js，Function Calling /
-                MCP，Agent，RAG，向量数据库
+                <strong>AI 应用开发：</strong>
+                LangChain.js，Prompt工程与应用，知识工程与RAG，Agent理论与框架
               </li>
               <li>
-                <strong>CI/CD：</strong>GitHub Actions，Serverless
+                <strong>CI/CD：</strong>Docker，GitHub Actions，Serverless
               </li>
               <li>
                 <strong>外语水平：</strong>通过英语六级
@@ -207,9 +207,9 @@ export default function ResumePage() {
                   <li>
                     <div className={styles.node}>
                       <span className={styles.nodeTags}>
-                        <strong>全栈开发</strong> | Next.js · React · ShadcnUI · Zustand · Auth.js ·
-                        Prisma · PostgreSQL · Tiptap · ChatGPT API · Docker · 阿里云 Serverless OSS
-                        CDN
+                        <strong>全栈开发</strong> | Next.js · React · Nest.js · ShadcnUI · Zustand ·
+                        Auth.js · Prisma · PostgreSQL · Tiptap · ChatGPT API · Docker · 阿里云
+                        Serverless OSS CDN · Prometheus · Grafana
                       </span>
                     </div>
                   </li>
@@ -370,7 +370,7 @@ export default function ResumePage() {
                         搭建数据可视化界面
                       </li>
                       <li>
-                        协助安排定期会议汇报与任务协调；参与设计指标体系评估机理仿真合理性，以及攻击效果与恢复效率
+                        协助组织定期会议汇报与任务协调；参与设计指标体系评估机理仿真合理性，以及攻击效果与恢复效率
                       </li>
                     </ul>
                   </li>
@@ -417,10 +417,9 @@ export default function ResumePage() {
                     </div>
                     <ul>
                       <li>
-                        项目初期技术调研，包括毒性预测、疗效预测及生成模型；分析项目关键难点并与数据团队沟通
+                        项目初期技术调研，包括毒性预测、疗效预测及生成模型；负责毒性预测模块的算法复现
                       </li>
-                      <li>负责毒性预测模块的算法复现</li>
-                      <li>撰写调研报告并协助安排周会汇报</li>
+                      <li>撰写调研报告并协助组织周会汇报；分析项目关键难点并与数据团队沟通</li>
                     </ul>
                   </li>
                 </ul>
@@ -446,7 +445,7 @@ export default function ResumePage() {
               <li>
                 <strong>专利1：</strong>
                 《基于图储备池计算的有限观测下电网扰动时空协同监测方法》，申请号
-                202511169552X，已受理。
+                202511169552X，已实审。
               </li>
             </ul>
           </section>
