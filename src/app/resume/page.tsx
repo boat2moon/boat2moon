@@ -148,12 +148,12 @@ export default function ResumePage() {
                 Shadcn，React，Redux / Zustand，Next.js
               </li>
               <li>
-                <strong>了解后端：</strong>Node / Hono / Nest，RESTful API，ORM 与
-                关系型/内存/向量数据库，消息队列
+                <strong>AI 应用开发：</strong>
+                LangChain.js，Vercel AI-SDK，Prompt工程与应用，知识工程与RAG，Agent理论与框架
               </li>
               <li>
-                <strong>AI 应用开发：</strong>
-                LangChain.js，Prompt工程与应用，知识工程与RAG，Agent理论与框架
+                <strong>了解后端：</strong>Node / Hono / Nest，RESTful API，ORM 与
+                关系型/内存/向量数据库，消息队列
               </li>
               <li>
                 <strong>CI/CD：</strong>Docker，GitHub Actions，Serverless

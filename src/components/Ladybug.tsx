@@ -35,6 +35,8 @@ export default function Ladybug({ containerRef }: LadybugProps) {
   const animationRef = useRef<number | null>(null);
   const targetRef = useRef<Position>({ x: 100, y: 100 });
   const respawnTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  // X 轴移动方向：1 向右，-1 向左（乒乓式移动）
+  const xDirectionRef = useRef<number>(Math.random() > 0.5 ? 1 : -1);
 
   // 检测暗黑模式 - 使用媒体查询
   useEffect(() => {
@@ -65,19 +67,18 @@ export default function Ladybug({ containerRef }: LadybugProps) {
     };
   }, []);
 
-  // 生成新的随机目标位置
+  // 生成新的随机 Y 轴目标位置（X 轴使用乒乓式碰壁反弹）
   const generateNewTarget = useCallback(() => {
     if (!containerRef.current) return;
 
     const container = containerRef.current;
-    const rect = container.getBoundingClientRect();
 
-    // 在容器内随机选择位置，留出边距
+    // Y 轴使用容器高度（只在主体内容区上下范围内移动）
     const margin = 60;
-    const x = margin + Math.random() * (rect.width - margin * 2);
     const y = margin + Math.random() * (container.scrollHeight - margin * 2);
 
-    targetRef.current = { x, y };
+    // 只更新 Y 轴目标，X 轴保持当前位置（由乒乓逻辑控制）
+    targetRef.current = { x: targetRef.current.x, y };
   }, [containerRef]);
 
   // 动画循环
@@ -87,32 +88,58 @@ export default function Ladybug({ containerRef }: LadybugProps) {
       return;
     }
 
+    if (!containerRef.current) {
+      animationRef.current = requestAnimationFrame(animate);
+      return;
+    }
+
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const margin = 60;
+    const screenWidth = window.innerWidth;
+    // 计算相对于容器的 X 轴边界
+    const minX = margin - containerRect.left;
+    const maxX = screenWidth - margin - containerRect.left;
+
     setPosition((prev) => {
       const target = targetRef.current;
-      const dx = target.x - prev.x;
       const dy = target.y - prev.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
 
-      // 到达目标附近时生成新目标
-      if (distance < 10) {
-        generateNewTarget();
-        return prev;
+      // 计算移动速度
+      const speed = isDarkMode ? 1.2 : 0.8; // UFO 飞得更快
+
+      // X 轴：乒乓式移动（持续向一个方向，碰壁反弹）
+      let newX = prev.x + xDirectionRef.current * speed;
+
+      // 检测是否碰到边界，碰到就反向
+      if (newX >= maxX) {
+        newX = maxX;
+        xDirectionRef.current = -1; // 反向向左
+      } else if (newX <= minX) {
+        newX = minX;
+        xDirectionRef.current = 1; // 反向向右
       }
 
-      // 计算移动方向和速度
-      const speed = isDarkMode ? 1.2 : 0.8; // UFO 飞得更快
-      const newX = prev.x + (dx / distance) * speed;
-      const newY = prev.y + (dy / distance) * speed;
+      // Y 轴：保持向目标点移动的逻辑
+      const yDistance = Math.abs(dy);
+      let newY = prev.y;
+
+      if (yDistance > 10) {
+        // 向目标移动
+        newY = prev.y + (dy / yDistance) * speed;
+      } else {
+        // 接近目标时生成新的 Y 轴目标
+        generateNewTarget();
+      }
 
       // 更新旋转角度（朝向移动方向）
-      const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+      const angle = Math.atan2(dy, xDirectionRef.current) * (180 / Math.PI) + 90;
       setRotation(angle);
 
       return { x: newX, y: newY };
     });
 
     animationRef.current = requestAnimationFrame(animate);
-  }, [isScared, isDisappearing, isVisible, generateNewTarget, isDarkMode]);
+  }, [isScared, isDisappearing, isVisible, generateNewTarget, isDarkMode, containerRef]);
 
   // 初始化和动画
   useEffect(() => {
@@ -177,12 +204,18 @@ export default function Ladybug({ containerRef }: LadybugProps) {
       // 8-15秒后重新出现
       respawnTimeoutRef.current = setTimeout(
         () => {
-          // 重新定位到随机位置
+          // 重新定位到屏幕左侧或右侧边缘（优先出现在两侧）
           if (containerRef.current) {
-            const rect = containerRef.current.getBoundingClientRect();
+            const containerRect = containerRef.current.getBoundingClientRect();
             const margin = 60;
+            const screenWidth = window.innerWidth;
+            const minX = margin - containerRect.left;
+            const maxX = screenWidth - margin - containerRect.left;
+            // 随机选择出现在左侧还是右侧
+            const startFromLeft = Math.random() > 0.5;
+            xDirectionRef.current = startFromLeft ? 1 : -1; // 设置初始方向
             setPosition({
-              x: margin + Math.random() * (rect.width - margin * 2),
+              x: startFromLeft ? minX : maxX,
               y: margin + Math.random() * (containerRef.current.scrollHeight - margin * 2),
             });
           }
