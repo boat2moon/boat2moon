@@ -1,99 +1,162 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as echarts from "echarts";
 import { wordCloudData as baseWords, type WordCloudData } from "../data/wordCloudData";
 
-// 二进制尾焰组件 - 横向扩散效果
-function BinaryFlame() {
-  const [particles, setParticles] = useState<
-    Array<{
-      id: number;
-      x: number;
-      y: number;
-      chars: string;
-      opacity: number;
-      size: number;
-    }>
-  >([]);
+// 粒子接口定义
+interface Particle {
+  id: number;
+  x: number;
+  y: number;
+  chars: string;
+  opacity: number;
+  size: number;
+  element: HTMLDivElement | null;
+}
+
+// 二进制尾焰组件 - 使用 requestAnimationFrame 优化性能
+const BinaryFlame = React.memo(function BinaryFlame() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const particlesRef = useRef<Particle[]>([]);
+  const particleIdRef = useRef(0);
+  const lastSpawnTimeRef = useRef(0);
+  const animationFrameRef = useRef<number>(0);
 
   useEffect(() => {
-    let particleId = 0;
+    const container = containerRef.current;
+    if (!container) return;
+
+    // 获取粒子颜色
+    const getColor = (opacity: number): string => {
+      if (opacity > 0.7) return "rgb(251, 146, 60)"; // 橙-400
+      if (opacity > 0.4) return "rgb(249, 115, 22)"; // 橙-500
+      return "rgb(234, 88, 12)"; // 橙-600
+    };
+
+    // 创建粒子 DOM 元素
+    const createParticleElement = (chars: string): HTMLDivElement => {
+      const el = document.createElement("div");
+      el.style.cssText = `
+        position: absolute;
+        font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        font-size: 14px;
+        will-change: transform, opacity;
+        pointer-events: none;
+      `;
+      el.textContent = chars;
+      return el;
+    };
 
     // 生成新粒子
     const spawnParticle = () => {
-      const newParticle = {
-        id: particleId++,
-        x: 0, // 从火箭尾部开始
-        y: (Math.random() - 0.5) * 80, // 垂直方向随机分布
-        chars: Array.from({ length: Math.floor(Math.random() * 3) + 2 }, () =>
-          Math.random() > 0.5 ? "1" : "0",
-        ).join(""),
+      const chars = Array.from(
+        { length: Math.floor(Math.random() * 3) + 2 },
+        () => (Math.random() > 0.5 ? "1" : "0")
+      ).join("");
+
+      const element = createParticleElement(chars);
+      container.appendChild(element);
+
+      const particle: Particle = {
+        id: particleIdRef.current++,
+        x: 0,
+        y: (Math.random() - 0.5) * 80,
+        chars,
         opacity: 1,
-        size: Math.random() * 0.5 + 0.7, // 随机大小
+        size: Math.random() * 0.5 + 0.7,
+        element,
       };
 
-      setParticles((prev) => [...prev, newParticle]);
-
-      // 2秒后移除粒子
-      setTimeout(() => {
-        setParticles((prev) => prev.filter((p) => p.id !== newParticle.id));
-      }, 2000);
+      particlesRef.current.push(particle);
     };
 
-    // 每50ms生成新粒子
-    const spawnInterval = setInterval(spawnParticle, 50);
+    // 更新粒子样式
+    const updateParticleStyle = (particle: Particle) => {
+      if (!particle.element) return;
+      
+      const color = getColor(particle.opacity);
+      const blur = (1 - particle.opacity) * 0.5;
+      const glowIntensity = particle.opacity * 20;
+      const glowOpacity = particle.opacity * 0.9;
+      
+      particle.element.style.transform = `translate(${particle.x}px, calc(-50% + ${particle.y}px)) scale(${particle.size})`;
+      particle.element.style.opacity = String(particle.opacity);
+      particle.element.style.color = color;
+      // 多层发光效果，更接近火焰效果
+      particle.element.style.textShadow = `
+        0 0 ${glowIntensity * 0.5}px rgba(251, 146, 60, ${glowOpacity}),
+        0 0 ${glowIntensity}px rgba(249, 115, 22, ${glowOpacity * 0.8}),
+        0 0 ${glowIntensity * 1.5}px rgba(234, 88, 12, ${glowOpacity * 0.5})
+      `;
+      particle.element.style.filter = `blur(${blur}px)`;
+      particle.element.style.top = "50%";
+      particle.element.style.left = "0";
+    };
 
-    // 每30ms更新粒子位置
-    const updateInterval = setInterval(() => {
-      setParticles((prev) =>
-        prev.map((particle) => ({
-          ...particle,
-          x: particle.x - 2, // 向左移动
-          y: particle.y + (Math.random() - 0.5) * 3, // 轻微垂直抖动
-          opacity: Math.max(0, particle.opacity - 0.015), // 逐渐淡出
-        })),
-      );
-    }, 30);
+    // 动画循环
+    let lastTime = performance.now();
+    
+    const animate = (currentTime: number) => {
+      const deltaTime = currentTime - lastTime;
+      lastTime = currentTime;
+
+      // 以约 50ms 间隔生成新粒子
+      if (currentTime - lastSpawnTimeRef.current > 50) {
+        spawnParticle();
+        lastSpawnTimeRef.current = currentTime;
+      }
+
+      // 更新所有粒子
+      const particles = particlesRef.current;
+      const speed = deltaTime * 0.067; // 约 2px per 30ms
+
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const particle = particles[i];
+        
+        // 更新位置和透明度
+        particle.x -= speed;
+        particle.y += (Math.random() - 0.5) * 3 * (deltaTime / 30);
+        particle.opacity -= 0.015 * (deltaTime / 30);
+
+        if (particle.opacity <= 0) {
+          // 移除粒子
+          if (particle.element && container.contains(particle.element)) {
+            container.removeChild(particle.element);
+          }
+          particles.splice(i, 1);
+        } else {
+          updateParticleStyle(particle);
+        }
+      }
+
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    animationFrameRef.current = requestAnimationFrame(animate);
 
     return () => {
-      clearInterval(spawnInterval);
-      clearInterval(updateInterval);
+      cancelAnimationFrame(animationFrameRef.current);
+      // 清理所有粒子元素
+      particlesRef.current.forEach((particle) => {
+        if (particle.element && container.contains(particle.element)) {
+          container.removeChild(particle.element);
+        }
+      });
+      particlesRef.current = [];
     };
   }, []);
 
   return (
     <div
+      ref={containerRef}
       className="absolute left-0 top-1/2 -translate-y-1/2 w-[200px] h-[200px] pointer-events-none
         overflow-visible"
-    >
-      {particles.map((particle) => (
-        <div
-          key={particle.id}
-          className="absolute font-mono font-bold tracking-wider transition-all duration-100
-            ease-out"
-          style={{
-            left: `${particle.x}px`,
-            top: `50%`,
-            transform: `translateY(calc(-50% + ${particle.y}px)) scale(${particle.size})`,
-            opacity: particle.opacity,
-            fontSize: "12px",
-            color:
-              particle.opacity > 0.7
-                ? "rgb(251, 146, 60)" // 橙-400
-                : particle.opacity > 0.4
-                  ? "rgb(249, 115, 22)" // 橙-500
-                  : "rgb(234, 88, 12)", // 橙-600
-            textShadow: `0 0 ${particle.opacity * 15}px rgba(249, 115, 22, ${particle.opacity * 0.8})`,
-            filter: `blur(${(1 - particle.opacity) * 0.5}px)`,
-          }}
-        >
-          {particle.chars}
-        </div>
-      ))}
-    </div>
+    />
   );
-}
+});
 
 export default function RocketWordCloud() {
   const chartRef = useRef<HTMLDivElement>(null);
