@@ -161,6 +161,10 @@ export default function RocketWordCloud() {
   const chartRef = useRef<HTMLDivElement>(null);
   const chartInstanceRef = useRef<echarts.ECharts | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  // 记录上一次的容器尺寸，用于判断是否真正需要 resize
+  const lastSizeRef = useRef<{ width: number; height: number } | null>(null);
+  // 标记图表是否已初始化完成
+  const isInitializedRef = useRef(false);
 
   useEffect(() => {
     // 动态导入 echarts-wordcloud 以避免 SSR 问题
@@ -172,9 +176,21 @@ export default function RocketWordCloud() {
   useEffect(() => {
     if (!chartRef.current || !isLoaded) return;
 
+    // 如果已经初始化过，不要重复初始化
+    if (isInitializedRef.current && chartInstanceRef.current) {
+      return;
+    }
+
     // 初始化 ECharts 实例
     const chart = echarts.init(chartRef.current);
     chartInstanceRef.current = chart;
+    isInitializedRef.current = true;
+
+    // 记录初始尺寸
+    lastSizeRef.current = {
+      width: chartRef.current.clientWidth,
+      height: chartRef.current.clientHeight,
+    };
 
     // 加载火箭蒙版图片
     const maskImage = new Image();
@@ -235,7 +251,7 @@ export default function RocketWordCloud() {
             gridSize: 7, // 减小网格大小以允许更密集的布局
             drawOutOfBound: false,
             shrinkToFit: true,
-            layoutAnimation: true,
+            layoutAnimation: false, // 禁用布局动画，避免移动端滚动时重绘闪烁
             textStyle: {
               fontFamily: "sans-serif",
               fontWeight: "bold",
@@ -268,15 +284,52 @@ export default function RocketWordCloud() {
       });
     };
 
-    // 响应式处理
-    const handleResize = () => {
-      chart.resize();
-    };
-    window.addEventListener("resize", handleResize);
+    // 使用 ResizeObserver 替代 window resize 事件
+    // 这样只有当容器真正改变尺寸时才会触发 resize
+    // 移动端滚动时地址栏收缩不会影响容器宽度，所以不会触发
+    let resizeTimeout: ReturnType<typeof setTimeout> | null = null;
+    const MIN_SIZE_CHANGE = 10; // 最小尺寸变化阈值（像素）
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { width, height } = entry.contentRect;
+        const lastSize = lastSizeRef.current;
+
+        // 只有当尺寸变化超过阈值时才触发 resize
+        // 这可以过滤掉移动端地址栏导致的微小高度变化
+        if (lastSize) {
+          const widthChange = Math.abs(width - lastSize.width);
+          const heightChange = Math.abs(height - lastSize.height);
+
+          // 忽略小于阈值的变化（通常是地址栏收缩导致的）
+          if (widthChange < MIN_SIZE_CHANGE && heightChange < MIN_SIZE_CHANGE) {
+            return;
+          }
+        }
+
+        // 使用防抖，避免频繁 resize
+        if (resizeTimeout) {
+          clearTimeout(resizeTimeout);
+        }
+
+        resizeTimeout = setTimeout(() => {
+          if (chartInstanceRef.current && !chartInstanceRef.current.isDisposed()) {
+            lastSizeRef.current = { width, height };
+            chartInstanceRef.current.resize();
+          }
+        }, 200);
+      }
+    });
+
+    resizeObserver.observe(chartRef.current);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+      }
+      resizeObserver.disconnect();
       chart.dispose();
+      isInitializedRef.current = false;
     };
   }, [isLoaded]);
 
