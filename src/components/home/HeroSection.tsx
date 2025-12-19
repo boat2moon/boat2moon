@@ -8,8 +8,8 @@ import RocketWordCloud from "@/components/RocketWordCloud";
  */
 export default function HeroSection() {
   return (
-    <section className="relative h-screen overflow-hidden">
-      <div className="sticky top-0 isolate flex h-screen flex-col justify-center">
+    <section className="relative h-[100svh] overflow-hidden">
+      <div className="sticky top-0 isolate flex h-[100svh] flex-col justify-center">
         {/* 背景层：利用径向渐变与散点实现深空氛围 */}
         <div className="absolute inset-0 -z-20 bg-black">
           <div
