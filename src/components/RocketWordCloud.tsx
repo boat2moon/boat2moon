@@ -52,9 +52,8 @@ const BinaryFlame = React.memo(function BinaryFlame() {
 
     // 生成新粒子
     const spawnParticle = () => {
-      const chars = Array.from(
-        { length: Math.floor(Math.random() * 3) + 2 },
-        () => (Math.random() > 0.5 ? "1" : "0")
+      const chars = Array.from({ length: Math.floor(Math.random() * 3) + 2 }, () =>
+        Math.random() > 0.5 ? "1" : "0",
       ).join("");
 
       const element = createParticleElement(chars);
@@ -76,12 +75,12 @@ const BinaryFlame = React.memo(function BinaryFlame() {
     // 更新粒子样式
     const updateParticleStyle = (particle: Particle) => {
       if (!particle.element) return;
-      
+
       const color = getColor(particle.opacity);
       const blur = (1 - particle.opacity) * 0.5;
       const glowIntensity = particle.opacity * 20;
       const glowOpacity = particle.opacity * 0.9;
-      
+
       particle.element.style.transform = `translate(${particle.x}px, calc(-50% + ${particle.y}px)) scale(${particle.size})`;
       particle.element.style.opacity = String(particle.opacity);
       particle.element.style.color = color;
@@ -98,7 +97,7 @@ const BinaryFlame = React.memo(function BinaryFlame() {
 
     // 动画循环
     let lastTime = performance.now();
-    
+
     const animate = (currentTime: number) => {
       const deltaTime = currentTime - lastTime;
       lastTime = currentTime;
@@ -115,7 +114,7 @@ const BinaryFlame = React.memo(function BinaryFlame() {
 
       for (let i = particles.length - 1; i >= 0; i--) {
         const particle = particles[i];
-        
+
         // 更新位置和透明度
         particle.x -= speed;
         particle.y += (Math.random() - 0.5) * 3 * (deltaTime / 30);
@@ -283,7 +282,10 @@ export default function RocketWordCloud() {
 
   return (
     <div className="relative w-full h-full">
-      <div ref={chartRef} className="w-full h-full min-h-[500px]" />
+      <div
+        ref={chartRef}
+        className="w-full h-full min-h-[280px] sm:min-h-[360px] lg:min-h-[500px]"
+      />
       {/* 二进制尾焰效果 */}
       <BinaryFlame />
     </div>

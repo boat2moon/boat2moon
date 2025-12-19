@@ -38,12 +38,16 @@ export default function HeroSection() {
         >
           {/* 左侧词云火箭：突出技能栈与视觉记忆点 */}
           <div className="flex items-center justify-center">
-            <div className="relative w-full max-w-lg h-[500px]">
+            <div className="relative w-full max-w-lg h-[320px] sm:h-[400px] lg:h-[500px]">
+              {/* 标题 - 移动端放大并贴合屏幕宽度 */}
               <h2
-                className="mb-6 text-center text-sm tracking-[0.3em] text-zinc-400
-                  whitespace-nowrap"
+                className="mb-4 sm:mb-6 text-center text-zinc-400 text-base tracking-[0.2em] px-2
+                  sm:text-sm sm:tracking-[0.3em] sm:px-0"
               >
-                JS/TS全栈开发 · 大模型应用开发 · AIGC · 网站逐步构建中···
+                <span className="hidden sm:inline">
+                  JS/TS全栈开发 · AI/大模型应用开发 · 网站逐步构建中···
+                </span>
+                <span className="sm:hidden">全栈开发 · AI应用开发 · 构建中···</span>
               </h2>
               <RocketWordCloud />
             </div>
@@ -51,8 +55,16 @@ export default function HeroSection() {
 
           {/* 右侧星球组：以渐变与投影呈现层次感 */}
           <div className="relative flex items-center justify-center">
-            <div className="relative h-[500px] w-[500px]">
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            {/* 外层容器保持固定尺寸，内部整体缩放 */}
+            <div
+              className="relative h-[280px] w-[280px] sm:h-[400px] sm:w-[400px] lg:h-[500px]
+                lg:w-[500px]"
+            >
+              {/* 月球整体使用 scale 缩放，保持环形坑相对位置 */}
+              <div
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.6]
+                  sm:scale-[0.8] lg:scale-100 transition-transform duration-300"
+              >
                 <div className="relative h-80 w-80">
                   <div
                     className="absolute inset-0 rounded-full
@@ -93,8 +105,12 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              <div className="absolute right-8 top-8">
-                <div className="relative h-24 w-24">
+              {/* 地球 - 响应式定位避免与月球重叠 */}
+              <div className="absolute -right-2 -top-4 sm:right-4 sm:top-2 lg:right-8 lg:top-8">
+                <div
+                  className="relative h-24 w-24 scale-[0.5] sm:scale-[0.65] lg:scale-100
+                    transition-transform duration-300"
+                >
                   <div
                     className="absolute inset-0 rounded-full
                       bg-[radial-gradient(circle_at_40%_40%,rgba(59,130,246,0.3),transparent_70%)]
@@ -142,10 +158,15 @@ export default function HeroSection() {
 
         {/* 滚动提示：引导用户探索下方内容 */}
         <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2
-            animate-bounce"
+          className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col
+            items-center gap-2 animate-bounce z-10"
         >
-          <span className="text-sm text-zinc-400 tracking-widest">盼星星 盼月亮 盼Offer 🙋‍♂️</span>
+          <span
+            className="text-xs sm:text-sm text-zinc-400 tracking-wider sm:tracking-widest
+              bg-black/50 px-3 py-1 rounded-full backdrop-blur-sm"
+          >
+            盼星星 盼月亮 盼Offer 🙋‍♂️
+          </span>
           <svg
             className="w-6 h-6 text-zinc-400"
             fill="none"
