@@ -52,7 +52,7 @@ export const projects: ProjectMeta[] = [
       "Docker",
       "阿里云 Serverless",
     ],
-    link: "#",
+    link: "https://www.rumuai.top",
   },
   {
     title: "伯乐 Talk（待上线）",
