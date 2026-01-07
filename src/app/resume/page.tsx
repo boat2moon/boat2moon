@@ -144,19 +144,21 @@ export default function ResumePage() {
                 <strong>编程语言：</strong>主 JavaScript / TypeScript，副 Python
               </li>
               <li>
-                <strong>熟悉前端：</strong>HTML，Sass / Tailwind，工程化，AntD /
-                Shadcn，React，Redux / Zustand，Next.js
+                <strong>熟悉前端：</strong>HTML，Sass / Tailwind
+                CSS，工程化，组件库，状态管理，React 与 Next 框架，Tiptap 富文本开发
               </li>
               <li>
-                <strong>AI 应用开发：</strong>
+                <strong>熟悉 AI 应用开发：</strong>
                 LangChain.js，Vercel AI-SDK，Prompt工程与应用，知识工程与RAG，Agent理论与框架
               </li>
               <li>
-                <strong>了解后端：</strong>Node / Hono / Nest，RESTful API，ORM 与
+                {/* <strong>了解后端：</strong>Node / Hono / Nest，RESTful API，ORM 与
+                关系型/内存/向量数据库，消息队列 */}
+                <strong>了解后端：</strong>Node / Hono / Nest，Next 实现 BFF 架构，ORM 与
                 关系型/内存/向量数据库，消息队列
               </li>
               <li>
-                <strong>CI/CD：</strong>Docker，GitHub Actions，Serverless
+                <strong>CI/CD应用：</strong>Docker，GitHub Actions / Webhooks，Serverless
               </li>
               <li>
                 <strong>外语水平：</strong>通过英语六级
@@ -179,7 +181,7 @@ export default function ResumePage() {
                       <span>入木 AI</span>
                       {/* <span>DocFlow</span> */}
                       <span aria-hidden="true" className={styles.inlineSeparator} />
-                      <span>AI大模型协同文档平台</span>
+                      <span>AI 大模型协同文档平台</span>
                       <span
                         aria-hidden="true"
                         className={styles.inlineSeparator}
