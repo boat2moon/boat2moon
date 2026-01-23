@@ -57,11 +57,11 @@ export default function StickyFooter({ showFooter, friendLinks }: StickyFooterPr
                 lg:justify-start"
             >
               <a
-                href="mailto:boat2moon@proton.me"
+                href="mailto:boat2moon@foxmail.com"
                 className="flex items-center gap-1.5 transition hover:text-cyan-300"
               >
                 <Mail size={16} />
-                <span className="whitespace-nowrap">邮箱：boat2moon@proton.me</span>
+                <span className="whitespace-nowrap">邮箱：boat2moon@foxmail.com</span>
               </a>
               <a
                 href="https://github.com/boat2moon"

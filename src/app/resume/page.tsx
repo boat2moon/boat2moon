@@ -93,7 +93,7 @@ export default function ResumePage() {
                 >
                   <MdEmail aria-hidden="true" className={styles.contactIcon} />
                   <span>邮箱：</span>
-                  <span className={styles.contactValue}>boat2moon@proton.me</span>
+                  <span className={styles.contactValue}>boat2moon@foxmail.com</span>
                 </a>
                 <a
                   className={`${styles.contactItem} ${styles.contactLink}`}

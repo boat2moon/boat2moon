@@ -18,7 +18,7 @@
 ### 📫 联系方式
 
 <p align="left">
-  <a href="mailto:boat2moon@proton.me" target="_blank">
+  <a href="mailto:boat2moon@foxmail.com" target="_blank">
     <img src="https://img.shields.io/badge/ProtonMail-8B89CC?style=for-the-badge&logo=protonmail&logoColor=white" alt="Email">
   </a>
   <a href="https://www.boat2moon.com" target="_blank">
