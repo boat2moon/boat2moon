@@ -89,7 +89,7 @@ export default function ResumePage() {
                 </div>
                 <a
                   className={`${styles.contactItem} ${styles.contactLink}`}
-                  href="mailto:boat2moon@proton.me"
+                  href="mailto:boat2moon@foxmail.com"
                 >
                   <MdEmail aria-hidden="true" className={styles.contactIcon} />
                   <span>邮箱：</span>
@@ -232,28 +232,40 @@ export default function ResumePage() {
                     </div>
                     <ul>
                       <li>
-                        定制封装 fetch，将包括参数整理、响应解析、SSE、超时与重试控制、Token
+                        <strong>前端：</strong>定制封装
+                        fetch，将包括参数整理、响应解析、SSE、超时/重试控制、Token
                         刷新及统一错误处理——完整串联成一个高内聚、可观测的闭环体系，简洁统一了业务请求行为，提升了
                         HTTP 客户端的健壮性与扩展性。
                       </li>
                       <li>
-                        调研对比国内外 Serverless 平台，选择了阿里云 FC 函数计算；并规避了 Next.js
-                        Server Actions 触发阿里云 Serverless 的 maxMemoryUsage 错误。
-                      </li>
-                      <li>紧急修复网站无法访问问题，云函数区域从香港迁移到新加坡。</li>
-                      <li>
-                        请求 ChatGPT API 时，轮询使用多个实例，成功避免被 OpenAI 限制调用频率。
-                      </li>
-                      <li>优化 AI 接口鉴权，防止 Token 泄漏被盗用，保障安全性。</li>
-                      <li>
-                        把 AI 生成的 Markdown 格式转换为 HTML 插入到编辑器，实现了 AI
-                        稳定生成富文本的效果。
+                        <strong>前端：</strong>基于 Headless 富文本库定制高可扩展的 Slash Command
+                        系统，通过自定义渲染桥接层打通富文本库内核与 React UI
+                        的生命周期及跨框架数据流，采用工厂与命令模式实现 数据/逻辑/视图 分层解耦。
+                        {/* 通过useImperativeHandle实现对React组件的精细化生命周期控制， */}
                       </li>
                       <li>
-                        排查修复 editor 编辑卡顿的问题，修复了导致内存泄漏的副作用 Bug，测试深度使用
-                        2 小时以上再无异常。
+                        <strong>后端：</strong>
                       </li>
-                      <li>性能和体验优化。</li>
+                      <li>
+                        <strong>全栈：</strong>
+                        实现层级文档树组件，基于数据库自引与递归组件渲染；通过 HTML5 History API
+                        结合自定义 emitter 事件订阅模式，避免了 Next Router 引发的 UI
+                        闪烁和响应延迟，实现文档 切换/创建 零感知延迟与乐观更新。
+                      </li>
+                      <li>
+                        <strong>AI应用开发：</strong>
+                      </li>
+                      <li>
+                        <strong>系统优化：</strong>
+                      </li>
+                      <li>
+                        系统优化：优化图片上传渲染全链路，通过 Web Worker 压缩与 OSS 动态裁剪减少
+                        60%+ 带宽消耗；通过预计算宽高比占位解决 CLS
+                        问题，并实现长图智能自适应布局，再配合 CND 加速显著提升编辑体验。
+                      </li>
+                      <li>
+                        <strong>CI/CD：</strong>
+                      </li>
                     </ul>
                   </li>
                 </ul>
