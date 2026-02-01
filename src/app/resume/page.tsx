@@ -253,7 +253,7 @@ export default function ResumePage() {
                         闪烁和响应延迟，实现文档 切换/创建 零感知延迟与乐观更新。
                       </li>
                       <li>
-                        <strong>AI应用开发：</strong>
+                        <strong>AI应用开发：后端...前端...three.js灵动岛</strong>
                       </li>
                       <li>
                         <strong>系统优化：</strong>
