@@ -9,7 +9,7 @@ export default function RobotPrinterPage() {
   const [loading, setLoading] = useState(false);
   const [delay, setDelay] = useState(0);
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   // 模拟结果面板
   const [result, setResult] = useState({
