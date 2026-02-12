@@ -27,19 +27,19 @@ export default function ProjectCarousel({ media, title }: ProjectCarouselProps) 
   // 只有多张媒体资源时才启用自动轮播
   const hasMultipleItems = media.length > 1;
   const currentItem = media[currentIndex];
+  const isCurrentVideo = currentItem?.type === "video";
 
   useEffect(() => {
-    // 如果当前是视频，暂停自动轮播（可选策略，这里简单处理：视频播放时不自动切换，
-    // 但为了简化交互，我们暂时保持 hover 时暂停，或者视频播放时不自动轮播）
-    // 目前逻辑：悬停时暂停。如果用户在看视频，自然会悬停或操作控件。
-    if (!hasMultipleItems || !isHovered) return;
+    // 如果只有一张图，或者是视频，或者正在悬停，则不自动轮播
+    // (悬停时暂停轮播是常见交互，方便用户查看细节)
+    if (!hasMultipleItems || isHovered || isCurrentVideo) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % media.length);
     }, 3000); // 3秒自动切换
 
     return () => clearInterval(interval);
-  }, [hasMultipleItems, isHovered, media.length, resetTimer]);
+  }, [hasMultipleItems, isHovered, media.length, resetTimer, isCurrentVideo]);
 
   // 当切走时，暂停所有视频
   useEffect(() => {
@@ -78,11 +78,7 @@ export default function ProjectCarousel({ media, title }: ProjectCarouselProps) 
     <div
       className="relative h-52 w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800"
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => {
-        setIsHovered(false);
-        // 鼠标离开时重置回第一个，或者保留当前位置？原逻辑是重置回0
-        setCurrentIndex(0);
-      }}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {media.length > 0 ? (
         <>
