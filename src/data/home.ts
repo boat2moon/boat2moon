@@ -1,14 +1,14 @@
 // home.ts
 
-import type { StaticImageData } from "next/image";
+import previewBole1 from "@/assets/projects/bole-talk/preview-1.png";
+import previewBole2 from "@/assets/projects/bole-talk/preview-2.png";
+import previewBole3 from "@/assets/projects/bole-talk/preview-3.png";
+import previewBole4 from "@/assets/projects/bole-talk/preview-4.png";
+import previewDev from "@/assets/projects/misc/dev.png";
+import previewRumu1 from "@/assets/projects/rumu/preview-1.png";
+import previewRumu2 from "@/assets/projects/rumu/preview-2.png";
 
-import bole1 from "@/assets/projects/bole1.png";
-import bole2 from "@/assets/projects/bole2.png";
-import bole3 from "@/assets/projects/bole3.png";
-import bole4 from "@/assets/projects/bole4.png";
-import dev from "@/assets/projects/dev.png";
-import rumu1 from "@/assets/projects/rumu1.png";
-import rumu2 from "@/assets/projects/rumu2.png";
+import { type MediaItem } from "@/components/home/ProjectCarousel";
 
 /**
  * Home 页面所需的静态数据与类型定义，集中管理以便组件复用。
@@ -17,11 +17,9 @@ export type ProjectMeta = {
   title: string;
   description: string;
   tags: string[];
-  images?: ProjectImage[];
+  media?: MediaItem[];
   link?: string;
 };
-
-export type ProjectImage = string | StaticImageData;
 
 export type TopicMeta = {
   title: string;
@@ -38,7 +36,10 @@ export const projects: ProjectMeta[] = [
     title: "入木 AI",
     description:
       "一个 TS 全栈开发的现代化 AIGC 协同文档编辑平台，集成了丰富的编辑能力与多人实时协作功能，支持知识库管理、插件扩展与持久化存储。",
-    images: [rumu1, rumu2],
+    media: [
+      { type: "image", src: previewRumu1 },
+      { type: "image", src: previewRumu2 },
+    ],
     tags: [
       "Next.js",
       "React",
@@ -58,7 +59,12 @@ export const projects: ProjectMeta[] = [
     title: "伯乐 Talk（待上线）",
     description:
       "基于 ReAct 范式的垂直领域 AI Agent 面试模拟平台。利用大模型推理能力，通过工作流编排实现简历深度解析、结构化诊断及多轮个性化面试问答，提供实时评分反馈与改进建议。",
-    images: [bole1, bole2, bole3, bole4],
+    media: [
+      { type: "image", src: previewBole1 },
+      { type: "image", src: previewBole2 },
+      { type: "image", src: previewBole3 },
+      { type: "image", src: previewBole4 },
+    ],
     tags: [
       "Next.js",
       "React",
@@ -74,11 +80,30 @@ export const projects: ProjectMeta[] = [
     link: "#",
   },
   {
+    title: "RobotPrinter AI-Island",
+    description:
+      "一个有趣的 React 组件库——机器人吐纸条！可用于 AI 对话、快捷指令、数据处理等场景，自带独特的 3D 动画效果和交互体验，支持拖拽、玻璃态风格、智能睡眠等丰富功能。",
+    media: [{ type: "video", src: "/videos/robot-printer-demo.mp4" }],
+    tags: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Vitest",
+      "TailwindCSS",
+      "CSS Variables",
+      "GitHub Actions",
+      "ESLint",
+      "Prettier",
+      "Husky",
+    ],
+    link: "https://github.com/boat2moon/RobotPrinter",
+  },
+  {
     title: "开发中......",
     description: "更多创意正在孵化中，敬请期待。",
     tags: ["Coming Soon"],
     link: "#",
-    images: [dev],
+    media: [{ type: "image", src: previewDev }],
   },
 ];
 

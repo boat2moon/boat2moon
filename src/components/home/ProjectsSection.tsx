@@ -38,8 +38,8 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                 hover:border-cyan-400/50 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900
                 dark:hover:bg-zinc-800/80"
             >
-              {/* 图片轮播区域 */}
-              <ProjectCarousel images={project.images || []} title={project.title} />
+              {/* 图片/视频轮播区域 */}
+              <ProjectCarousel media={project.media || []} title={project.title} />
 
               <CardHeader>
                 <CardTitle

@@ -253,7 +253,10 @@ export default function ResumePage() {
                         闪烁和响应延迟，实现文档 切换/创建 零感知延迟与乐观更新。
                       </li>
                       <li>
-                        <strong>AI应用开发：后端...前端...three.js灵动岛</strong>
+                        <strong>AI应用开发：</strong>实现内嵌 AI 助手（AI灵动岛），后端统一适配多 AI
+                        服务商（含负载均衡+故障转移）；前端基于 SSE 流式响应 + &quot;累积缓冲 +
+                        节流事务替换&quot;策略，解决富文本编辑器中流式 Markdown
+                        实时渲染问题，支持表格/列表等复杂结构的稳定生成；并采用有限状态机管理多阶段自定义动画，实现流畅的伪3D效果与交互反馈。
                       </li>
                       <li>
                         <strong>系统优化：</strong>
