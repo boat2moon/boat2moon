@@ -1,12 +1,12 @@
 // home.ts
 
-import previewBole1 from "@/assets/projects/bole-talk/preview-1.png";
-import previewBole2 from "@/assets/projects/bole-talk/preview-2.png";
-import previewBole3 from "@/assets/projects/bole-talk/preview-3.png";
-import previewBole4 from "@/assets/projects/bole-talk/preview-4.png";
-import previewDev from "@/assets/projects/misc/dev.png";
-import previewRumu1 from "@/assets/projects/rumu/preview-1.png";
-import previewRumu2 from "@/assets/projects/rumu/preview-2.png";
+import previewBole1 from "@/assets/projects/bole-talk/preview-1.webp";
+import previewBole2 from "@/assets/projects/bole-talk/preview-2.webp";
+import previewBole3 from "@/assets/projects/bole-talk/preview-3.webp";
+import previewBole4 from "@/assets/projects/bole-talk/preview-4.webp";
+import previewDev from "@/assets/projects/misc/dev.webp";
+import previewRumu1 from "@/assets/projects/rumu/preview-1.webp";
+import previewRumu2 from "@/assets/projects/rumu/preview-2.webp";
 
 import { type MediaItem } from "@/components/home/ProjectCarousel";
 
