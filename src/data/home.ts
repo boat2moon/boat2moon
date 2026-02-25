@@ -99,6 +99,17 @@ export const projects: ProjectMeta[] = [
     link: "https://github.com/boat2moon/RobotPrinter",
   },
   {
+    title: "InfiniteTalk ComfyUI Workflow",
+    description:
+      "基于 InfiniteTalk 与 WanVideo 的中文语音驱动口型同步视频生成工作流。输入单张参考图与音频，即可在 32GB 显存环境稳定生成高质量说话人视频。",
+    media: [
+      { type: "video", src: "/videos/infinitetalk-demo.mp4" },
+      { type: "video", src: "/videos/infinitetalk-demo-2.mp4" },
+    ],
+    tags: ["ComfyUI", "Wan2.1", "InfiniteTalk", "AIGC", "Video Generation"],
+    link: "https://github.com/boat2moon/infinitetalk-comfyui-workflow",
+  },
+  {
     title: "开发中......",
     description: "更多创意正在孵化中，敬请期待。",
     tags: ["Coming Soon"],
@@ -144,15 +155,15 @@ export const omniDeliveries: TopicMeta[] = [
     description: "SSR + SSG 混合渲染，结合 Edge Functions 与 Web Worker 构建实时体验。",
   },
   {
-    title: "PC 桌面端",
+    title: "桌面客户端 - PC",
     description: "Electron / Tauri 多容器共存，封装自动更新通道与插件化体系。",
   },
   {
-    title: "移动 APP 端",
+    title: "移动客户端 - APP",
     description: "React Native 与 Flutter 双栈策略，接入动态化配置与数据埋点闭环。",
   },
   {
-    title: "小程序端",
+    title: "小程序",
     description: "统一 BFF 透出聚合接口，低成本同步微信 / 支付宝 / 企业端小程序体验。",
   },
   {

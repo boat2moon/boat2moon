@@ -19,7 +19,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
     <section id="projects" className="space-y-8">
       <div className="space-y-3">
         <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">主要项目案例</h2>
-        <div className="h-1 w-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" />
+        <div className="h-1 w-16 bg-zinc-800 dark:bg-zinc-200 rounded-full" />
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
           精选项目展示从调研、架构到交付的闭环能力
         </p>
@@ -35,15 +35,16 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
             <Card
               className="group flex h-full flex-col overflow-hidden border border-zinc-200/80
                 bg-white shadow-md transition-all duration-300 hover:scale-[1.02]
-                hover:border-cyan-400/50 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900
-                dark:hover:bg-zinc-800/80"
+                hover:border-zinc-900/50 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900
+                dark:hover:border-zinc-100/50 dark:hover:bg-zinc-800/80"
             >
               {/* 图片/视频轮播区域 */}
               <ProjectCarousel media={project.media || []} title={project.title} />
 
               <CardHeader>
                 <CardTitle
-                  className="text-xl transition-colors group-hover:text-cyan-600 dark:text-zinc-100"
+                  className="text-xl transition-colors group-hover:text-zinc-900 dark:text-zinc-300
+                    dark:group-hover:text-zinc-100"
                 >
                   {project.title}
                 </CardTitle>

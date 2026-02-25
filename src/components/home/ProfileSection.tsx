@@ -8,12 +8,13 @@ export default function ProfileSection() {
   return (
     <section
       id="profile"
-      className="grid gap-8 rounded-3xl border border-zinc-200/80 bg-white/90 dark:bg-zinc-900/90
-        dark:border-zinc-800 p-10 shadow-lg backdrop-blur lg:grid-cols-[0.4fr_1.6fr]"
+      className="glow-card grid gap-8 rounded-3xl border border-zinc-200/80 bg-white/90
+        dark:bg-zinc-900/90 dark:border-zinc-800 p-10 shadow-lg backdrop-blur
+        lg:grid-cols-[0.4fr_1.6fr]"
     >
       <div className="space-y-4">
         <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">个人简介</h2>
-        <div className="h-1 w-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" />
+        <div className="h-1 w-16 bg-zinc-800 dark:bg-zinc-200 rounded-full" />
       </div>
       <div className="space-y-4 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
         <p>

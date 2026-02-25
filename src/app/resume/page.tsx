@@ -12,6 +12,7 @@ import { BiSolidNetworkChart } from "react-icons/bi";
 import { VscRobot } from "react-icons/vsc";
 import { TfiWrite } from "react-icons/tfi";
 import { GiMedicines } from "react-icons/gi";
+import { FiGithub } from "react-icons/fi";
 
 import styles from "./resume.module.scss";
 
@@ -145,7 +146,7 @@ export default function ResumePage() {
               </li>
               <li>
                 <strong>熟悉前端：</strong>HTML，Sass / Tailwind
-                CSS，工程化，组件库，状态管理，React 与 Next 框架，Tiptap 富文本开发
+                CSS，工程化，组件库，状态管理，React 与 Next 框架，富文本编辑器开发
               </li>
               <li>
                 <strong>熟悉 AI 应用开发：</strong>
@@ -189,16 +190,16 @@ export default function ResumePage() {
                       />
                       <span>
                         社区合作开发
-                        {/* ， */}
-                        {/* <a
-                        className={styles.inlineLink}
-                        href="https://github.com/xun082/DocFlow"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                      >
-                        前端开源
-                        <FiGithub aria-hidden="true" className={styles.inlineIconSmall} />
-                      </a> */}
+                        <a
+                          className={styles.inlineLink}
+                          href="https://rumuai.top"
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          （演示
+                          <FiGithub aria-hidden="true" className={styles.inlineIconSmall} />
+                          rumuai.top）
+                        </a>
                       </span>
                     </span>
                   </span>
@@ -209,9 +210,9 @@ export default function ResumePage() {
                   <li>
                     <div className={styles.node}>
                       <span className={styles.nodeTags}>
-                        <strong>全栈开发</strong> | Next.js · React · Nest.js · ShadcnUI · Zustand ·
-                        Auth.js · Prisma · PostgreSQL · Tiptap · ChatGPT API · Docker · 阿里云
-                        Serverless OSS CDN · Prometheus · Grafana
+                        <strong>全栈开发</strong> | Next.js - React - Nest.js - ShadcnUI - Zustand -
+                        Auth.js - Prisma - PostgreSQL - Tiptap - OpenAI API - Docker - 阿里云
+                        Serverless OSS CDN - Cloudflare DO - Prometheus - Grafana
                       </span>
                     </div>
                   </li>
@@ -244,7 +245,10 @@ export default function ResumePage() {
                         {/* 通过useImperativeHandle实现对React组件的精细化生命周期控制， */}
                       </li>
                       <li>
-                        <strong>后端：</strong>
+                        <strong>AI应用开发：</strong>实现内嵌 AI 助手（AI灵动岛），后端统一适配多 AI
+                        服务商（含负载均衡+故障转移）；前端基于 SSE 流式响应 + &quot;累积缓冲 +
+                        节流事务替换&quot;策略，解决富文本编辑器中流式 Markdown
+                        实时渲染问题，支持表格/列表等复杂结构的稳定生成；并采用有限状态机管理多阶段自定义动画，实现流畅的伪3D效果与交互反馈。
                       </li>
                       <li>
                         <strong>全栈：</strong>
@@ -253,21 +257,25 @@ export default function ResumePage() {
                         闪烁和响应延迟，实现文档 切换/创建 零感知延迟与乐观更新。
                       </li>
                       <li>
-                        <strong>AI应用开发：</strong>实现内嵌 AI 助手（AI灵动岛），后端统一适配多 AI
-                        服务商（含负载均衡+故障转移）；前端基于 SSE 流式响应 + &quot;累积缓冲 +
-                        节流事务替换&quot;策略，解决富文本编辑器中流式 Markdown
-                        实时渲染问题，支持表格/列表等复杂结构的稳定生成；并采用有限状态机管理多阶段自定义动画，实现流畅的伪3D效果与交互反馈。
+                        <strong>全栈：</strong>基于 CRDT 算法（Yjs）实现多人实时协同编辑富文本，将
+                        WebSocket（Hocuspocus）服务迁移至 Cloudflare Durable
+                        Objects，实现按需唤醒与零空闲成本，并在 Edge Runtime 环境向后兼容历史数据。
                       </li>
+
                       <li>
-                        <strong>系统优化：</strong>
-                      </li>
-                      <li>
-                        系统优化：优化图片上传渲染全链路，通过 Web Worker 压缩与 OSS 动态裁剪减少
-                        60%+ 带宽消耗；通过预计算宽高比占位解决 CLS
+                        <strong>系统优化：</strong>优化图片上传渲染全链路，通过 Web Worker 压缩与
+                        OSS 动态裁剪减少 60%+ 带宽消耗；通过预计算宽高比占位解决 CLS
                         问题，并实现长图智能自适应布局，再配合 CND 加速显著提升编辑体验。
                       </li>
                       <li>
                         <strong>CI/CD：</strong>
+                      </li>
+                      <li>
+                        <strong>AI自动化：</strong>
+                        自定义可复用 ComfyUI 工作流，在 RTX 5090
+                        机器部署推理生成官网首页背景视频；通过 Suno 调制 BGM，打造统一风格产品
+                        Taste。MVP 落地后，搭建 Openclaw 智能副手，将 Claude Code / Codex 作为子
+                        Agent 代理编码能力，尝试 TDD 和智能 CI/CD 流程如 BUG 检修、Review 与 PR。
                       </li>
                     </ul>
                   </li>
@@ -287,7 +295,19 @@ export default function ResumePage() {
                         className={styles.inlineSeparator}
                         style={{ "--inline-separator-width": "2.5em" } as CSSProperties}
                       />
-                      <span>社区合作开发</span>
+                      <span>
+                        社区合作开发
+                        <a
+                          className={styles.inlineLink}
+                          href="https://boletalk.top"
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          （演示
+                          <FiGithub aria-hidden="true" className={styles.inlineIconSmall} />
+                          boletalk.top）
+                        </a>
+                      </span>
                     </span>
                   </span>
                   <span aria-hidden="true" className={styles.nodeSeparator} />

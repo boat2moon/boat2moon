@@ -50,12 +50,9 @@ export default function StickyFooter({ showFooter, friendLinks }: StickyFooterPr
           className="flex w-full flex-col items-center gap-5 text-center sm:flex-wrap
             sm:justify-center sm:gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-10"
         >
-          <div className="flex flex-col items-center gap-3 lg:flex-1 lg:items-start lg:text-left">
+          <div className="flex flex-col items-center gap-3 lg:flex-1">
             <div className="font-semibold">© {currentYear} boat2moon</div>
-            <div
-              className="flex w-full flex-wrap justify-center gap-x-5 gap-y-2 sm:gap-x-6
-                lg:justify-start"
-            >
+            <div className="flex w-full flex-wrap justify-center gap-x-5 gap-y-2 sm:gap-x-6">
               <a
                 href="mailto:boat2moon@foxmail.com"
                 className="flex items-center gap-1.5 transition hover:text-cyan-300"
