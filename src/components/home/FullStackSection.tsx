@@ -16,7 +16,7 @@ export default function FullStackSection({ topics }: FullStackSectionProps) {
     <section id="fullstack" className="space-y-8">
       <div className="space-y-3">
         <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">全栈技术</h2>
-        <div className="h-1 w-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" />
+        <div className="h-1 w-16 bg-zinc-800 dark:bg-zinc-200 rounded-full" />
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
           核心技术支柱，覆盖研发链路的关键节点
         </p>
@@ -25,9 +25,8 @@ export default function FullStackSection({ topics }: FullStackSectionProps) {
         {topics.map((topic) => (
           <Card
             key={topic.title}
-            className="border border-zinc-200/80 bg-white dark:bg-zinc-900 dark:border-zinc-800
-              shadow-md transition-all duration-300 hover:shadow-lg hover:border-cyan-400/50
-              dark:hover:bg-zinc-800/80"
+            className="glow-card border border-zinc-200/80 bg-white dark:bg-zinc-900
+              dark:border-zinc-800 shadow-md"
           >
             <CardHeader>
               <CardTitle className="text-lg dark:text-zinc-100">{topic.title}</CardTitle>

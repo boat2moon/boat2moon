@@ -1,6 +1,37 @@
 "use client";
 
-import RocketWordCloud from "@/components/RocketWordCloud";
+import dynamic from "next/dynamic";
+
+const RocketWordCloud = dynamic(() => import("@/components/RocketWordCloud"), {
+  ssr: false,
+  loading: () => (
+    <div
+      className="relative w-full h-full min-h-[280px] sm:min-h-[360px] lg:min-h-[500px] flex
+        items-center justify-center overflow-hidden"
+    >
+      {/* 模拟词云的骨架块 */}
+      <div className="relative w-[280px] h-[200px] sm:w-[360px] sm:h-[260px] animate-pulse">
+        <div className="absolute left-[15%] top-[10%] h-3 w-16 rounded bg-cyan-800/30" />
+        <div className="absolute left-[40%] top-[5%] h-4 w-24 rounded bg-cyan-700/25" />
+        <div className="absolute left-[10%] top-[25%] h-5 w-28 rounded bg-cyan-600/30" />
+        <div className="absolute left-[45%] top-[22%] h-4 w-20 rounded bg-blue-700/25" />
+        <div className="absolute left-[70%] top-[18%] h-3 w-14 rounded bg-cyan-800/20" />
+        <div className="absolute left-[5%] top-[42%] h-6 w-32 rounded bg-cyan-500/30" />
+        <div className="absolute left-[50%] top-[40%] h-5 w-24 rounded bg-blue-600/25" />
+        <div className="absolute left-[75%] top-[38%] h-3 w-12 rounded bg-cyan-700/20" />
+        <div className="absolute left-[20%] top-[58%] h-4 w-20 rounded bg-blue-500/25" />
+        <div className="absolute left-[45%] top-[55%] h-6 w-28 rounded bg-cyan-600/30" />
+        <div className="absolute left-[15%] top-[72%] h-5 w-24 rounded bg-cyan-700/25" />
+        <div className="absolute left-[50%] top-[70%] h-4 w-16 rounded bg-blue-600/20" />
+        <div className="absolute left-[30%] top-[85%] h-3 w-20 rounded bg-cyan-800/20" />
+        {/* 模拟二进制尾焰 */}
+        <div className="absolute -left-8 top-[45%] h-2 w-10 rounded bg-orange-500/20" />
+        <div className="absolute -left-12 top-[50%] h-2 w-14 rounded bg-orange-600/15" />
+        <div className="absolute -left-6 top-[55%] h-2 w-8 rounded bg-orange-400/20" />
+      </div>
+    </div>
+  ),
+});
 
 /**
  * HeroSection 负责渲染首屏的太空主题展示，包括词云火箭与月球/地球装饰。

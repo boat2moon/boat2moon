@@ -38,32 +38,25 @@ export default function Ladybug({ containerRef }: LadybugProps) {
   // X 轴移动方向：1 向右，-1 向左（乒乓式移动）
   const xDirectionRef = useRef<number>(Math.random() > 0.5 ? 1 : -1);
 
-  // 检测暗黑模式 - 使用媒体查询
+  // 检测暗黑模式 - 监听 html class 变化（next-themes 通过 class 控制主题）
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
     const checkDarkMode = () => {
-      // 优先检查 html 上的 dark 类，其次使用媒体查询
+      // next-themes 通过在 html 上添加 dark/light class 控制主题
       const hasDarkClass = document.documentElement.classList.contains("dark");
-      const prefersDark = mediaQuery.matches;
-      setIsDarkMode(hasDarkClass || prefersDark);
+      setIsDarkMode(hasDarkClass);
     };
 
     checkDarkMode();
 
-    // 监听 html class 变化（兼容手动切换主题的场景）
+    // 监听 html class 变化，next-themes 切换时会立即触发
     const observer = new MutationObserver(checkDarkMode);
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["class"],
     });
 
-    // 监听系统主题变化
-    mediaQuery.addEventListener("change", checkDarkMode);
-
     return () => {
       observer.disconnect();
-      mediaQuery.removeEventListener("change", checkDarkMode);
     };
   }, []);
 

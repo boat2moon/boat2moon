@@ -1,7 +1,12 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import * as echarts from "echarts";
+import * as echarts from "echarts/core";
+import { CanvasRenderer } from "echarts/renderers";
+import { TooltipComponent } from "echarts/components";
+
+// 仅注册词云所需的最小模块（wordcloud 插件自行注册 series 类型）
+echarts.use([CanvasRenderer, TooltipComponent]);
 import { wordCloudData as baseWords, type WordCloudData } from "../data/wordCloudData";
 
 // 粒子接口定义

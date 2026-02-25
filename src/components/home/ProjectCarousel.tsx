@@ -41,11 +41,17 @@ export default function ProjectCarousel({ media, title }: ProjectCarouselProps) 
     return () => clearInterval(interval);
   }, [hasMultipleItems, isHovered, media.length, resetTimer, isCurrentVideo]);
 
-  // 当切走时，暂停所有视频
+  // 当切走时，暂停所有视频，并播放当前视频
   useEffect(() => {
     videoRefs.current.forEach((video, idx) => {
-      if (video && idx !== currentIndex) {
-        video.pause();
+      if (video) {
+        if (idx !== currentIndex) {
+          video.pause();
+        } else {
+          // 当前轮播到该视频，尝试重置到开头并播放
+          video.currentTime = 0;
+          video.play().catch((err) => console.log("Auto-play prevented:", err));
+        }
       }
     });
   }, [currentIndex]);
@@ -76,7 +82,8 @@ export default function ProjectCarousel({ media, title }: ProjectCarouselProps) 
 
   return (
     <div
-      className="relative h-52 w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800"
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-md bg-zinc-100
+        dark:bg-zinc-800"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -141,7 +148,7 @@ export default function ProjectCarousel({ media, title }: ProjectCarouselProps) 
                 className={cn(
                   `absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-1.5
                     text-white backdrop-blur-sm transition-all hover:bg-black/70 z-10`,
-                  isHovered ? "opacity-100" : "opacity-0",
+                  "opacity-0 md:group-hover:opacity-100 max-md:opacity-100",
                 )}
                 aria-label="Previous media"
               >
@@ -152,25 +159,27 @@ export default function ProjectCarousel({ media, title }: ProjectCarouselProps) 
                 className={cn(
                   `absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-1.5
                     text-white backdrop-blur-sm transition-all hover:bg-black/70 z-10`,
-                  isHovered ? "opacity-100" : "opacity-0",
+                  "opacity-0 md:group-hover:opacity-100 max-md:opacity-100",
                 )}
                 aria-label="Next media"
               >
                 <ChevronRight size={16} />
               </button>
 
-              {/* 指示器小圆点 */}
-              <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-1.5 z-10">
-                {media.map((_, idx) => (
-                  <div
-                    key={idx}
-                    className={cn(
-                      "h-1.5 w-1.5 rounded-full transition-all shadow-sm",
-                      idx === currentIndex ? "bg-white w-3" : "bg-white/50",
-                    )}
-                  />
-                ))}
-              </div>
+              {/* 指示器小圆点 - 仅在当前项不是视频时显示 */}
+              {!isCurrentVideo && (
+                <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-1.5 z-10">
+                  {media.map((_, idx) => (
+                    <div
+                      key={idx}
+                      className={cn(
+                        "h-1.5 w-1.5 rounded-full transition-all shadow-sm",
+                        idx === currentIndex ? "bg-white w-3" : "bg-white/50",
+                      )}
+                    />
+                  ))}
+                </div>
+              )}
             </>
           )}
         </>

@@ -1,3 +1,7 @@
+/*
+ * 简历页样式：该页面不参与深色/浅色主题切换（ThemeToggle 在 /resume 下隐藏）。
+ * 页面外围背景色硬编码：浅色 #f5f7fa / 深色 #1a1a1a，简历纸张始终为白底。
+ */
 .resumePage {
   --primary: #003366;
   --accent: #547b9c;
@@ -12,7 +16,8 @@
   font-family: var(--body-font);
   padding: 32px 0 48px;
 
-  @media (prefers-color-scheme: dark) {
+  /* 深色模式下的外围背景（简历纸张本体仍为白色，此处仅影响纸张外的页面背景） */
+  :global(.dark) & {
     background: #1a1a1a;
   }
 }
