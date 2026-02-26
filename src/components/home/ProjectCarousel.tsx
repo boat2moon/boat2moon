@@ -132,7 +132,8 @@ export default function ProjectCarousel({ media, title }: ProjectCarouselProps) 
                     className={cn(
                       "object-cover",
                       !hasMultipleItems &&
-                        "transition-transform duration-500 group-hover:scale-105",
+                        `transition-transform duration-500 group-hover:scale-105
+                          group-data-[active=true]:scale-105`,
                     )}
                   />
                 )}

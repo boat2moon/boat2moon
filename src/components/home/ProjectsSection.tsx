@@ -20,6 +20,8 @@ type ProjectsSectionProps = {
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   // 当前在移动端被"选中"（悬浮态）的卡片索引
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  // 需要确认跳转的链接地址，为 null 时不显示弹窗
+  const [confirmLink, setConfirmLink] = useState<string | null>(null);
   // 用于区分 touch 和 mouse 事件
   const isTouchRef = useRef(false);
 
@@ -31,15 +33,24 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   // 触摸设备上拦截点击：第一次选中，第二次跳转
   const handleClick = useCallback(
     (e: React.MouseEvent, index: number, link: string) => {
+      // 占位链接不管在什么端都阻止跳转滚动
+      if (link === "#") {
+        e.preventDefault();
+      }
+
       if (!isTouchRef.current) return; // 桌面鼠标直接走默认行为
-      if (link === "#") return; // 无链接的卡片不拦截
 
       if (activeIndex !== index) {
         // 第一次点击：阻止跳转，显示选中态
         e.preventDefault();
         setActiveIndex(index);
+      } else {
+        // 第二次点击（activeIndex === index）：准备跳转
+        if (link !== "#") {
+          e.preventDefault(); // 先阻止原生的 Link 跳转行为
+          setConfirmLink(link); // 唤起自定义确认弹窗
+        }
       }
-      // 第二次点击（activeIndex === index）：不阻止，正常跳转
     },
     [activeIndex],
   );
@@ -78,27 +89,24 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
             onClick={(e) => handleClick(e, index, project.link || "#")}
           >
             <Card
-              className={`group flex h-full flex-col overflow-hidden border border-zinc-200/80
-              bg-white shadow-md transition-all duration-300 dark:border-zinc-800 dark:bg-zinc-900
-              ${
-                activeIndex === index
-                  ? `scale-[1.02] border-zinc-900/50 shadow-xl dark:border-zinc-100/50
-                    dark:bg-zinc-800/80`
-                  : `hover:scale-[1.02] hover:border-zinc-900/50 hover:shadow-xl
-                    dark:hover:border-zinc-100/50 dark:hover:bg-zinc-800/80`
-              }`}
+              data-active={activeIndex === index ? "true" : undefined}
+              className="group flex h-full flex-col overflow-hidden border bg-white transition-all
+                duration-300 dark:bg-zinc-900 border-zinc-200/80 shadow-md dark:border-zinc-800
+                hover:scale-[1.02] hover:border-zinc-900/50 hover:shadow-xl
+                dark:hover:border-zinc-100/50 dark:hover:bg-zinc-800/80
+                data-[active=true]:scale-[1.02] data-[active=true]:border-zinc-900/50
+                data-[active=true]:shadow-xl dark:data-[active=true]:border-zinc-100/50
+                dark:data-[active=true]:bg-zinc-800/80"
             >
               {/* 图片/视频轮播区域 */}
               <ProjectCarousel media={project.media || []} title={project.title} />
 
               <CardHeader>
                 <CardTitle
-                  className={`text-xl transition-colors ${
-                    activeIndex === index
-                      ? "text-zinc-900 dark:text-zinc-100"
-                      : `group-hover:text-zinc-900 dark:text-zinc-300
-                        dark:group-hover:text-zinc-100`
-                  }`}
+                  className="text-xl transition-colors text-zinc-800 dark:text-zinc-300
+                    group-hover:text-zinc-900 dark:group-hover:text-zinc-100
+                    group-data-[active=true]:text-zinc-900
+                    dark:group-data-[active=true]:text-zinc-100"
                 >
                   {project.title}
                 </CardTitle>
@@ -122,6 +130,50 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
           </Link>
         ))}
       </div>
+
+      {/* 自定义确认跳转弹窗 */}
+      {confirmLink && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+          {/* 模糊遮罩层 */}
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity"
+            onClick={() => setConfirmLink(null)}
+          />
+          {/* 弹窗主体 */}
+          <div
+            className="relative w-full max-w-sm overflow-hidden rounded-2xl border
+              border-zinc-200/50 bg-white/90 p-6 shadow-2xl backdrop-blur dark:border-zinc-700/50
+              dark:bg-zinc-900/90 animate-in fade-in zoom-in-95 duration-200"
+          >
+            <h3 className="mb-2 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              确认跳转
+            </h3>
+            <p className="mb-6 text-sm text-zinc-600 dark:text-zinc-400">
+              即将前往项目详情页，是否继续？
+            </p>
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => setConfirmLink(null)}
+                className="rounded-xl px-4 py-2 text-sm font-medium text-zinc-600 transition-colors
+                  hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+              >
+                取消
+              </button>
+              <button
+                onClick={() => {
+                  window.open(confirmLink, "_blank");
+                  setConfirmLink(null);
+                }}
+                className="rounded-xl bg-zinc-900 px-4 py-2 text-sm font-medium text-white shadow-md
+                  transition-all hover:scale-105 hover:bg-zinc-800 hover:shadow-lg dark:bg-zinc-100
+                  dark:text-zinc-900 dark:hover:bg-white"
+              >
+                前往
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

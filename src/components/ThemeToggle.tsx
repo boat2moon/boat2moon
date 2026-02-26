@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 /**
- * 灯泡主题切换按钮。
- * 亮灯 = 浅色模式，灭灯 = 深色模式。
- * 固定在页面右上角，带发光脉冲动画。
+ * 太阳/月亮主题切换按钮。
+ * ☀️ 太阳 = 当前浅色模式（点击切换到深色），🌙 月亮 = 当前深色模式（点击切换到浅色）。
+ * 固定在页面右上角，带微动效。
  */
 export default function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -30,44 +30,64 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="fixed right-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-full
-        transition-all duration-300 hover:scale-110 active:scale-95 bg-zinc-200/80
-        dark:bg-zinc-800/80 backdrop-blur-sm shadow-md hover:shadow-lg cursor-pointer"
-      aria-label={isDark ? "切换到浅色模式" : "切换到深色模式"}
-      title={isDark ? "💡 开灯" : "🌙 关灯"}
-    >
-      <svg
-        viewBox="0 0 24 24"
-        className={`h-6 w-6 transition-all duration-500 ${
+      className={`fixed right-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-full
+        transition-all duration-300 hover:scale-110 active:scale-95 backdrop-blur-sm shadow-lg
+        cursor-pointer border ${
           isDark
-            ? "text-zinc-400 drop-shadow-none"
-            : "text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]"
+            ? "bg-zinc-800/80 border-zinc-700 hover:shadow-indigo-500/20"
+            : "bg-white/90 border-zinc-300 shadow-zinc-300/50 hover:shadow-amber-300/40"
+        }`}
+      aria-label={isDark ? "切换到浅色模式" : "切换到深色模式"}
+      title={isDark ? "☀️ 切换到浅色" : "🌙 切换到深色"}
+    >
+      <div className="relative h-6 w-6">
+        {/* 太阳图标 (浅色模式显示) */}
+        <svg
+          viewBox="0 0 24 24"
+          className={`absolute inset-0 h-6 w-6 transition-all duration-500 ${
+            isDark ? "rotate-90 scale-0 opacity-0" : "rotate-0 scale-100 opacity-100"
           }`}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        {/* 灯泡主体 */}
-        <path
-          d="M9 21h6M12 3a6 6 0 0 0-4 10.5V17h8v-3.5A6 6 0 0 0 12 3z"
-          fill={isDark ? "none" : "currentColor"}
-          className="transition-all duration-500"
-        />
-        {/* 灯泡底部螺纹 */}
-        <path d="M10 17h4M10 19h4" />
-        {/* 亮灯时的光芒线 */}
-        {!isDark && (
-          <g className="animate-pulse" style={{ animationDuration: "2s" }}>
-            <line x1="12" y1="1" x2="12" y2="0" strokeWidth="2" />
-            <line x1="4.22" y1="4.22" x2="3.51" y2="3.51" strokeWidth="2" />
-            <line x1="1" y1="12" x2="0" y2="12" strokeWidth="2" />
-            <line x1="19.78" y1="4.22" x2="20.49" y2="3.51" strokeWidth="2" />
-            <line x1="23" y1="12" x2="24" y2="12" strokeWidth="2" />
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          {/* 太阳中心 */}
+          <circle cx="12" cy="12" r="4" fill="#f59e0b" stroke="#f59e0b" />
+          {/* 光芒射线 */}
+          <g className="text-amber-500" stroke="currentColor">
+            <line x1="12" y1="2" x2="12" y2="5" />
+            <line x1="12" y1="19" x2="12" y2="22" />
+            <line x1="4.93" y1="4.93" x2="7.05" y2="7.05" />
+            <line x1="16.95" y1="16.95" x2="19.07" y2="19.07" />
+            <line x1="2" y1="12" x2="5" y2="12" />
+            <line x1="19" y1="12" x2="22" y2="12" />
+            <line x1="4.93" y1="19.07" x2="7.05" y2="16.95" />
+            <line x1="16.95" y1="7.05" x2="19.07" y2="4.93" />
           </g>
-        )}
-      </svg>
+        </svg>
+
+        {/* 月亮图标 (深色模式显示) */}
+        <svg
+          viewBox="0 0 24 24"
+          className={`absolute inset-0 h-6 w-6 transition-all duration-500 ${
+            isDark ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-0 opacity-0"
+          }`}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path
+            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+            fill="#a5b4fc"
+            stroke="#818cf8"
+            className="transition-colors duration-500"
+          />
+        </svg>
+      </div>
     </button>
   );
 }
