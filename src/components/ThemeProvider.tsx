@@ -9,7 +9,7 @@ import type { ReactNode } from "react";
  */
 export default function ThemeProvider({ children }: { children: ReactNode }) {
   return (
-    <NextThemesProvider attribute="class" defaultTheme="dark" enableSystem>
+    <NextThemesProvider attribute="class" defaultTheme="dark">
       {children}
     </NextThemesProvider>
   );

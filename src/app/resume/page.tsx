@@ -223,7 +223,7 @@ export default function ResumePage() {
                       协同文档编辑平台，集成了丰富的编辑能力与多人实时协作功能，支持知识库管理、插件扩展与持久化存储。我作为项目一期开发人员，参与了从
                       0 搭建项目，设计、开发、上线，以及统计、监控和运维项目。 */}
                         <strong>项目介绍：</strong>一个 TS 全栈开发的现代化 AIGC
-                        协同文档编辑平台，集成了丰富的编辑能力与多人实时协作功能，支持知识库管理、插件扩展与持久化存储。
+                        协同文档编辑平台，集成了丰富的智能编辑能力与多人实时协作功能，支持知识库管理、插件扩展与持久化存储等。
                       </span>
                     </div>
                   </li>
@@ -257,25 +257,28 @@ export default function ResumePage() {
                         闪烁和响应延迟，实现文档 切换/创建 零感知延迟与乐观更新。
                       </li>
                       <li>
-                        <strong>全栈：</strong>基于 CRDT 算法（Yjs）实现多人实时协同编辑富文本，将
-                        WebSocket（Hocuspocus）服务迁移至 Cloudflare Durable
-                        Objects，实现按需唤醒与零空闲成本，并在 Edge Runtime 环境向后兼容历史数据。
+                        <strong>全栈：</strong>基于 CRDT 算法（Yjs）实现多人实时协同编辑，将
+                        WebSocket 服务迁移至 Cloudflare DO，实现零空闲成本，并在 Edge Runtime
+                        环境向后兼容历史数据，离线编辑与断开恢复提供完整弱网体验。
                       </li>
 
                       <li>
                         <strong>系统优化：</strong>优化图片上传渲染全链路，通过 Web Worker 压缩与
                         OSS 动态裁剪减少 60%+ 带宽消耗；通过预计算宽高比占位解决 CLS
-                        问题，并实现长图智能自适应布局，再配合 CND 加速显著提升编辑体验。
+                        问题，并实现长图智能自适应布局，再配合 CDN 加速显著提升编辑体验。
                       </li>
                       <li>
-                        <strong>CI/CD：</strong>
+                        <strong>CI/CD：</strong>搭建双平台 Serverless 部署架构（阿里云 FC +
+                        Cloudflare DO）和 GitHub Actions CI 流水线，通过本地 Husky 增量守护 + CI
+                        全量静态分析，实现推代码即上线的可靠持续交付闭环。
                       </li>
                       <li>
                         <strong>AI自动化：</strong>
-                        自定义可复用 ComfyUI 工作流，在 RTX 5090
+                        搭建可复用 ComfyUI 工作流，在 RTX 5090
                         机器部署推理生成官网首页背景视频；通过 Suno 调制 BGM，打造统一风格产品
-                        Taste。MVP 落地后，搭建 Openclaw 智能副手，将 Claude Code / Codex 作为子
-                        Agent 代理编码能力，尝试 TDD 和智能 CI/CD 流程如 BUG 检修、Review 与 PR。
+                        Taste。MVP 落地后，搭建 Openclaw 智能副手，配合 Skills 将 Claude Code /
+                        Codex 作为子 Agent 代理编码能力，探索 TDD 和智能 CI/CD 流程如 BUG
+                        检修、Review 与 PR 等。
                       </li>
                     </ul>
                   </li>
