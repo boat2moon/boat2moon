@@ -59,7 +59,7 @@ export default function ResumePage() {
     // 打印提示：建议使用"另存为 PDF"
     const handleBeforePrint = () => {
       alert(
-        '💡 提示：请将 "目标打印机" 选择为 "另存为 PDF"（Save as PDF），这样生成的 PDF 才能保留可点击的超链接效果。',
+        "💡 提示：请将“目标打印机”选择为“另存为 PDF”（Save as PDF），这样生成的 PDF 才能保留可点击的超链接效果，以及视觉效果跟网页中更加一致。",
       );
     };
     window.addEventListener("beforeprint", handleBeforePrint);
