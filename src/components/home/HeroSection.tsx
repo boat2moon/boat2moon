@@ -2,6 +2,14 @@
 
 import dynamic from "next/dynamic";
 
+// 预加载 echarts 相关 chunks —— 和 next/dynamic 加载组件代码并行
+// 这样当 RocketWordCloud 挂载后 useEffect 中的 import() 可直接命中缓存
+if (typeof window !== "undefined") {
+  import("echarts/core");
+  import("echarts/renderers");
+  import("echarts/components");
+  import("echarts-wordcloud");
+}
 const RocketWordCloud = dynamic(() => import("@/components/RocketWordCloud"), {
   ssr: false,
   loading: () => (
