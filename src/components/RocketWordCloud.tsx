@@ -1,13 +1,11 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import * as echarts from "echarts/core";
-import { CanvasRenderer } from "echarts/renderers";
-import { TooltipComponent } from "echarts/components";
-
-// 仅注册词云所需的最小模块（wordcloud 插件自行注册 series 类型）
-echarts.use([CanvasRenderer, TooltipComponent]);
 import { wordCloudData as baseWords, type WordCloudData } from "../data/wordCloudData";
+import { ROCKET_MASK_DATA_URI } from "../data/rocketMaskData";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type EChartsInstance = any;
 
 // 粒子接口定义
 interface Particle {
@@ -164,22 +162,51 @@ const BinaryFlame = React.memo(function BinaryFlame() {
 
 export default function RocketWordCloud() {
   const chartRef = useRef<HTMLDivElement>(null);
-  const chartInstanceRef = useRef<echarts.ECharts | null>(null);
+  const chartInstanceRef = useRef<EChartsInstance>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  // 缓存 echarts 模块引用，避免重复导入
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const echartsRef = useRef<any>(null);
+  // 缓存蒙版图片
+  const maskImageRef = useRef<HTMLImageElement | null>(null);
   // 记录上一次的容器尺寸，用于判断是否真正需要 resize
   const lastSizeRef = useRef<{ width: number; height: number } | null>(null);
   // 标记图表是否已初始化完成
   const isInitializedRef = useRef(false);
 
   useEffect(() => {
-    // 动态导入 echarts-wordcloud 以避免 SSR 问题
-    import("echarts-wordcloud").then(() => {
+    // 并行加载：echarts core + echarts-wordcloud + 蒙版图片解码
+    // 消除原来的三次串行等待
+    const loadMaskImage = () =>
+      new Promise<HTMLImageElement>((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.src = ROCKET_MASK_DATA_URI; // 内联 base64，无网络请求
+      });
+
+    Promise.all([
+      import("echarts/core").then(async (core) => {
+        const [{ CanvasRenderer }, { TooltipComponent }] = await Promise.all([
+          import("echarts/renderers"),
+          import("echarts/components"),
+        ]);
+        core.use([CanvasRenderer, TooltipComponent]);
+        return core;
+      }),
+      import("echarts-wordcloud"),
+      loadMaskImage(),
+    ]).then(([echarts, , maskImage]) => {
+      echartsRef.current = echarts;
+      maskImageRef.current = maskImage;
       setIsLoaded(true);
     });
   }, []);
 
   useEffect(() => {
     if (!chartRef.current || !isLoaded) return;
+    const echarts = echartsRef.current;
+    const maskImage = maskImageRef.current;
+    if (!echarts || !maskImage) return;
 
     // 如果已经初始化过，不要重复初始化
     if (isInitializedRef.current && chartInstanceRef.current) {
@@ -197,97 +224,92 @@ export default function RocketWordCloud() {
       height: chartRef.current.clientHeight,
     };
 
-    // 加载火箭蒙版图片
-    const maskImage = new Image();
-    maskImage.src = "/rocket2_black.png";
-
-    maskImage.onload = () => {
-      // 复制词汇多次以填充更密集
-      const wordCloudData: WordCloudData[] = [];
-      for (let i = 0; i < 2; i++) {
-        baseWords.forEach((word) => {
-          wordCloudData.push({
-            // 使用零宽字符创建唯一但视觉上相同的名称
-            name: i === 0 ? word.name : word.name + "\u200B".repeat(i),
-            value: word.value - i * 10, // 每次重复降低权重
-            description: word.description, // 保留描述
-          });
-        });
-      }
-
-      // 创建名称到描述的映射表
-      const descriptionMap = new Map<string, string>();
+    // 蒙版图片已通过 Promise.all 预加载完成，直接使用
+    // 复制词汇多次以填充更密集
+    const wordCloudData: WordCloudData[] = [];
+    for (let i = 0; i < 2; i++) {
       baseWords.forEach((word) => {
-        if (word.description) {
-          descriptionMap.set(word.name, word.description);
-        }
+        wordCloudData.push({
+          // 使用零宽字符创建唯一但视觉上相同的名称
+          name: i === 0 ? word.name : word.name + "\u200B".repeat(i),
+          value: word.value - i * 10, // 每次重复降低权重
+          description: word.description, // 保留描述
+        });
       });
+    }
 
-      chart.setOption({
-        tooltip: {
-          show: true,
-          formatter: (params: { name?: string }) => {
-            if (!params.name) return "";
-            // 去掉零宽字符获取原始名称
-            const cleanName = params.name.replace(/\u200B/g, "");
-            const description = descriptionMap.get(cleanName);
-            // 返回格式化的 tooltip
-            return `<div style="padding: 4px 8px;">
-              <div style="font-weight: bold; margin-bottom: 4px; color: #22d3ee;">${cleanName}</div>
-              <div style="font-size: 12px; color: #94a3b8;">${description || "暂无描述"}</div>
-            </div>`;
-          },
+    // 创建名称到描述的映射表
+    const descriptionMap = new Map<string, string>();
+    baseWords.forEach((word) => {
+      if (word.description) {
+        descriptionMap.set(word.name, word.description);
+      }
+    });
+
+    chart.setOption({
+      tooltip: {
+        show: true,
+        formatter: (params: { name?: string }) => {
+          if (!params.name) return "";
+          // 去掉零宽字符获取原始名称
+          const cleanName = params.name.replace(/\u200B/g, "");
+          const description = descriptionMap.get(cleanName);
+          // 返回格式化的 tooltip
+          return `<div style="padding: 4px 8px;">
+            <div style="font-weight: bold; margin-bottom: 4px; color: #22d3ee;">${cleanName}</div>
+            <div style="font-size: 12px; color: #94a3b8;">${description || "暂无描述"}</div>
+          </div>`;
         },
-        series: [
-          {
-            type: "wordCloud",
-            shape: "circle",
-            keepAspect: true,
-            maskImage: maskImage,
-            left: "center",
-            top: "center",
-            width: "100%",
-            height: "100%",
-            right: null,
-            bottom: null,
-            sizeRange: [11, 32], // 减小字体大小范围: 最小10px, 最大32px
-            rotationRange: [0, 0], // 不旋转,保持水平
-            rotationStep: 0,
-            gridSize: 7, // 减小网格大小以允许更密集的布局
-            drawOutOfBound: false,
-            shrinkToFit: true,
-            layoutAnimation: false, // 禁用布局动画，避免移动端滚动时重绘闪烁
-            textStyle: {
-              fontFamily: "sans-serif",
-              fontWeight: "bold",
-              color: function () {
-                // 使用青色到蓝色的渐变色系
-                const colors = [
-                  "rgb(34, 211, 238)", // cyan-400
-                  "rgb(6, 182, 212)", // cyan-500
-                  "rgb(8, 145, 178)", // cyan-600
-                  "rgb(59, 130, 246)", // blue-500
-                  "rgb(37, 99, 235)", // blue-600
-                  "rgb(96, 165, 250)", // blue-400
-                ];
-                return colors[Math.floor(Math.random() * colors.length)];
-              },
+      },
+      series: [
+        {
+          type: "wordCloud",
+          shape: "circle",
+          keepAspect: true,
+          maskImage: maskImage,
+          left: "center",
+          top: "center",
+          width: "100%",
+          height: "100%",
+          right: null,
+          bottom: null,
+          sizeRange: [11, 32], // 减小字体大小范围: 最小10px, 最大32px
+          rotationRange: [0, 0], // 不旋转,保持水平
+          rotationStep: 0,
+          gridSize: 7, // 减小网格大小以允许更密集的布局
+          drawOutOfBound: false,
+          shrinkToFit: true,
+          layoutAnimation: true, // 逐词渐入动画，提升加载感知
+          textStyle: {
+            fontFamily: "sans-serif",
+            fontWeight: "bold",
+            color: function () {
+              // 使用青色到蓝色的渐变色系
+              const colors = [
+                "rgb(34, 211, 238)", // cyan-400
+                "rgb(6, 182, 212)", // cyan-500
+                "rgb(8, 145, 178)", // cyan-600
+                "rgb(59, 130, 246)", // blue-500
+                "rgb(37, 99, 235)", // blue-600
+                "rgb(96, 165, 250)", // blue-400
+              ];
+              return colors[Math.floor(Math.random() * colors.length)];
             },
-            emphasis: {
-              focus: "self",
-              textStyle: {
-                fontSize: undefined, // 自动放大
-                color: "rgb(255, 255, 255)", // 强调时变白色
-                textShadowBlur: 20,
-                textShadowColor: "rgba(34, 211, 238, 0.8)",
-                fontWeight: "bolder",
-              },
-            },
-            data: wordCloudData,
           },
-        ],
-      });
-    };
+          emphasis: {
+            focus: "self",
+            textStyle: {
+              fontSize: undefined, // 自动放大
+              color: "rgb(255, 255, 255)", // 强调时变白色
+              textShadowBlur: 20,
+              textShadowColor: "rgba(34, 211, 238, 0.8)",
+              fontWeight: "bolder",
+            },
+          },
+          data: wordCloudData,
+        },
+      ],
+    });
 
     // 使用 ResizeObserver 替代 window resize 事件
     // 这样只有当容器真正改变尺寸时才会触发 resize
@@ -344,8 +366,8 @@ export default function RocketWordCloud() {
         ref={chartRef}
         className="w-full h-full min-h-[280px] sm:min-h-[360px] lg:min-h-[500px]"
       />
-      {/* 二进制尾焰效果 */}
-      <BinaryFlame />
+      {/* 二进制尾焰效果 - 与词云同步出现 */}
+      {isLoaded && <BinaryFlame />}
     </div>
   );
 }
