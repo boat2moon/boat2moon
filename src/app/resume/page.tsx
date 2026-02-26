@@ -23,6 +23,7 @@ export default function ResumePage() {
   const mainRef = useRef<HTMLElement>(null);
   const [scale, setScale] = useState(1);
   const [height, setHeight] = useState<number | "auto">("auto");
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -53,15 +54,51 @@ export default function ResumePage() {
 
     // 初始化
     handleResize();
+    setReady(true);
+
+    // 打印提示：建议使用"另存为 PDF"
+    const handleBeforePrint = () => {
+      alert(
+        '💡 提示：请将 "目标打印机" 选择为 "另存为 PDF"（Save as PDF），这样生成的 PDF 才能保留可点击的超链接效果。',
+      );
+    };
+    window.addEventListener("beforeprint", handleBeforePrint);
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("beforeprint", handleBeforePrint);
       resizeObserver.disconnect();
     };
   }, []);
 
   return (
     <div className={styles.resumePage}>
+      <button className={styles.printBtn} onClick={() => window.print()} title="打印 / 另存为 PDF">
+        <svg
+          className={styles.printerSvg}
+          viewBox="0 0 64 64"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* 出纸（hover 时滑出） */}
+          <g className={styles.paper}>
+            <rect x="18" y="38" width="28" height="22" rx="2" fill="#fff" />
+            <line x1="23" y1="45" x2="41" y2="45" stroke="#ccc" strokeWidth="1.5" />
+            <line x1="23" y1="49" x2="37" y2="49" stroke="#ccc" strokeWidth="1.5" />
+            <line x1="23" y1="53" x2="39" y2="53" stroke="#ccc" strokeWidth="1.5" />
+          </g>
+          {/* 打印机主体 */}
+          <rect x="8" y="22" width="48" height="22" rx="4" fill="currentColor" />
+          {/* 进纸槽 */}
+          <rect x="16" y="10" width="32" height="16" rx="2" fill="currentColor" opacity="0.7" />
+          {/* 出纸口 */}
+          <rect x="14" y="38" width="36" height="4" rx="1" fill="currentColor" opacity="0.85" />
+          {/* 电源指示灯 */}
+          <circle className={styles.led} cx="46" cy="33" r="2.5" fill="#4ade80" />
+          {/* 按钮 */}
+          <circle cx="38" cy="33" r="2" fill="rgba(255,255,255,0.25)" />
+        </svg>
+      </button>
       <div className={styles.container} style={{ height: height }}>
         <main
           ref={mainRef}
@@ -70,6 +107,8 @@ export default function ResumePage() {
             transform: `scale(${scale})`,
             marginLeft: scale < 1 ? 0 : "auto",
             marginRight: scale < 1 ? 0 : "auto",
+            opacity: ready ? 1 : 0,
+            transition: "opacity 0.3s ease",
           }}
         >
           <header className={styles.header}>
@@ -247,7 +286,7 @@ export default function ResumePage() {
                       <li>
                         <strong>AI应用开发：</strong>实现内嵌 AI 助手（AI灵动岛），后端统一适配多 AI
                         服务商（含负载均衡+故障转移）；前端基于 SSE 流式响应 + &quot;累积缓冲 +
-                        节流事务替换&quot;策略，解决富文本编辑器中流式 Markdown
+                        节流事务替换&quot;策略，解决富文本编辑器中流式 MD
                         实时渲染问题，支持表格/列表等复杂结构的稳定生成；并采用有限状态机管理多阶段自定义动画，实现流畅的伪3D效果与交互反馈。
                       </li>
                       <li>
@@ -472,15 +511,15 @@ export default function ResumePage() {
             <ul className={styles.awardList}>
               <li>
                 <strong>论文1：</strong>《A Spatial Multi-Scale Reservoir Computing Framework for
-                Power Flow Analysis in Power
-                Grids》，一种数据驱动的AI计算框架解决电网潮流计算问题，现期刊 Complex Engineering
-                Systems 在投，并曾在第二十届全国网络科学与工程论坛做分组报告。
+                Power Flow Analysis in Power Grids》，一种数据驱动的 AI
+                计算框架解决电网潮流计算问题，曾在第二十届全国网络科学与工程论坛做分组报告，现期刊
+                Complex Engineering Systems 已录用。
               </li>
               <li>
                 <strong>论文2：</strong>《When, Where, and What: A Graph Reservoir Computing
                 Framework for Spatiotemporal Power Grid Disturbance
-                Monitoring》，一种解决有限观测下电网扰动监测“何时-何处-何事”问题的一体化协同AI计算方案，一区Top期刊
-                IEEE Transactions on Industrial Informatics 在投。
+                Monitoring》，一种解决有限观测下电网扰动监测“何时-何处-何事”问题的一体化 AI
+                协同计算方案，一区Top期刊 IEEE Transactions on Industrial Informatics 在投。
               </li>
               <li>
                 <strong>专利1：</strong>
