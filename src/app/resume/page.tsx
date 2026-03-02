@@ -347,7 +347,7 @@ export default function ResumePage() {
                         >
                           （演示
                           <FiGithub aria-hidden="true" className={styles.inlineIconSmall} />
-                          boletalk.top）
+                          bltalk.top）
                         </a>
                       </span>
                     </span>
@@ -359,8 +359,9 @@ export default function ResumePage() {
                   <li>
                     <div className={styles.node}>
                       <span className={styles.nodeTags}>
-                        <strong>全栈开发</strong> | Next.js · React · Zustand · Drizzle · PostgreSQL
-                        · LangChain.js · RAG · ChatGPT API · Zod
+                        <strong>全栈开发</strong> | Next.js - React.js - Zustand - Drizzle -
+                        PostgreSQL - LangChain.js - RAG - Vercel AI SDK - Zod - Cloudflare DO -
+                        Serverless
                       </span>
                     </div>
                   </li>
@@ -378,24 +379,30 @@ export default function ResumePage() {
                     </div>
                     <ul>
                       <li>
-                        实现基于 LangGraph
-                        的状态机工作流，将面试流程拆分为简历解析、问题生成、追问、评分等独立串行节点，解决了长文本处理中
-                        LLM
-                        注意力分散的问题；通过条件边控制流转，实现了可扩展、可调试的面试对话系统。
+                        <strong>文本模型智能体：</strong>基于 ReAct 范式构建 Agent 核心循环，通过
+                        Zod Schema
+                        约束大模型结构化输出驱动工具调用，实现简历解析、诊断评分、多轮追问等面试工作流的自主编排。
                       </li>
                       <li>
-                        搭建 RAG（检索增强生成）管道，使用文本嵌入模型对 PDF 简历/JD
-                        进行分块向量化并存入向量数据库，实现基于语义相似度的精准上下文检索，对话时动态注入
-                        Prompt，提升用户个性化针对性。
+                        <strong>基础语音交互：</strong>在文本 Agent 的输入输出层接入浏览器 Web
+                        Speech API（STT/TTS），以最小改动实现语音面试模式，Agent
+                        核心推理链路完全复用，保持架构正交解耦。
                       </li>
                       <li>
-                        利用 Zod + Structured Output 技术规范化 AI 输出，确保 AI
-                        返回的评分、追问决策、反馈建议等字段格式稳定可解析，解决了 LLM
-                        输出不可控的问题，保障下游业务逻辑正常运行。
+                        <strong>实时语音通话：</strong>接入 Realtime API，通过 Cloudflare Worker
+                        中转 WebSocket 二进制帧并完成鉴权，客户端基于 AudioWorklet
+                        实现低延迟音频采集与播放，达成端到端流式语音对话体验。
                       </li>
                       <li>
-                        实现全链路 Stream 流式响应，基于 SSE 协议打通服务端 LangChain
-                        流与前端流式逐字渲染，大幅降低了用户等待长文本生成的心理延迟。
+                        <strong>数字人面试官：</strong>集成 TTS + Viseme 口型驱动方案，将 AI
+                        语音流实时映射为面部 BlendShape 权重序列，驱动 3D
+                        数字人口型与表情同步动画，配合 idle
+                        动作与场景渲染，营造沉浸式面对面模拟面试体验。
+                      </li>
+                      <li>
+                        <strong>RAG与MCP：</strong>基于向量数据库构建知识检索增强管线，将岗位 JD
+                        与面经语料注入 Agent 上下文；同时通过 MCP 协议对接外部工具服务，扩展 Agent
+                        的动态信息获取能力。
                       </li>
                     </ul>
                   </li>
