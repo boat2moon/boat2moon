@@ -200,7 +200,8 @@ export default function ResumePage() {
                 关系型/内存/向量数据库，消息队列
               </li>
               <li>
-                <strong>CI/CD应用：</strong>Docker，GitHub Actions / Webhooks，Serverless
+                <strong>CI/CD应用：</strong>Docker，GitHub Actions / Webhooks，Serverless，Edge
+                Runtime
               </li>
               <li>
                 <strong>外语水平：</strong>通过英语六级
