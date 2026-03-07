@@ -253,8 +253,8 @@ export default function ResumePage() {
                     <div className={styles.node}>
                       <span className={styles.nodeTags}>
                         <strong>全栈开发</strong> | Next - React - Nest - ShadcnUI - Zustand -
-                        Tailwind CSS - Prisma - PostgreSQL - OpenAI API - Docker - 阿里云 Serverless
-                        OSS CDN - Cloudflare DO - Prometheus - Grafana - Tiptap - Yjs - Hocuspocus
+                        Tailwind CSS - Prisma - PostgreSQL - OpenAI API - Docker - Serverless - OSS
+                        - CDN - Cloudflare DO - Prometheus - Grafana - Tiptap - Yjs - Hocuspocus
                       </span>
                     </div>
                   </li>
