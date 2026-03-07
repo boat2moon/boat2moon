@@ -78,6 +78,11 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    other: {
+      "msvalidate.01": "B287BE39F49AE2E541D73C3C926E0AEF",
+    },
+  },
 };
 
 /** 全站 JSON-LD 结构化数据 */
