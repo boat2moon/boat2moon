@@ -19,17 +19,54 @@ interface Particle {
   element: HTMLDivElement | null;
 }
 
-// 二进制尾焰组件 - 使用 requestAnimationFrame 优化性能
+// 二进制尾焰组件 - 离开视口自动暂停，节省移动端 CPU/GPU
 const BinaryFlame = React.memo(function BinaryFlame() {
   const containerRef = useRef<HTMLDivElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const particleIdRef = useRef(0);
   const lastSpawnTimeRef = useRef(0);
   const animationFrameRef = useRef<number>(0);
+  const isVisibleRef = useRef(true);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    // ── IntersectionObserver：仅移动端离开视口时暂停动画循环 ──
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    const clearAllParticles = () => {
+      particlesRef.current.forEach((particle) => {
+        if (particle.element && container.contains(particle.element)) {
+          container.removeChild(particle.element);
+        }
+      });
+      particlesRef.current = [];
+    };
+
+    let observer: IntersectionObserver | null = null;
+
+    if (isMobile) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          const wasVisible = isVisibleRef.current;
+          isVisibleRef.current = entry.isIntersecting;
+
+          if (entry.isIntersecting && !wasVisible) {
+            // 重新进入视口 → 启动动画
+            lastTime = performance.now();
+            lastSpawnTimeRef.current = lastTime;
+            animationFrameRef.current = requestAnimationFrame(animate);
+          } else if (!entry.isIntersecting && wasVisible) {
+            // 离开视口 → 停止动画 + 清理粒子
+            cancelAnimationFrame(animationFrameRef.current);
+            clearAllParticles();
+          }
+        },
+        { threshold: 0 },
+      );
+      observer.observe(container);
+    }
 
     // 获取粒子颜色
     const getColor = (opacity: number): string => {
@@ -103,6 +140,9 @@ const BinaryFlame = React.memo(function BinaryFlame() {
     let lastTime = performance.now();
 
     const animate = (currentTime: number) => {
+      // 双重检查：如果已不可见则不再继续
+      if (!isVisibleRef.current) return;
+
       const deltaTime = currentTime - lastTime;
       lastTime = currentTime;
 
@@ -138,17 +178,13 @@ const BinaryFlame = React.memo(function BinaryFlame() {
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
+    // 初始可见时启动
     animationFrameRef.current = requestAnimationFrame(animate);
 
     return () => {
+      observer?.disconnect();
       cancelAnimationFrame(animationFrameRef.current);
-      // 清理所有粒子元素
-      particlesRef.current.forEach((particle) => {
-        if (particle.element && container.contains(particle.element)) {
-          container.removeChild(particle.element);
-        }
-      });
-      particlesRef.current = [];
+      clearAllParticles();
     };
   }, []);
 

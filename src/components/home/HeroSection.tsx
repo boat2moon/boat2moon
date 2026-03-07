@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useEffect, useRef, useState } from "react";
 import MatrixRocketPlaceholder from "@/components/MatrixRocketPlaceholder";
 
 // 预加载 echarts 相关 chunks —— 和 next/dynamic 加载组件代码并行
@@ -22,8 +23,31 @@ const RocketWordCloud = dynamic(() => import("@/components/RocketWordCloud"), {
  * 该区域通过粘性布局与动效营造沉浸感，并承担吸引滚动的引导作用。
  */
 export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  // 仅移动端：离开视口时暂停 CSS 动画（月球/地球旋转），节省 GPU
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    // 桌面端不需要暂停，直接跳过
+    if (!window.matchMedia("(max-width: 768px)").matches) return;
+
+    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting), {
+      threshold: 0,
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // 控制旋转动画的暂停/恢复
+  const spinStyle = {
+    animationPlayState: isVisible ? ("running" as const) : ("paused" as const),
+  };
+
   return (
-    <section className="relative h-[100svh] overflow-hidden">
+    <section ref={sectionRef} className="relative h-[100svh] overflow-hidden">
       <div className="sticky top-0 isolate flex h-[100svh] flex-col justify-center">
         {/* 背景层：利用径向渐变与散点实现深空氛围 */}
         <div className="absolute inset-0 -z-20 bg-black">
@@ -91,6 +115,7 @@ export default function HeroSection() {
                       via-zinc-400 to-zinc-600
                       shadow-[inset_-10px_-10px_60px_rgba(0,0,0,0.6),0_0_80px_rgba(161,161,170,0.4)]
                       animate-[spin_60s_linear_infinite]"
+                    style={spinStyle}
                   >
                     <div
                       className="absolute left-[20%] top-[15%] h-12 w-12 rounded-full bg-zinc-500/60
@@ -136,6 +161,7 @@ export default function HeroSection() {
                       via-blue-500 to-green-600
                       shadow-[inset_-8px_-8px_30px_rgba(0,0,0,0.5),0_0_40px_rgba(59,130,246,0.3)]
                       animate-[spin_90s_linear_infinite]"
+                    style={spinStyle}
                   >
                     <div
                       className="absolute inset-0 rounded-full
