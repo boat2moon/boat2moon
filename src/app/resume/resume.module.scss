@@ -131,7 +131,7 @@
   grid-template-columns: auto auto;
   justify-content: start;
   font-size: 13px;
-  gap: 8px 16px;
+  gap: 8px 50px;
   margin-top: 12px;
 }
 
@@ -428,6 +428,11 @@
   width: fit-content;
 }
 
+/* 亮点成就条目间距（网页预览），打印时由 @media print 覆盖 */
+.tree ul ul > li {
+  padding: 4.5px 0;
+}
+
 .link {
   color: var(--primary);
   text-decoration: none;
@@ -444,13 +449,14 @@
 @media print {
   @page {
     size: A4;
-    /* 打印页边距：上下 xmm，左右由内容 padding 控制 */
-    margin: 6mm 0;
+    /* 打印页边距：适度压缩 */
+    margin: 5mm 0;
   }
 
   .resumePage {
     background: #fff;
     padding: 0;
+    line-height: 1.48; /* 打印时微调行高 */
   }
 
   .printBtn {
@@ -474,7 +480,19 @@
   }
 
   .header {
-    gap: 18px;
+    gap: 16px;
+  }
+
+  .header h1 {
+    margin-bottom: 10px;
+  }
+
+  .tagline {
+    margin-bottom: 11px;
+  }
+
+  .contacts {
+    margin-top: 8px;
   }
 
   .section {
@@ -483,6 +501,39 @@
 
   .sectionTitle {
     margin-bottom: 12px;
+    font-size: 19px;
+  }
+
+  .education p {
+    margin: 6px 0;
+  }
+
+  .skillList li {
+    margin-bottom: 5px;
+    font-size: 13px;
+  }
+
+  .awardList li {
+    margin-bottom: 5px;
+    font-size: 12.5px;
+  }
+
+  /* 树状列表：适度压缩字号和间距 */
+  .tree {
+    font-size: 12.8px;
+  }
+
+  .tree,
+  .tree ul {
+    margin-top: 7px;
+  }
+
+  .tree li {
+    padding: 3.5px 0;
+  }
+
+  .tree ul ul > li {
+    padding: 3.5px 0;
   }
 
   /* 打印时禁用所有 hover 效果，防止悬浮状态被快照捕获 */
@@ -502,47 +553,35 @@
     break-inside: auto;
     page-break-inside: auto;
   }
-  // .tree li {
-  //   break-inside: avoid;
-  //   page-break-inside: avoid;
-  // }
 
   /* 打印时强制细线优化：颜色减淡是视觉变细的关键 */
   .tree li::before {
     border-top-width: 0.5pt !important;
-    border-color: rgba(0, 0, 0, 0.15) !important; /* 打印时透明度要比网页中淡一点 */
+    border-color: rgba(0, 0, 0, 0.15) !important;
   }
   .tree li::after {
     border-left-width: 0.5pt !important;
-    border-color: rgba(0, 0, 0, 0.15) !important; /* 网页中是0.2 */
+    border-color: rgba(0, 0, 0, 0.15) !important;
   }
   .tree ul::before {
     border-left-width: 0.5pt !important;
     border-color: rgba(0, 0, 0, 0.15) !important;
   }
   .nodeSeparator {
-    border-bottom: 1px dotted rgba(0, 0, 0, 0.25) !important; /* 网页中是0.3 */
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.25) !important;
   }
   .inlineSeparator {
-    border-bottom: 1px dotted rgba(0, 0, 0, 0.25) !important; /* 网页中是0.3 */
+    border-bottom: 1px dotted rgba(0, 0, 0, 0.25) !important;
   }
   .sectionTitle::after {
-    border-bottom: 1px dashed rgba(0, 0, 0, 0.35) !important; /* 网页中是0.4 */
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.35) !important;
   }
 
   .nodeTime {
-    // 打印时保持"时间文本"颜色一致
     color: #7a7a7a !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
-
-  // .nodeTags {
-  //   // 打印时加深一点点"技术栈文本"颜色
-  //   color: #2a4058 !important;
-  //   -webkit-print-color-adjust: exact;
-  //   print-color-adjust: exact;
-  // }
 
   /* 打印时保留斑马纹底色 */
   .tree ul ul > li:nth-child(odd) {

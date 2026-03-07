@@ -126,14 +126,15 @@ export default function ResumePage() {
               <div className={styles.contacts}>
                 <div className={styles.contactItem}>
                   <PiPhoneCallFill aria-hidden="true" className={styles.contactIcon} />
-                  <span>电话：17354991160</span>
+                  <span>电话:</span>
+                  <span className={styles.contactValue}>17354991160</span>
                 </div>
                 <a
                   className={`${styles.contactItem} ${styles.contactLink}`}
                   href="mailto:boat2moon@foxmail.com"
                 >
                   <MdEmail aria-hidden="true" className={styles.contactIcon} />
-                  <span>邮箱：</span>
+                  <span>邮箱:</span>
                   <span className={styles.contactValue}>boat2moon@foxmail.com</span>
                 </a>
                 <a
@@ -143,8 +144,8 @@ export default function ResumePage() {
                   target="_blank"
                 >
                   <FaGithub aria-hidden="true" className={styles.contactIcon} />
-                  <span>GitHub：</span>
-                  <span className={styles.contactValue}>https://github.com/boat2moon</span>
+                  <span>GitHub:</span>
+                  <span className={styles.contactValue}>github.com/boat2moon</span>
                 </a>
                 <a
                   className={`${styles.contactItem} ${styles.contactLink}`}
@@ -153,7 +154,7 @@ export default function ResumePage() {
                   target="_blank"
                 >
                   <FaGlobe aria-hidden="true" className={styles.contactIcon} />
-                  <span>个人网站：</span>
+                  <span>个人网站:</span>
                   <span className={styles.contactValue}>boat2moon.com</span>
                 </a>
               </div>
@@ -369,8 +370,12 @@ export default function ResumePage() {
                   <li>
                     <div className={styles.node}>
                       <span>
-                        <strong>项目介绍：</strong>基于 ReAct 范式的垂直领域 AI Agent
-                        面试模拟平台。利用大模型推理能力，通过工作流编排实现简历深度解析、结构化诊断及多轮个性化面试问答，提供实时评分反馈与改进建议。
+                        <strong>项目介绍：</strong>
+                        {/* 基于 ReAct 范式的垂直领域 AI Agent
+                        面试模拟平台。利用大模型推理能力，通过工作流编排实现简历深度解析、结构化诊断及多轮个性化面试问答，提供实时评分反馈与改进建议。 */}
+                        基于TS生态全栈开发的多模态 AI
+                        面试辅助系统，支持文本、语音、电话、数字人视频四种交互模式，集成共享工具层 +
+                        Multi-Agents 架构 ，帮助求职者完成简历优化、模拟面试与评估报告生成全链路。
                       </span>
                     </div>
                   </li>
@@ -380,30 +385,33 @@ export default function ResumePage() {
                     </div>
                     <ul>
                       <li>
-                        <strong>语言模型智能体：</strong>基于 ReAct 范式构建 Agent 核心循环，通过
-                        Zod Schema 约束模型结构化输出，构建可扩展子 Agent + 共享工具层 架构，接入
-                        RAG 与 MCP
-                        能力，实现简历解析、诊断评分、多轮追问等面试工作流的多模态交互自主编排。
+                        <strong>文本驱动Agents：</strong>设计 Multi-Agent Workflow 架构，解耦可扩展
+                        Prompt 工程层、子 Agent 路由分发层、共享工具层；打通 PDF 文件解析、JD
+                        模板注入和面试评估持久化等完整链路，基于 SSE 流式输出。
                       </li>
                       <li>
-                        <strong>基础语音交互：</strong>在文本 Agent 的输入输出层接入浏览器 Web
-                        Speech API（STT/TTS），以最小改动实现语音面试模式，Agent
-                        核心推理链路完全复用，保持架构正交解耦。
+                        <strong>可靠语音交互：</strong>在文本 Agent I/O
+                        端接入语音能力，核心链路复用，保持架构正交解耦；输入侧集成前端实时 ASR
+                        ，AudioWorklet 降采样；输出侧构建双向流式 TTS 架构，配合 MediaSource
+                        Extensions 消除卡带感。
                       </li>
                       <li>
-                        <strong>端到端电话面试：</strong>接入 Realtime API，通过 Cloudflare Worker
-                        中转 WebSocket 二进制帧并完成鉴权，客户端基于 AudioWorklet
-                        实现低延迟音频采集与播放，达成端到端流式语音对话体验。
+                        <strong>端到端电话面试：</strong>Cloudflare DO 服务端实现双 WebSocket
+                        桥接，手写端到端语音大模型二进制帧协议编解码；前端 ScriptProcessor
+                        低延迟采集音频，通过 AudioContext 时间轴队列式调度解决 PCM 音频重叠问题。
                       </li>
                       <li>
-                        <strong>数字人视频面试：</strong>集成 TTS + Viseme 口型驱动方案，将 AI
-                        语音流实时映射为面部 BlendShape 权重序列，驱动 3D
-                        数字人口型与表情同步动画，配合 idle
-                        动作与场景渲染，营造沉浸式面对面模拟面试体验。
+                        <strong>数字人视频面试：</strong>流媒体数字人播报 +
+                        前端轻量级神经网络模型自研语音
+                        Pipeline，实现免按钮数字人视频面试；音频预缓冲配合流式 ASR
+                        实现同声识文，逐句发送策略将感知延迟从 3~5 秒降至 1 秒内，支持语音打断。
                       </li>
                       <li>
-                        <strong>RAG与Tools/MCP：</strong>
-                        扩展Agent的信息边界、行动边界、集成边界与外部服务能力，同时构造Agent的长期记忆系统
+                        <strong>RAG/MCP/Tools：</strong>
+                        {/* （引用溯源 + HyDE + 混合检索 + ReRank + 去重）  */}
+                        构建多阶段 RAG 检索管线扩展信息边界，并集成 per-user
+                        记忆系统实现跨会话个性化；通过 MCP 协议双向集成外部服务与暴露自身 AI
+                        能力；重构共享 Tools 层扩展跨模式复用边界。
                       </li>
                     </ul>
                   </li>
