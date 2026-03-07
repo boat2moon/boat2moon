@@ -1,12 +1,8 @@
 // home.ts
 
-import previewBole1 from "@/assets/projects/bole-talk/preview-1.webp";
-import previewBole2 from "@/assets/projects/bole-talk/preview-2.webp";
-import previewBole3 from "@/assets/projects/bole-talk/preview-3.webp";
-import previewBole4 from "@/assets/projects/bole-talk/preview-4.webp";
+import boleTalkMedia from "@/assets/projects/bole-talk/_media";
 import previewDev from "@/assets/projects/misc/dev.webp";
-import previewRumu1 from "@/assets/projects/rumu/preview-1.webp";
-import previewRumu2 from "@/assets/projects/rumu/preview-2.webp";
+import rumuMedia from "@/assets/projects/rumu/_media";
 
 import { type MediaItem } from "@/components/home/ProjectCarousel";
 
@@ -19,6 +15,8 @@ export type ProjectMeta = {
   tags: string[];
   media?: MediaItem[];
   link?: string;
+  /** Tailwind aspect ratio 字符串，如 "1.91/1" 或 "4/3"，默认 "16/9" */
+  aspectRatio?: string;
 };
 
 export type TopicMeta = {
@@ -36,10 +34,8 @@ export const projects: ProjectMeta[] = [
     title: "入木 AI",
     description:
       "一个 TS 全栈开发的现代化 AIGC 协同文档编辑平台，集成了丰富的智能编辑能力与多人协作功能，支持知识库管理、插件扩展与持久化存储等。",
-    media: [
-      { type: "image", src: previewRumu1 },
-      { type: "image", src: previewRumu2 },
-    ],
+    media: rumuMedia,
+    aspectRatio: "1.91/1",
     tags: [
       "Next",
       "React",
@@ -63,34 +59,33 @@ export const projects: ProjectMeta[] = [
     link: "https://www.rumuai.top",
   },
   {
-    title: "伯乐 Talk（待上线）",
+    title: "伯乐 Talk",
     description:
       "基于 ReAct 范式的垂直领域 AI Agent 面试模拟平台。利用大模型推理能力，通过工作流编排实现简历深度解析、结构化诊断及多轮个性化面试问答，提供实时评分反馈与改进建议。",
-    media: [
-      { type: "image", src: previewBole1 },
-      { type: "image", src: previewBole2 },
-      { type: "image", src: previewBole3 },
-      { type: "image", src: previewBole4 },
-    ],
+    media: boleTalkMedia,
+    aspectRatio: "1.91/1",
     tags: [
       "Next.js",
       "React",
       "Zustand",
       "Drizzle",
+      "Neon",
       "PostgreSQL",
       "LangChain.js",
       "RAG",
+      "MCP",
       "Vercel AI SDK",
-      "ChatGPT API",
+      "OpenAI API",
       "Zod",
     ],
-    link: "#",
+    link: "https://www.bltalk.top",
   },
   {
     title: "RobotPrinter AI-Island",
     description:
       "一个有趣的 React 组件库——机器人吐纸条！可用于 AI 对话、快捷指令、数据处理等场景，自带独特的 3D 动画效果和交互体验，支持拖拽、玻璃态风格、智能睡眠等丰富功能。",
     media: [{ type: "video", src: "/videos/robot-printer-demo.mp4" }],
+    aspectRatio: "4/3",
     tags: [
       "React",
       "TypeScript",
@@ -113,6 +108,7 @@ export const projects: ProjectMeta[] = [
       { type: "video", src: "/videos/infinitetalk-demo.mp4" },
       { type: "video", src: "/videos/infinitetalk-demo-2.mp4" },
     ],
+    aspectRatio: "4/3",
     tags: ["ComfyUI", "Wan2.1", "InfiniteTalk", "AIGC", "Video Generation"],
     link: "https://github.com/boat2moon/infinitetalk-comfyui-workflow",
   },

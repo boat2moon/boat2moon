@@ -379,9 +379,10 @@ export default function ResumePage() {
                     </div>
                     <ul>
                       <li>
-                        <strong>文本模型智能体：</strong>基于 ReAct 范式构建 Agent 核心循环，通过
-                        Zod Schema
-                        约束大模型结构化输出驱动工具调用，实现简历解析、诊断评分、多轮追问等面试工作流的自主编排。
+                        <strong>语言模型智能体：</strong>基于 ReAct 范式构建 Agent 核心循环，通过
+                        Zod Schema 约束模型结构化输出，构建可扩展子 Agent + 共享工具层 架构，接入
+                        RAG 与 MCP
+                        能力，实现简历解析、诊断评分、多轮追问等面试工作流的多模态交互自主编排。
                       </li>
                       <li>
                         <strong>基础语音交互：</strong>在文本 Agent 的输入输出层接入浏览器 Web
@@ -389,20 +390,19 @@ export default function ResumePage() {
                         核心推理链路完全复用，保持架构正交解耦。
                       </li>
                       <li>
-                        <strong>实时语音通话：</strong>接入 Realtime API，通过 Cloudflare Worker
+                        <strong>端到端电话面试：</strong>接入 Realtime API，通过 Cloudflare Worker
                         中转 WebSocket 二进制帧并完成鉴权，客户端基于 AudioWorklet
                         实现低延迟音频采集与播放，达成端到端流式语音对话体验。
                       </li>
                       <li>
-                        <strong>数字人面试官：</strong>集成 TTS + Viseme 口型驱动方案，将 AI
+                        <strong>数字人视频面试：</strong>集成 TTS + Viseme 口型驱动方案，将 AI
                         语音流实时映射为面部 BlendShape 权重序列，驱动 3D
                         数字人口型与表情同步动画，配合 idle
                         动作与场景渲染，营造沉浸式面对面模拟面试体验。
                       </li>
                       <li>
-                        <strong>RAG与MCP：</strong>基于向量数据库构建知识检索增强管线，将岗位 JD
-                        与面经语料注入 Agent 上下文；同时通过 MCP 协议对接外部工具服务，扩展 Agent
-                        的动态信息获取能力。
+                        <strong>RAG与Tools/MCP：</strong>
+                        扩展Agent的信息边界、行动边界、集成边界与外部服务能力，同时构造Agent的长期记忆系统
                       </li>
                     </ul>
                   </li>

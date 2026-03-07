@@ -12,9 +12,14 @@ export type MediaItem =
 type ProjectCarouselProps = {
   media: MediaItem[];
   title: string;
+  aspectRatio?: string;
 };
 
-export default function ProjectCarousel({ media, title }: ProjectCarouselProps) {
+export default function ProjectCarousel({
+  media,
+  title,
+  aspectRatio = "16/9",
+}: ProjectCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isThrottled, setIsThrottled] = useState(false);
@@ -82,8 +87,8 @@ export default function ProjectCarousel({ media, title }: ProjectCarouselProps) 
 
   return (
     <div
-      className="relative aspect-[4/3] w-full overflow-hidden rounded-md bg-zinc-100
-        dark:bg-zinc-800"
+      className="relative w-full overflow-hidden rounded-md bg-zinc-100 dark:bg-zinc-800"
+      style={{ aspectRatio }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -122,6 +127,7 @@ export default function ProjectCarousel({ media, title }: ProjectCarouselProps) 
                       muted
                       loop
                       playsInline
+                      preload="auto"
                     />
                   </div>
                 ) : (
@@ -129,6 +135,7 @@ export default function ProjectCarousel({ media, title }: ProjectCarouselProps) 
                     src={item.src}
                     alt={`${title} - ${index + 1}`}
                     fill
+                    loading="eager"
                     className={cn(
                       "object-cover",
                       !hasMultipleItems &&

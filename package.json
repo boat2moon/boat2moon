@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "gen:media": "node scripts/gen-project-media.mjs",
+    "predev": "node scripts/gen-project-media.mjs",
+    "prebuild": "node scripts/gen-project-media.mjs",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint .",

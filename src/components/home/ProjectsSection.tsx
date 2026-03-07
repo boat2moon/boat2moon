@@ -99,9 +99,13 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                 dark:data-[active=true]:bg-zinc-800/80"
             >
               {/* 图片/视频轮播区域 */}
-              <ProjectCarousel media={project.media || []} title={project.title} />
+              <ProjectCarousel
+                media={project.media || []}
+                title={project.title}
+                aspectRatio={project.aspectRatio}
+              />
 
-              <CardHeader>
+              <CardHeader className="pt-5 text-center">
                 <CardTitle
                   className="text-xl transition-colors text-zinc-800 dark:text-zinc-300
                     group-hover:text-zinc-900 dark:group-hover:text-zinc-100
