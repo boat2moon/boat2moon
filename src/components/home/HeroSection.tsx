@@ -79,7 +79,7 @@ export default function HeroSection() {
           <div className="flex items-center justify-center">
             <div className="relative w-full max-w-lg h-[320px] sm:h-[400px] lg:h-[500px]">
               {/* 标题 - 移动端放大并贴合屏幕宽度 */}
-              <h2
+              <h1
                 className="mb-4 sm:mb-6 text-center text-zinc-400 text-base tracking-[0.2em] px-2
                   sm:text-sm sm:tracking-[0.3em] sm:px-0"
               >
@@ -87,7 +87,7 @@ export default function HeroSection() {
                   JS/TS全栈开发 · AI/大模型应用开发 · 网站逐步构建中···
                 </span>
                 <span className="sm:hidden">全栈开发 · AI应用开发 · 构建中···</span>
-              </h2>
+              </h1>
               <RocketWordCloud />
             </div>
           </div>
