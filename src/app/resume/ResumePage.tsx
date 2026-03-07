@@ -252,9 +252,9 @@ export default function ResumePage() {
                   <li>
                     <div className={styles.node}>
                       <span className={styles.nodeTags}>
-                        <strong>全栈开发</strong> | Next.js - React - Nest.js - ShadcnUI - Zustand -
-                        Auth.js - Prisma - PostgreSQL - Tiptap - OpenAI API - Docker - 阿里云
-                        Serverless OSS CDN - Cloudflare DO - Prometheus - Grafana
+                        <strong>全栈开发</strong> | Next - React - Nest - ShadcnUI - Zustand -
+                        Tailwind CSS - Prisma - PostgreSQL - OpenAI API - Docker - 阿里云 Serverless
+                        OSS CDN - Cloudflare DO - Prometheus - Grafana - Tiptap - Yjs - Hocuspocus
                       </span>
                     </div>
                   </li>
@@ -362,9 +362,9 @@ export default function ResumePage() {
                   <li>
                     <div className={styles.node}>
                       <span className={styles.nodeTags}>
-                        <strong>全栈开发</strong> | Next.js - React.js - Zustand - Drizzle -
-                        PostgreSQL - LangChain.js - RAG - Vercel AI SDK - Zod - Cloudflare DO -
-                        Serverless
+                        <strong>全栈开发</strong> | Next.js - React.js - Zustand - NextAuth -
+                        Drizzle - PostgreSQL - Pgvector - LangChain.js - Vercel AI SDK - MCP - Zod -
+                        Cloudflare DO - Serverless - ONNX Runtime Web - WebRTC - ASR - TTS
                       </span>
                     </div>
                   </li>
