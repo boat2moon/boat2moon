@@ -23,24 +23,34 @@
 
 <br/>
 
-## 🛠️ 技术栈
+### 🛠️ 技术栈
 
-**编程语言：** &nbsp; <img src="https://cdn.simpleicons.org/javascript/F7DF1E" height="20"> <img src="https://cdn.simpleicons.org/typescript/3178C6" height="20"> <img src="https://cdn.simpleicons.org/python/3776AB" height="20">
+**编程语言：** &nbsp; <img src="https://cdn.simpleicons.org/javascript/F7DF1E" height="16"> <img src="https://cdn.simpleicons.org/typescript/3178C6" height="16"> <img src="https://cdn.simpleicons.org/python/3776AB" height="16">
 
-> 主 JavaScript / TypeScript，副 Python
+<div style="border-left: 2px solid #555; padding-left: 12px; margin-top: 10px; margin-bottom: 20px; color: #999; font-size: 14px;">
+  主 JavaScript / TypeScript，副 Python
+</div>
 
-**熟悉前端：** &nbsp; <img src="https://cdn.simpleicons.org/html5/E34F26" height="20"> <img src="https://cdn.simpleicons.org/sass/CC6699" height="20"> <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" height="20"> <img src="https://cdn.simpleicons.org/shadcnui/ffffff" height="20"> <img src="https://cdn.simpleicons.org/react/61DAFB" height="20"> <img src="https://cdn.simpleicons.org/nextdotjs" height="20"> <img src="https://cdn.simpleicons.org/webpack/8DD6F9" height="20"> <img src="https://cdn.simpleicons.org/eslint/4B32C3" height="20"> <img src="https://cdn.simpleicons.org/prettier/F7B93E" height="20">
+**熟悉前端：** &nbsp; <img src="https://cdn.simpleicons.org/html5/E34F26" height="16"> <img src="https://cdn.simpleicons.org/sass/CC6699" height="16"> <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" height="16"> <img src="https://cdn.simpleicons.org/shadcnui/ffffff" height="16"> <img src="https://cdn.simpleicons.org/react/61DAFB" height="16"> <img src="https://cdn.simpleicons.org/nextdotjs" height="16"> <img src="https://cdn.simpleicons.org/webpack/8DD6F9" height="16"> <img src="https://cdn.simpleicons.org/eslint/4B32C3" height="16"> <img src="https://cdn.simpleicons.org/prettier/F7B93E" height="16">
 
-> HTML，Sass / Tailwind CSS，工程化，组件库，状态管理，React 与 Next 框架，富文本编辑器开发
+<div style="border-left: 2px solid #555; padding-left: 12px; margin-top: 10px; margin-bottom: 20px; color: #999; font-size: 14px;">
+  HTML，Sass / Tailwind CSS，工程化，组件库，状态管理，React 与 Next 框架，富文本编辑器开发
+</div>
 
-**熟悉 AI 应用开发：** &nbsp; <img src="./public/icons/neural-network.svg" height="20"> <img src="./public/icons/robot-head.svg" height="20"> <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" height="20"> <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/langchain.svg" height="20"> <img src="https://cdn.simpleicons.org/vercel/ffffff" height="20">
+**熟悉 AI 应用开发：** &nbsp; <img src="./public/icons/neural-network.svg" height="16"> <img src="./public/icons/robot-head.svg" height="16"> <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/openai.svg" height="16"> <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/langchain.svg" height="16"> <img src="https://cdn.simpleicons.org/vercel/ffffff" height="16">
 
-> LangChain.js，Vercel AI-SDK，Prompt 工程与应用，知识工程与 RAG，Agent 理论与框架
+<div style="border-left: 2px solid #555; padding-left: 12px; margin-top: 10px; margin-bottom: 20px; color: #999; font-size: 14px;">
+  LangChain.js，Vercel AI-SDK，Prompt 工程与应用，知识工程与 RAG，Agent 理论与框架
+</div>
 
-**了解后端：** &nbsp; <img src="https://cdn.simpleicons.org/nodedotjs/339933" height="20"> <img src="https://cdn.simpleicons.org/hono/E36002" height="20"> <img src="https://cdn.simpleicons.org/nestjs/E0234E" height="20"> <img src="https://cdn.simpleicons.org/prisma/ffffff" height="20"> <img src="https://cdn.simpleicons.org/drizzle/C5F74F" height="20"> <img src="https://cdn.simpleicons.org/postgresql/4169E1" height="20"> <img src="https://cdn.simpleicons.org/mysql/4479A1" height="20"> <img src="https://cdn.simpleicons.org/sqlite/59a3d5" height="20"> <img src="https://cdn.simpleicons.org/mongodb/47A248" height="20"> <img src="https://cdn.simpleicons.org/supabase/3FCF8E" height="20"> <img src="https://cdn.simpleicons.org/milvus/00A1EA" height="20"> <img src="https://cdn.simpleicons.org/redis/DC382D" height="20"> <img src="https://cdn.simpleicons.org/rabbitmq/FF6600" height="20">
+**了解后端：** &nbsp; <img src="https://cdn.simpleicons.org/nodedotjs/339933" height="16"> <img src="https://cdn.simpleicons.org/hono/E36002" height="16"> <img src="https://cdn.simpleicons.org/nestjs/E0234E" height="16"> <img src="https://cdn.simpleicons.org/prisma/ffffff" height="16"> <img src="https://cdn.simpleicons.org/drizzle/C5F74F" height="16"> <img src="https://cdn.simpleicons.org/postgresql/4169E1" height="16"> <img src="https://cdn.simpleicons.org/mysql/4479A1" height="16"> <img src="https://cdn.simpleicons.org/sqlite/59a3d5" height="16"> <img src="https://cdn.simpleicons.org/mongodb/47A248" height="16"> <img src="https://cdn.simpleicons.org/supabase/3FCF8E" height="16"> <img src="https://cdn.simpleicons.org/milvus/00A1EA" height="16"> <img src="https://cdn.simpleicons.org/redis/DC382D" height="16"> <img src="https://cdn.simpleicons.org/rabbitmq/FF6600" height="16">
 
-> Node / Hono / Nest，Next 实现 BFF 架构，ORM 与 关系型/内存/向量数据库，消息队列
+<div style="border-left: 2px solid #555; padding-left: 12px; margin-top: 10px; margin-bottom: 20px; color: #999; font-size: 14px;">
+  Node / Hono / Nest，Next 实现 BFF 架构，ORM 与 关系型/内存/向量数据库，消息队列
+</div>
 
-**CI/CD 应用：** &nbsp; <img src="https://cdn.simpleicons.org/docker/2496ED" height="20"> <img src="https://cdn.simpleicons.org/githubactions/2088FF" height="20"> <img src="https://cdn.simpleicons.org/serverless/FD5750" height="20"> <img src="https://cdn.simpleicons.org/cloudflare/F38020" height="20">
+**CI/CD 应用：** &nbsp; <img src="https://cdn.simpleicons.org/docker/2496ED" height="16"> <img src="https://cdn.simpleicons.org/githubactions/2088FF" height="16"> <img src="https://cdn.simpleicons.org/serverless/FD5750" height="16"> <img src="https://cdn.simpleicons.org/cloudflare/F38020" height="16">
 
-> Docker，GitHub Actions / Webhooks，Serverless，Edge Runtime
+<div style="border-left: 2px solid #555; padding-left: 12px; margin-top: 10px; margin-bottom: 20px; color: #999; font-size: 14px;">
+  Docker，GitHub Actions / Webhooks，Serverless，Edge Runtime
+</div>
