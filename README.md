@@ -14,8 +14,7 @@
       </td>
       <td width="58%" align="center" valign="middle" style="border: none; border-left: 1px solid #555; padding-left: 25px; color: #888;">
         <span style="font-size: 15px; line-height: 1.6;">
-          我是一名AI复合型程序员，熟悉 TS 前后端开发生态，实现 A/B/C 端业务闭环。<br />
-          了解项目工程化及 CI/CD 流程，并具有一定交叉行业不同场景下 AI 算法和应用调优经验，热衷于 AI 应用全栈开发。
+          我是一名AI复合型程序员，熟悉 TS 前后端开发生态，实现 A/B/C 端业务闭环。了解项目工程化及 CI/CD 流程，并具有一定交叉行业不同场景下 AI 算法和应用调优经验，热衷于 AI 应用全栈开发。
         </span>
       </td>
     </tr>
