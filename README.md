@@ -33,7 +33,7 @@
 
 > HTML，Sass / Tailwind CSS，工程化，组件库，状态管理，React 与 Next 框架，富文本编辑器开发
 
-**熟悉 AI 应用开发：** &nbsp; <img src="./public/icons/neural-network.svg" height="18" align="center"> <img src="./public/icons/robot-head.svg" height="18" align="center"> <picture><source media="(prefers-color-scheme: dark)" srcset="./public/icons/openai-light.svg"><img src="./public/icons/openai-dark.svg" height="18" align="center"></picture> <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/langchain/ffffff"><img src="https://cdn.simpleicons.org/langchain/000000" height="18" align="center"></picture> <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/vercel/ffffff"><img src="https://cdn.simpleicons.org/vercel/000000" height="18" align="center"></picture>
+**熟悉 AI 应用开发：** &nbsp; <img src="./public/icons/neural-network.svg" height="18" align="center"> <img src="./public/icons/robot-head.svg" height="18" align="center"> <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/langchain/ffffff"><img src="https://cdn.simpleicons.org/langchain/000000" height="18" align="center"></picture> <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/vercel/ffffff"><img src="https://cdn.simpleicons.org/vercel/000000" height="18" align="center"></picture>
 
 > LangChain.js，Vercel AI-SDK，Prompt 工程与应用，知识工程与 RAG，Agent 理论与框架
 
