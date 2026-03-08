@@ -16,8 +16,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
 const assetsDir = path.join(projectRoot, "src", "assets", "projects");
 
-// 需要自动扫描的目录
-const TARGET_DIRS = ["bole-talk", "rumu"];
+// 自动扫描 assetsDir 下所有子目录
+const TARGET_DIRS = fs
+  .readdirSync(assetsDir, { withFileTypes: true })
+  .filter((d) => d.isDirectory())
+  .map((d) => d.name);
 
 // 支持的媒体扩展名
 const IMAGE_EXTS = new Set([".webp", ".png", ".jpg", ".jpeg", ".gif", ".svg", ".avif"]);

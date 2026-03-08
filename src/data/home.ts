@@ -1,7 +1,7 @@
 // home.ts
 
 import boleTalkMedia from "@/assets/projects/bole-talk/_media";
-import previewDev from "@/assets/projects/misc/dev.webp";
+import miscMedia from "@/assets/projects/misc/_media";
 import rumuMedia from "@/assets/projects/rumu/_media";
 
 import { type MediaItem } from "@/components/home/ProjectCarousel";
@@ -117,7 +117,7 @@ export const projects: ProjectMeta[] = [
     description: "更多创意正在孵化中，敬请期待。",
     tags: ["Coming Soon"],
     link: "#",
-    media: [{ type: "image", src: previewDev }],
+    media: miscMedia,
   },
 ];
 
