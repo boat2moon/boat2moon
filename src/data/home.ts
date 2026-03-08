@@ -61,7 +61,7 @@ export const projects: ProjectMeta[] = [
   {
     title: "伯乐 Talk",
     description:
-      "基于 ReAct 范式的垂直领域 AI Agent 面试模拟平台。利用大模型推理能力，通过工作流编排实现简历深度解析、结构化诊断及多轮个性化面试问答，提供实时评分反馈与改进建议。",
+      "一个 TS 全栈开发的多模态 AI 面试辅助系统，支持文本、语音、电话、数字人视频四种交互模式，集成共享工具层 + Multi-Agents 架构 ，帮助求职者完成简历优化、模拟面试与评估报告生成全链路。",
     media: boleTalkMedia,
     aspectRatio: "1.91/1",
     tags: [
