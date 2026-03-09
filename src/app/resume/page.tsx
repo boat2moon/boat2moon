@@ -177,7 +177,7 @@ export default function ResumePageWrapper() {
                 </span>
               </span>
               <span aria-hidden="true" className={styles.nodeSeparator} />
-              <span className={styles.nodeTime}>2025.7 - 2025.9</span>
+              <span className={styles.nodeTime}>2025.7 - 2025.12</span>
             </div>
             <ul>
               <li>
@@ -286,7 +286,7 @@ export default function ResumePageWrapper() {
                 </span>
               </span>
               <span aria-hidden="true" className={styles.nodeSeparator} />
-              <span className={styles.nodeTime}>2025.9 - 2025.11</span>
+              <span className={styles.nodeTime}>2025.11 - 2026.2</span>
             </div>
             <ul>
               <li>
