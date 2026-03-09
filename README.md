@@ -7,7 +7,7 @@
       <td width="42%" align="center" valign="middle" style="border: none; padding-right: 25px;">
         <h2 style="margin: 0 0 10px 0;">👋 Hello~ 我是于淼</h2>
         <strong>211院校计算机-人工智能专业硕士</strong><br/>
-        <strong>👨🏻‍💻 角色: JS/TS 全栈开发 | AI 应用开发</strong>
+        <strong>👨🏻‍💻 角色: JS/TS 全栈开发 | AI 应用开发 | Agent开发</strong>
         <div style="margin-top: 15px;">
           <a href="mailto:boat2moon@foxmail.com" target="_blank"><img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Email"></a>&nbsp;<a href="https://www.boat2moon.com" target="_blank"><img src="https://img.shields.io/badge/Website-4A90E2?style=flat-square&logo=About.me&logoColor=white" alt="Website"></a>
         </div>
