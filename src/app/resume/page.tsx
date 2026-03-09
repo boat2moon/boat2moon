@@ -19,10 +19,11 @@ import ResumeClient from "./ResumeClient";
 export const metadata: Metadata = {
   title: "个人简历 - 张于淼",
   description:
-    "张于淼的个人简历。211院校计算机-人工智能专业硕士应届生，岗位意向：大前端 / AI应用全栈开发。擅长 TypeScript 全栈、React/Next.js、AI 大模型应用开发。",
+    "张于淼的个人简历。211院校计算机-人工智能专业硕士应届生，岗位意向：大前端 / AI应用全栈开发 / Agent开发。擅长 TypeScript 全栈、React/Next.js、AI 大模型应用开发。",
   openGraph: {
     title: "个人简历 - 张于淼 | boat2moon",
-    description: "211院校计算机-人工智能专业硕士应届生，岗位意向：大前端 / AI应用全栈开发。",
+    description:
+      "211院校计算机-人工智能专业硕士应届生，岗位意向：大前端 / AI应用全栈开发 / Agent开发",
     url: "https://www.boat2moon.com/resume",
     images: [
       {
@@ -50,7 +51,9 @@ export default function ResumePageWrapper() {
           <div className={styles.tagline}>
             男 &nbsp;|&nbsp; 211院校计算机-人工智能专业 &nbsp;|&nbsp; 2026硕士应届生
           </div>
-          <div className={styles.tagline}>岗位意向：大前端 &nbsp;|&nbsp; AI应用全栈开发</div>
+          <div className={styles.tagline}>
+            岗位意向：大前端 &nbsp;|&nbsp; AI应用全栈开发 &nbsp;|&nbsp; Agent开发
+          </div>
           {/* <p className={styles.summary}>
                 <strong>简历摘要：</strong>
                 AI复合型程序员，熟悉JS/TS前后端开发生态，实现A/B/C端业务闭环，了解项目工程化及CI/CD流程，并具有一定交叉行业AI算法和应用调优经验，热衷于AI大模型应用全栈开发。
