@@ -277,7 +277,7 @@ export default function ResumePageWrapper() {
                     社区合作开发
                     <a
                       className={styles.inlineLink}
-                      href="https://boletalk.top"
+                      href="https://www.bltalk.top"
                       rel="noopener noreferrer"
                       target="_blank"
                     >
@@ -309,7 +309,7 @@ export default function ResumePageWrapper() {
                         面试模拟平台。利用大模型推理能力，通过工作流编排实现简历深度解析、结构化诊断及多轮个性化面试问答，提供实时评分反馈与改进建议。 */}
                     基于TS生态全栈开发的多模态 AI
                     面试辅助系统，支持文本、语音、电话、数字人视频四种交互模式，集成共享工具层 +
-                    Multi-Agent 架构 ，帮助求职者完成简历优化、模拟面试与评估报告生成全链路。
+                    Multi-Agent 架构，帮助求职者完成简历优化、模拟面试与评估报告生成全链路。
                   </span>
                 </div>
               </li>
@@ -325,9 +325,9 @@ export default function ResumePageWrapper() {
                   </li>
                   <li>
                     <strong>可靠语音交互：</strong>在文本 Agent I/O
-                    端接入语音能力，核心链路复用，保持架构正交解耦；输入侧集成前端实时 ASR
-                    ，AudioWorklet 降采样；输出侧构建双向流式 TTS 架构，配合 MediaSource Extensions
-                    消除卡带感。
+                    端接入语音能力，核心链路复用，保持架构正交解耦；输入侧集成前端实时
+                    ASR，AudioWorklet 降采样；输出侧构建双向流式 TTS 架构，配合 MediaSource
+                    Extensions 消除卡带感。
                   </li>
                   <li>
                     <strong>端到端电话面试：</strong>Cloudflare DO 服务端实现双 WebSocket
