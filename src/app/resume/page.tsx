@@ -251,7 +251,7 @@ export default function ResumePageWrapper() {
                   <li>
                     <strong>AI自动化：</strong>
                     搭建可复用 ComfyUI 工作流，在 RTX 5090 机器部署推理生成官网首页背景视频；通过
-                    Suno 调制 BGM，打造统一风格产品 Taste。MVP 落地后，搭建 Openclaw 智能副手，配合
+                    Suno 调制 BGM，打造统一风格产品 Taste。MVP 落地后，搭建 OpenClaw 智能副手，配合
                     Skills 将 Claude Code / Codex 作为子 Agent 代理编码能力，探索 TDD 和智能 CI/CD
                     流程如 BUG 检修、Review 与 PR 等。
                   </li>
@@ -346,6 +346,10 @@ export default function ResumePageWrapper() {
                     构建多阶段 RAG 检索管线扩展信息边界，并集成 per-user
                     记忆系统实现跨会话个性化；通过 MCP 协议双向集成外部服务与暴露自身 AI
                     能力；重构共享 Tools 层扩展跨模式复用边界。
+                  </li>
+                  <li>
+                    <strong>AI自动化：</strong>基于 OpenClaw
+                    定时爬取全网最新招聘岗位资源并去重，持久化到数据库，供前端展示推荐。
                   </li>
                 </ul>
               </li>

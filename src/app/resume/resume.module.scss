@@ -131,7 +131,7 @@
   grid-template-columns: auto auto;
   justify-content: start;
   font-size: 13px;
-  gap: 8px 50px;
+  gap: 4px 50px;
   margin-top: 12px;
 }
 
@@ -449,14 +449,14 @@
 @media print {
   @page {
     size: A4;
-    /* 打印页边距：适度压缩 */
+    /* 打印页边距：适度压缩以控制2页 */
     margin: 5mm 0;
   }
 
   .resumePage {
     background: #fff;
     padding: 0;
-    line-height: 1.48; /* 打印时微调行高 */
+    line-height: 1.48; /* 打印时适度压缩行高 */
   }
 
   .printBtn {
@@ -471,7 +471,7 @@
 
   .main {
     box-shadow: none;
-    /* 打印时仅保留左右内边距 */
+    /* 打印时适度压缩内边距 */
     padding: 0 44px;
     margin: 0 !important;
     /* 禁用 JS 缩放，确保以 100% 比例打印 */
@@ -480,23 +480,26 @@
   }
 
   .header {
-    gap: 16px;
+    gap: 14px;
   }
 
   .header h1 {
     margin-bottom: 10px;
+    font-size: 32px;
   }
 
   .tagline {
-    margin-bottom: 11px;
+    margin-bottom: 10px;
+    font-size: 15.5px;
   }
 
   .contacts {
     margin-top: 8px;
+    gap: 4px 45px;
   }
 
   .section {
-    margin-top: 20px;
+    margin-top: 21px;
   }
 
   .sectionTitle {
@@ -506,6 +509,7 @@
 
   .education p {
     margin: 6px 0;
+    font-size: 13.5px;
   }
 
   .skillList li {
@@ -533,7 +537,12 @@
   }
 
   .tree ul ul > li {
-    padding: 3.5px 0;
+    padding: 3.6px 0;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 160px;
   }
 
   /* 打印时禁用所有 hover 效果，防止悬浮状态被快照捕获 */
