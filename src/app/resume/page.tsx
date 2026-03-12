@@ -151,11 +151,11 @@ export default function ResumePageWrapper() {
           <li>
             <div className={styles.node}>
               <span className={styles.titleText}>
-                <span>合肥国家科学中心数据科学研究院</span>
+                <span>合肥国家科学中心数据科学研究院（横向合作）</span>
                 <span aria-hidden="true" className={styles.inlineSeparator} />
                 <span>科研实习生</span>
                 <span aria-hidden="true" className={styles.inlineSeparator} />
-                <span>参与技术调研/事件仿真/算法复现</span>
+                <span>参与技术调研/算法复现</span>
               </span>
               <span aria-hidden="true" className={styles.nodeSeparator} />
               <span className={styles.nodeTime}>2023.10 - 2024.7</span>
@@ -164,7 +164,7 @@ export default function ResumePageWrapper() {
           <li>
             <div className={styles.node}>
               <span className={styles.titleText}>
-                <span>觉微软件科技（苏州）有限公司</span>
+                <span>觉微软件科技有限公司（横向合作）</span>
                 <span aria-hidden="true" className={styles.inlineSeparator} />
                 <span>AI应用全栈开发</span>
                 <span aria-hidden="true" className={styles.inlineSeparator} />
@@ -234,6 +234,13 @@ export default function ResumePageWrapper() {
                   </span>
                 </div>
               </li>
+              {/* <li>
+                <div className={styles.node}>
+                  <span>
+                    <strong>项目职责：</strong>作为项目一期核心开发人员，参与从 0 搭建项目，负责前端架构设计、AI 功能集成、实时协同模块开发、CI/CD 流水线搭建，以及上线后的监控与运维。
+                  </span>
+                </div>
+              </li> */}
               <li>
                 <div className={styles.node}>
                   <span className={styles.nodeTitle}>亮点成就：</span>
@@ -344,6 +351,13 @@ export default function ResumePageWrapper() {
                   </span>
                 </div>
               </li>
+              {/* <li>
+                <div className={styles.node}>
+                  <span>
+                    <strong>项目职责：</strong>作为核心全栈开发者，负责 Multi-Agent 架构设计与实现、多模态语音交互链路开发、RAG 检索管线构建，以及 MCP 协议集成与共享工具层重构。
+                  </span>
+                </div>
+              </li> */}
               <li>
                 <div className={styles.node}>
                   <span className={styles.nodeTitle}>亮点成就：</span>
@@ -420,6 +434,13 @@ export default function ResumePageWrapper() {
                   </span>
                 </div>
               </li>
+              {/* <li>
+                <div className={styles.node}>
+                  <span>
+                    <strong>项目职责：</strong>负责交通网络事件仿真模块的算法实现与可视化界面开发，以及电力行业基础设施数据的爬取汇总与前期技术调研。
+                  </span>
+                </div>
+              </li> */}
               <li>
                 <div className={styles.node}>
                   <span className={styles.nodeTitle}>负责事项：</span>
@@ -473,6 +494,13 @@ export default function ResumePageWrapper() {
                   </span>
                 </div>
               </li>
+              {/* <li>
+                <div className={styles.node}>
+                  <span>
+                    <strong>项目职责：</strong>负责毒性预测模块的技术调研与算法复现，撰写调研报告并协助组织周会汇报，分析项目关键难点并与数据团队沟通协调。
+                  </span>
+                </div>
+              </li> */}
               <li>
                 <div className={styles.node}>
                   <span className={styles.nodeTitle}>负责事项：</span>
@@ -495,7 +523,7 @@ export default function ResumePageWrapper() {
           <li>
             <strong>论文1：</strong>《A Spatial Multi-Scale Reservoir Computing Framework for Power
             Flow Analysis in Power Grids》，一种数据驱动的 AI
-            计算框架解决电网潮流计算问题，曾在第二十届全国网络科学与工程论坛做分组报告，现期刊
+            计算框架解决电网潮流计算问题，曾在第二十一届全国网络科学与工程论坛做分组报告，现期刊
             Complex Engineering Systems 已录用。
           </li>
           <li>
