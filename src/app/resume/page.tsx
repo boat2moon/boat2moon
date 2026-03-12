@@ -125,14 +125,12 @@ export default function ResumePageWrapper() {
             Next 框架，富文本编辑器开发
           </li>
           <li>
-            <strong>熟悉 AI 应用开发：</strong>
-            LangChain.js，Vercel AI-SDK，Prompt工程与应用，知识工程与RAG，Agent理论与框架
+            <strong>掌握后端：</strong>Node / Hono / Nest，Next 实现 BFF 架构，ORM 与
+            关系型/内存/向量数据库，消息队列
           </li>
           <li>
-            {/* <strong>了解后端：</strong>Node / Hono / Nest，RESTful API，ORM 与
-                关系型/内存/向量数据库，消息队列 */}
-            <strong>了解后端：</strong>Node / Hono / Nest，Next 实现 BFF 架构，ORM 与
-            关系型/内存/向量数据库，消息队列
+            <strong>擅长 AI 应用开发：</strong>
+            LangChain.js，Vercel AI-SDK，Prompt工程与应用，知识工程与RAG，Agent理论与框架
           </li>
           <li>
             <strong>CI/CD应用：</strong>Docker，GitHub Actions / Webhooks，Serverless，Edge Runtime
@@ -144,6 +142,38 @@ export default function ResumePageWrapper() {
                 <strong>日常办公：</strong>{" "}
                 熟悉常用办公工具，有良好的材料文档撰写水平，具备数据处理能力产出美观图表，常兼顾组内工作中各种PPT制作和汇报材料润色。
               </li> */}
+        </ul>
+      </section>
+
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>实习经历</h2>
+        <ul className={styles.skillList}>
+          <li>
+            <div className={styles.node}>
+              <span className={styles.titleText}>
+                <span>合肥国家科学中心数据科学研究院</span>
+                <span aria-hidden="true" className={styles.inlineSeparator} />
+                <span>科研实习生</span>
+                <span aria-hidden="true" className={styles.inlineSeparator} />
+                <span>参与技术调研/事件仿真/算法复现</span>
+              </span>
+              <span aria-hidden="true" className={styles.nodeSeparator} />
+              <span className={styles.nodeTime}>2023.10 - 2024.7</span>
+            </div>
+          </li>
+          <li>
+            <div className={styles.node}>
+              <span className={styles.titleText}>
+                <span>觉微软件科技（苏州）有限公司</span>
+                <span aria-hidden="true" className={styles.inlineSeparator} />
+                <span>AI应用全栈开发</span>
+                <span aria-hidden="true" className={styles.inlineSeparator} />
+                <span>参与智能协同文档平台预研</span>
+              </span>
+              <span aria-hidden="true" className={styles.nodeSeparator} />
+              <span className={styles.nodeTime}>2025.7 - 2025.12</span>
+            </div>
+          </li>
         </ul>
       </section>
 
@@ -164,8 +194,8 @@ export default function ResumePageWrapper() {
                     className={styles.inlineSeparator}
                     style={{ "--inline-separator-width": "2.5em" } as CSSProperties}
                   />
-                  <span>
-                    社区合作开发
+                  {/* <span>
+                    对内平台
                     <a
                       className={styles.inlineLink}
                       href="https://rumuai.top"
@@ -176,7 +206,8 @@ export default function ResumePageWrapper() {
                       <FiGithub aria-hidden="true" className={styles.inlineIconSmall} />
                       rumuai.top）
                     </a>
-                  </span>
+                  </span> */}
+                  <span>觉微软件科技（苏州）有限公司</span>
                 </span>
               </span>
               <span aria-hidden="true" className={styles.nodeSeparator} />
@@ -199,7 +230,7 @@ export default function ResumePageWrapper() {
                       协同文档编辑平台，集成了丰富的编辑能力与多人实时协作功能，支持知识库管理、插件扩展与持久化存储。我作为项目一期开发人员，参与了从
                       0 搭建项目，设计、开发、上线，以及统计、监控和运维项目。 */}
                     <strong>项目介绍：</strong>一个 TS 全栈开发的现代化 AIGC
-                    协同文档编辑平台，集成了丰富的智能编辑能力与多人实时协作功能，支持知识库管理、插件扩展与持久化存储等。
+                    协同文档编辑平台，集成了丰富的智能编辑能力与多人实时协作功能，支持知识库管理、插件扩展与持久化存储等。对内赋能公司日常办公协作，对外可提供企业定制化开发。
                   </span>
                 </div>
               </li>
@@ -420,7 +451,7 @@ export default function ResumePageWrapper() {
                     className={styles.inlineSeparator}
                     style={{ "--inline-separator-width": "2.5em" } as CSSProperties}
                   />
-                  <span>觉微软件科技（苏州）有限公司</span>
+                  <span>合肥国家科学中心数据科学研究院</span>
                 </span>
               </span>
               <span aria-hidden="true" className={styles.nodeSeparator} />
@@ -437,7 +468,6 @@ export default function ResumePageWrapper() {
               <li>
                 <div className={styles.node}>
                   <span>
-                    {/* {毒性预测、疗效预测、生成模型} */}
                     <strong>项目介绍：</strong>期望通过 AI 技术赋能 ADC
                     （抗癌靶向药）的全链路研发，包括分子/蛋白生成模型生成药物候选分子、疗效预测模型筛选高效分子、毒性预测模型过滤高毒分子等环节，从而提升研发效率，降低研发成本，加速新药上市。
                   </span>
