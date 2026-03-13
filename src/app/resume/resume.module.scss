@@ -418,7 +418,7 @@
 
 /* 亮点成就 / 负责事项列表斑马纹 */
 .tree ul ul > li:nth-child(odd) {
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: rgba(0, 0, 0, 0.04);
   border-radius: 4px;
   width: fit-content;
   padding-right: 2px;
@@ -592,8 +592,9 @@
     print-color-adjust: exact;
   }
 
-  /* 打印时保留斑马纹底色 */
+  /* 打印时保留斑马纹底色，使用独立于网页的打印色值 */
   .tree ul ul > li:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
