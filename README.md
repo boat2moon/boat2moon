@@ -14,7 +14,7 @@
       </td>
       <td width="58%" align="center" valign="middle" style="border: none; border-left: 1px solid #555; padding-left: 25px; color: #888;">
         <span style="font-size: 15px; line-height: 1.6;">
-          我是一名AI复合型程序员，熟悉 TS 前后端开发生态，实现 A/B/C 端业务闭环。了解项目工程化及 CI/CD 流程，并具有一定交叉行业不同场景下 AI 算法和应用调优经验，热衷于 AI 应用全栈开发。
+          我是一名AI复合型程序员，熟悉 JS/TS 前后端开发生态，积极参与开源，实现 A/B/C 端业务闭环。了解项目工程化及 CI/CD 流程，并具有一定交叉行业不同场景下 AI 算法应用调优经验，热衷于 AI 应用全栈开发。
         </span>
       </td>
     </tr>
@@ -33,13 +33,13 @@
 
 > HTML，Sass / Tailwind CSS，工程化，组件库，状态管理，React 与 Next 框架，富文本编辑器开发
 
-**熟悉 AI 应用开发：** &nbsp; <img src="./public/icons/neural-network.svg" height="18" align="center"> <img src="./public/icons/robot-head.svg" height="18" align="center"> <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/langchain/ffffff"><img src="https://cdn.simpleicons.org/langchain/000000" height="18" align="center"></picture> <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/vercel/ffffff"><img src="https://cdn.simpleicons.org/vercel/000000" height="18" align="center"></picture>
-
-> LangChain.js，Vercel AI-SDK，Prompt 工程与应用，知识工程与 RAG，Agent 理论与框架
-
-**了解后端：** &nbsp; <img src="https://cdn.simpleicons.org/nodedotjs/339933" height="18" align="center"> <img src="https://cdn.simpleicons.org/hono/E36002" height="18" align="center"> <img src="https://cdn.simpleicons.org/nestjs/E0234E" height="18" align="center"> <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/prisma/ffffff"><img src="https://cdn.simpleicons.org/prisma/000000" height="18" align="center"></picture> <img src="https://cdn.simpleicons.org/drizzle/C5F74F" height="18" align="center"> <img src="https://cdn.simpleicons.org/postgresql/4169E1" height="18" align="center"> <img src="https://cdn.simpleicons.org/mysql/4479A1" height="18" align="center"> <img src="https://cdn.simpleicons.org/sqlite/59a3d5" height="18" align="center"> <img src="https://cdn.simpleicons.org/mongodb/47A248" height="18" align="center"> <img src="https://cdn.simpleicons.org/supabase/3FCF8E" height="18" align="center"> <img src="https://cdn.simpleicons.org/milvus/00A1EA" height="18" align="center"> <img src="https://cdn.simpleicons.org/redis/DC382D" height="18" align="center"> <img src="https://cdn.simpleicons.org/rabbitmq/FF6600" height="18" align="center">
+**掌握后端：** &nbsp; <img src="https://cdn.simpleicons.org/nodedotjs/339933" height="18" align="center"> <img src="https://cdn.simpleicons.org/hono/E36002" height="18" align="center"> <img src="https://cdn.simpleicons.org/nestjs/E0234E" height="18" align="center"> <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/prisma/ffffff"><img src="https://cdn.simpleicons.org/prisma/000000" height="18" align="center"></picture> <img src="https://cdn.simpleicons.org/drizzle/C5F74F" height="18" align="center"> <img src="https://cdn.simpleicons.org/postgresql/4169E1" height="18" align="center"> <img src="https://cdn.simpleicons.org/mysql/4479A1" height="18" align="center"> <img src="https://cdn.simpleicons.org/sqlite/59a3d5" height="18" align="center"> <img src="https://cdn.simpleicons.org/mongodb/47A248" height="18" align="center"> <img src="https://cdn.simpleicons.org/supabase/3FCF8E" height="18" align="center"> <img src="https://cdn.simpleicons.org/milvus/00A1EA" height="18" align="center"> <img src="https://cdn.simpleicons.org/redis/DC382D" height="18" align="center"> <img src="https://cdn.simpleicons.org/rabbitmq/FF6600" height="18" align="center">
 
 > Node / Hono / Nest，Next 实现 BFF 架构，ORM 与 关系型/内存/向量数据库，消息队列
+
+**擅长 AI 应用开发：** &nbsp; <img src="./public/icons/neural-network.svg" height="18" align="center"> <img src="./public/icons/robot-head.svg" height="18" align="center"> <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/langchain/ffffff"><img src="https://cdn.simpleicons.org/langchain/000000" height="18" align="center"></picture> <picture><source media="(prefers-color-scheme: dark)" srcset="https://cdn.simpleicons.org/vercel/ffffff"><img src="https://cdn.simpleicons.org/vercel/000000" height="18" align="center"></picture>
+
+> LangChain.js，Vercel AI-SDK，Prompt 工程与应用，知识工程与 RAG，Agent 理论与框架
 
 **CI/CD 应用：** &nbsp; <img src="https://cdn.simpleicons.org/docker/2496ED" height="18" align="center"> <img src="https://cdn.simpleicons.org/githubactions/2088FF" height="18" align="center"> <img src="https://cdn.simpleicons.org/serverless/FD5750" height="18" align="center"> <img src="https://cdn.simpleicons.org/cloudflare/F38020" height="18" align="center">
 
