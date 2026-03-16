@@ -130,10 +130,10 @@ export default function ResumePageWrapper() {
           </li>
           <li>
             <strong>擅长 AI 应用开发：</strong>
-            LangChain.js，Vercel AI-SDK，Prompt工程与应用，知识工程与RAG，Agent理论与框架
+            LangChain.js，Vercel AI-SDK，Prompt 工程与应用，知识工程与 RAG，Agent 理论与框架
           </li>
           <li>
-            <strong>CI/CD应用：</strong>Docker，GitHub Actions / Webhooks，Serverless，Edge Runtime
+            <strong>CI/CD 应用：</strong>Docker，GitHub Actions / Webhooks，Serverless，Edge Runtime
           </li>
           <li>
             <strong>外语水平：</strong>通过英语六级
@@ -166,7 +166,7 @@ export default function ResumePageWrapper() {
               <span className={styles.titleText}>
                 <span>觉微软件科技有限公司（横向合作）</span>
                 <span aria-hidden="true" className={styles.inlineSeparator} />
-                <span>AI应用全栈开发</span>
+                <span>AI 应用全栈开发</span>
                 <span aria-hidden="true" className={styles.inlineSeparator} />
                 <span>参与智能协同文档平台预研</span>
               </span>
@@ -259,10 +259,11 @@ export default function ResumePageWrapper() {
                     {/* 通过useImperativeHandle实现对React组件的精细化生命周期控制， */}
                   </li>
                   <li>
-                    <strong>AI应用开发：</strong>实现内嵌 AI 助手（AI灵动岛），后端统一适配多 AI
+                    <strong>AI 应用开发：</strong>实现内嵌 AI 助手（AI灵动岛），后端统一适配多 AI
                     服务商（含负载均衡+故障转移）；前端基于 SSE 流式响应 + &quot;累积缓冲 +
                     节流事务替换&quot;策略，解决富文本编辑器中流式 MD
-                    实时渲染问题，支持表格/列表等复杂结构的稳定生成；并采用有限状态机管理多阶段自定义动画，实现流畅的伪3D效果与交互反馈。
+                    实时渲染问题，支持表格/列表等复杂结构的稳定生成；并采用有限状态机管理多阶段自定义动画，实现流畅的伪
+                    3D 效果与交互反馈。
                   </li>
                   <li>
                     <strong>全栈：</strong>
@@ -287,7 +288,7 @@ export default function ResumePageWrapper() {
                     全量静态分析，实现推代码即上线的可靠持续交付闭环。
                   </li>
                   <li>
-                    <strong>AI自动化：</strong>
+                    <strong>AI 自动化：</strong>
                     搭建可复用 ComfyUI 工作流，在 RTX 5090 机器部署推理生成官网首页背景视频；通过
                     Suno 调制 BGM，打造统一风格产品 Taste。MVP 落地后，搭建 OpenClaw 智能副手，配合
                     Skills 将 Claude Code / Codex 作为子 Agent 代理编码能力，探索 TDD 和智能 CI/CD
@@ -345,7 +346,7 @@ export default function ResumePageWrapper() {
                     <strong>项目介绍：</strong>
                     {/* 基于 ReAct 范式的垂直领域 AI Agent
                         面试模拟平台。利用大模型推理能力，通过工作流编排实现简历深度解析、结构化诊断及多轮个性化面试问答，提供实时评分反馈与改进建议。 */}
-                    基于TS生态全栈开发的多模态 AI
+                    基于 TS 生态全栈开发的多模态 AI
                     面试辅助系统，支持文本、语音、电话、数字人视频四种交互模式，集成共享工具层 +
                     Multi-Agent 架构，帮助求职者完成简历优化、模拟面试与评估报告生成全链路。
                   </span>
@@ -364,7 +365,7 @@ export default function ResumePageWrapper() {
                 </div>
                 <ul>
                   <li>
-                    <strong>文本驱动Agents：</strong>设计 Multi-Agent Workflow 架构，解耦可扩展
+                    <strong>文本驱动 Agents：</strong>设计 Multi-Agent Workflow 架构，解耦可扩展
                     Prompt 工程层、子 Agent 路由分发层、共享工具层；打通 PDF 文件解析、JD
                     模板注入和面试评估持久化等完整链路，基于 SSE 流式输出。
                   </li>
@@ -393,7 +394,7 @@ export default function ResumePageWrapper() {
                     能力；重构共享 Tools 层扩展跨模式复用边界。
                   </li>
                   <li>
-                    <strong>AI自动化：</strong>基于 OpenClaw
+                    <strong>AI 自动化：</strong>基于 OpenClaw
                     定时爬取全网最新招聘岗位资源并去重，持久化到数据库，供前端展示推荐。
                   </li>
                 </ul>
@@ -447,7 +448,7 @@ export default function ResumePageWrapper() {
                 </div>
                 <ul>
                   <li>
-                    调研并撰写方案材料、收集数据、制作PPT，为多个行业网络的机理与相关算法做技术储备
+                    调研并撰写方案材料、收集数据、制作 PPT，为多个行业网络的机理与相关算法做技术储备
                   </li>
                   <li>基于 Python 爬虫库 PySpider，编码汇总目标地区电力行业网络基础设施数据</li>
                   <li>
@@ -489,8 +490,8 @@ export default function ResumePageWrapper() {
               <li>
                 <div className={styles.node}>
                   <span>
-                    <strong>项目介绍：</strong>期望通过 AI 技术赋能 ADC
-                    （抗癌靶向药）的全链路研发，包括分子/蛋白生成模型生成药物候选分子、疗效预测模型筛选高效分子、毒性预测模型过滤高毒分子等环节，从而提升研发效率，降低研发成本，加速新药上市。
+                    <strong>项目介绍：</strong>期望通过 AI 技术赋能
+                    ADC（抗癌靶向药）的全链路研发，包括分子/蛋白生成模型生成药物候选分子、疗效预测模型筛选高效分子、毒性预测模型过滤高毒分子等环节，从而提升研发效率，降低研发成本，加速新药上市。
                   </span>
                 </div>
               </li>
@@ -530,7 +531,8 @@ export default function ResumePageWrapper() {
             <strong>论文2：</strong>《When, Where, and What: A Graph Reservoir Computing Framework
             for Spatiotemporal Power Grid Disturbance
             Monitoring》，一种解决有限观测下电网扰动监测“何时-何处-何事”问题的一体化 AI
-            协同计算方案，一区Top期刊 IEEE Transactions on Industrial Informatics 在投。
+            协同计算方案，一区 Top 期刊 IEEE Transactions on Neural Networks and Learning Systems
+            在投。
           </li>
           <li>
             <strong>专利1：</strong>
