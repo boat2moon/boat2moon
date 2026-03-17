@@ -334,9 +334,9 @@ export default function ResumePageWrapper() {
               <li>
                 <div className={styles.node}>
                   <span className={styles.nodeTags}>
-                    <strong>全栈开发</strong> | Next.js - React.js - Zustand - Drizzle - PostgreSQL
-                    - Pgvector - LangChain.js - Vercel AI SDK - MCP - Edge Runtime - Serverless -
-                    ONNX Runtime - WebAssembly - Worklet - WebRTC - ASR - TTS
+                    <strong>AI应用全栈开发</strong> | Next.js - React.js - Zustand - Drizzle -
+                    PostgreSQL - Pgvector - LangChain.js - Vercel AI SDK - MCP - Edge Runtime -
+                    Serverless - ONNX Runtime - WebAssembly - Worklet - WebRTC - ASR - TTS
                   </span>
                 </div>
               </li>
