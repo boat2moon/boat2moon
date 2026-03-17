@@ -65,8 +65,8 @@ export const projects: ProjectMeta[] = [
     media: boleTalkMedia,
     aspectRatio: "1.91/1",
     tags: [
-      "Next.js",
-      "React.js",
+      "Next",
+      "React",
       "Zustand",
       "Drizzle",
       "PostgreSQL",
