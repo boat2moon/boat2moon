@@ -218,8 +218,8 @@ export default function ResumePageWrapper() {
                 <div className={styles.node}>
                   <span className={styles.nodeTags}>
                     <strong>全栈开发</strong> | Next - React - Nest - ShadcnUI - Zustand - Tailwind
-                    CSS - Prisma - PostgreSQL - OpenAI API - Docker - Serverless - OSS - CDN -
-                    Cloudflare DO - Prometheus - Grafana - Tiptap - Yjs - Hocuspocus
+                    CSS - Prisma - PostgreSQL - OpenAI API - Docker - Serverless - Edge Runtime -
+                    OSS - CDN - Prometheus - Grafana - Tiptap - Yjs
                   </span>
                 </div>
               </li>
@@ -334,9 +334,9 @@ export default function ResumePageWrapper() {
               <li>
                 <div className={styles.node}>
                   <span className={styles.nodeTags}>
-                    <strong>全栈开发</strong> | Next.js - React.js - Zustand - NextAuth - Drizzle -
-                    PostgreSQL - Pgvector - LangChain.js - Vercel AI SDK - MCP - Zod - Cloudflare DO
-                    - Serverless - ONNX Runtime Web - WebRTC - ASR - TTS
+                    <strong>全栈开发</strong> | Next.js - React.js - Zustand - Drizzle - PostgreSQL
+                    - Pgvector - LangChain.js - Vercel AI SDK - MCP - Edge Runtime - Serverless -
+                    ONNX Runtime - WebAssembly - Worklet - WebRTC - ASR - TTS
                   </span>
                 </div>
               </li>
@@ -376,7 +376,7 @@ export default function ResumePageWrapper() {
                     Extensions 消除卡带感。
                   </li>
                   <li>
-                    <strong>端到端电话面试：</strong>Cloudflare DO 服务端实现双 WebSocket
+                    <strong>端到端电话面试：</strong>Edge Runtime 服务端实现双 WebSocket
                     桥接，手写端到端语音大模型二进制帧协议编解码；前端 ScriptProcessor
                     低延迟采集音频，通过 AudioContext 时间轴队列式调度解决 PCM 音频重叠问题。
                   </li>
@@ -531,8 +531,7 @@ export default function ResumePageWrapper() {
             <strong>论文2：</strong>《When, Where, and What: A Graph Reservoir Computing Framework
             for Spatiotemporal Power Grid Disturbance
             Monitoring》，一种解决有限观测下电网扰动监测“何时-何处-何事”问题的一体化 AI
-            协同计算方案，一区 Top 期刊 IEEE Transactions on Neural Networks and Learning Systems
-            在投。
+            协同计算方案，一区 Top 期刊 IEEE Transactions on Industrial Informatics 在投。
           </li>
           <li>
             <strong>专利1：</strong>
