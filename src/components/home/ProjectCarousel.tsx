@@ -1,8 +1,8 @@
 "use client";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
-import { useEffect, useState, useRef } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 export type MediaItem =
@@ -26,6 +26,26 @@ export default function ProjectCarousel({
   /* eslint-disable @typescript-eslint/no-unused-vars */
   const [resetTimer, setResetTimer] = useState(0); // 用于重置自动轮播定时器
   /* eslint-enable @typescript-eslint/no-unused-vars */
+
+  // 追踪图片/视频的加载状态
+  const [loadedSet, setLoadedSet] = useState<Set<number>>(new Set());
+  const [videoReadySet, setVideoReadySet] = useState<Set<number>>(new Set());
+
+  const handleImageLoad = useCallback((index: number) => {
+    setLoadedSet((prev) => {
+      const next = new Set(prev);
+      next.add(index);
+      return next;
+    });
+  }, []);
+
+  const handleVideoReady = useCallback((index: number) => {
+    setVideoReadySet((prev) => {
+      const next = new Set(prev);
+      next.add(index);
+      return next;
+    });
+  }, []);
 
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
@@ -106,43 +126,63 @@ export default function ProjectCarousel({
                   bg-black"
               >
                 {item.type === "video" ? (
-                  <div
-                    className="h-full w-full"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                    }}
-                    onMouseDown={(e) => e.stopPropagation()}
-                    onMouseUp={(e) => e.stopPropagation()}
-                    onPointerDown={(e) => e.stopPropagation()}
-                  >
-                    <video
-                      ref={(el) => {
-                        videoRefs.current[index] = el;
-                      }}
-                      src={item.src}
-                      className="h-full w-full object-cover"
-                      controls
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="auto"
-                    />
-                  </div>
-                ) : (
-                  <Image
-                    src={item.src}
-                    alt={`${title} - ${index + 1}`}
-                    fill
-                    loading="eager"
-                    className={cn(
-                      "object-cover",
-                      !hasMultipleItems &&
-                        `transition-transform duration-500 group-hover:scale-105
-                          group-data-[active=true]:scale-105`,
+                  <>
+                    {/* 视频骨架屏占位 */}
+                    {!videoReadySet.has(index) && (
+                      <div className="absolute inset-0 media-skeleton flex items-center justify-center">
+                        <Loader2 className="h-8 w-8 animate-spin text-zinc-400 dark:text-zinc-500" />
+                      </div>
                     )}
-                  />
+                    <div
+                      className={cn(
+                        "h-full w-full transition-opacity duration-500",
+                        videoReadySet.has(index) ? "opacity-100" : "opacity-0",
+                      )}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                      }}
+                      onMouseDown={(e) => e.stopPropagation()}
+                      onMouseUp={(e) => e.stopPropagation()}
+                      onPointerDown={(e) => e.stopPropagation()}
+                    >
+                      <video
+                        ref={(el) => {
+                          videoRefs.current[index] = el;
+                        }}
+                        src={item.src}
+                        className="h-full w-full object-cover"
+                        controls
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="auto"
+                        onCanPlay={() => handleVideoReady(index)}
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {/* 图片骨架屏占位 */}
+                    {!loadedSet.has(index) && (
+                      <div className="absolute inset-0 media-skeleton" />
+                    )}
+                    <Image
+                      src={item.src}
+                      alt={`${title} - ${index + 1}`}
+                      fill
+                      loading="eager"
+                      className={cn(
+                        "object-cover transition-opacity duration-500",
+                        loadedSet.has(index) ? "opacity-100" : "opacity-0",
+                        !hasMultipleItems &&
+                          `transition-transform duration-500 group-hover:scale-105
+                            group-data-[active=true]:scale-105`,
+                      )}
+                      onLoad={() => handleImageLoad(index)}
+                    />
+                  </>
                 )}
               </div>
             ))}

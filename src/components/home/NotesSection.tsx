@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 /**
  * NotesSection 记录近期思考与观点，辅助访客理解作者的工作方法论。
@@ -12,6 +13,8 @@ type NotesSectionProps = {
 };
 
 export default function NotesSection({ notes }: NotesSectionProps) {
+  const [isOgLoaded, setIsOgLoaded] = useState(false);
+
   return (
     <section
       id="notes"
@@ -45,15 +48,25 @@ export default function NotesSection({ notes }: NotesSectionProps) {
         {/* 右侧：OG 预览图 */}
         <div className="sm:w-80 w-full shrink-0">
           <div
-            className="overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-700/60
-              shadow-md"
+            className="relative overflow-hidden rounded-2xl border border-zinc-200/60
+              dark:border-zinc-700/60 shadow-md"
           >
+            {/* Shimmer 骨架屏占位 */}
+            {!isOgLoaded && (
+              <div
+                className="media-skeleton"
+                style={{ aspectRatio: "600/315", width: "100%" }}
+              />
+            )}
             <Image
               src="/og-image.png"
               alt="boat2moon 预览图"
               width={600}
               height={315}
-              className="w-full h-auto object-cover"
+              className={`w-full h-auto object-cover transition-opacity duration-500 ${
+                isOgLoaded ? "opacity-100" : "opacity-0"
+              }`}
+              onLoad={() => setIsOgLoaded(true)}
             />
           </div>
         </div>

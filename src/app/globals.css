@@ -478,3 +478,35 @@ html {
     0 0 30px -6px var(--glow-shadow),
     0 0 12px -3px var(--glow-shadow);
 }
+
+/* ========== 媒体资源骨架屏 shimmer 动画 ========== */
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.media-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgb(228, 228, 231) 0%,
+    rgb(244, 244, 245) 40%,
+    rgb(228, 228, 231) 80%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+.dark .media-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgb(39, 39, 42) 0%,
+    rgb(63, 63, 70) 40%,
+    rgb(39, 39, 42) 80%
+  );
+  background-size: 200% 100%;
+}
