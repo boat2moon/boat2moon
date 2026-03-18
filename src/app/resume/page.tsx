@@ -133,7 +133,8 @@ export default function ResumePageWrapper() {
             LangChain.js，Vercel AI-SDK，Prompt 工程与应用，知识工程与 RAG，Agent 理论与框架
           </li>
           <li>
-            <strong>CI/CD 应用：</strong>Docker，GitHub Actions / Webhooks，Serverless，Edge Runtime
+            <strong>CI/CD 应用：</strong>Docker，GitHub Actions / Webhooks，Serverless，Edge
+            Runtime，搭建部署开发/测试环境
           </li>
           <li>
             <strong>外语水平：</strong>通过英语六级
@@ -261,7 +262,7 @@ export default function ResumePageWrapper() {
                   <li>
                     <strong>AI 应用开发：</strong>实现内嵌 AI 助手（AI灵动岛），后端统一适配多 AI
                     服务商（含负载均衡+故障转移）；前端基于 SSE 流式响应 + &quot;累积缓冲 +
-                    节流事务替换&quot;策略，解决富文本编辑器中流式 MD
+                    节流事务替换&quot; 策略，解决富文本编辑器中流式 MD
                     实时渲染问题，支持表格/列表等复杂结构的稳定生成；并采用有限状态机管理多阶段自定义动画，实现流畅的伪
                     3D 效果与交互反馈。
                   </li>
@@ -274,7 +275,7 @@ export default function ResumePageWrapper() {
                   <li>
                     <strong>全栈：</strong>基于 CRDT 算法（Yjs）实现多人实时协同编辑，将 WebSocket
                     服务迁移至 Cloudflare DO，实现零空闲成本，并在 Edge Runtime
-                    环境向后兼容历史数据，离线编辑与断开恢复提供完整弱网体验。
+                    环境向后兼容迁移历史数据，离线编辑与断开恢复提供完整弱网体验。
                   </li>
 
                   <li>
@@ -371,7 +372,7 @@ export default function ResumePageWrapper() {
                   </li>
                   <li>
                     <strong>可靠语音交互：</strong>在文本 Agent I/O
-                    端接入语音能力，核心链路复用，保持架构正交解耦；输入侧集成前端实时
+                    端接入语音能力，核心链路解耦复用，配合降级熔断；输入侧集成前端实时
                     ASR，AudioWorklet 降采样；输出侧构建双向流式 TTS 架构，配合 MediaSource
                     Extensions 消除卡带感。
                   </li>
