@@ -253,8 +253,20 @@
 }
 
 .education p {
+  position: relative;
   margin: 6px 0;
+  padding-left: 20px;
   font-size: 14px;
+}
+
+.education p::before {
+  content: "*";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  color: var(--text);
 }
 
 .tree {
@@ -509,6 +521,7 @@
 
   .education p {
     margin: 5px 0;
+    padding-left: 20px;
     font-size: 13.5px;
   }
 
