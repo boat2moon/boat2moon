@@ -201,7 +201,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  padding-left: 32px;
+  padding-left: 20px;
 }
 
 .sectionTitle::before {
@@ -217,7 +217,7 @@
   content: "";
   flex: 1 1 auto;
   border-bottom: 1px dashed rgba(0, 0, 0, 0.4); // rgba中四个参数代表：红、绿、蓝、透明度
-  margin-left: 8px;
+  margin-left: 4px;
 }
 
 .skillList,
@@ -534,6 +534,14 @@
 
   .tree li {
     padding: 3px 0;
+  }
+
+  .tree li::before {
+    top: 12px !important;
+  }
+
+  .tree li:last-child::after {
+    height: 12px !important;
   }
 
   .tree ul ul > li {
