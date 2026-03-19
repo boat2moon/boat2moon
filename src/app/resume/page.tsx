@@ -208,7 +208,7 @@ export default function ResumePageWrapper() {
                       rumuai.top）
                     </a>
                   </span> */}
-                  <span>觉微软件科技（苏州）有限公司</span>
+                  <span>觉微软件科技有限公司</span>
                 </span>
               </span>
               <span aria-hidden="true" className={styles.nodeSeparator} />
