@@ -613,10 +613,13 @@
     print-color-adjust: exact;
   }
 
-  /* 打印时保留斑马纹底色，使用独立于网页的打印色值 */
+  /* 打印时取消斑马纹底色，避免某些打印机出现半色调抖动（一点一点的效果） */
   .tree ul ul > li:nth-child(odd) {
+    background-color: transparent !important;
+    /* 原有代码保留：
     background-color: rgba(0, 0, 0, 0.05);
     -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    print-color-adjust: exact; 
+    */
   }
 }
