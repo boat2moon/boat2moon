@@ -152,7 +152,7 @@ export default function ResumePageWrapper() {
           <li>
             <div className={styles.node}>
               <span className={styles.titleText}>
-                <span>合肥国家科学中心数据科学研究院（横向合作）</span>
+                <span>合肥国家科学中心数据空间研究院（横向合作）</span>
                 <span aria-hidden="true" className={styles.inlineSeparator} />
                 <span>科研实习生</span>
                 <span aria-hidden="true" className={styles.inlineSeparator} />
@@ -414,7 +414,7 @@ export default function ResumePageWrapper() {
                     className={styles.inlineSeparator}
                     style={{ "--inline-separator-width": "2.5em" } as CSSProperties}
                   />
-                  <span>合肥国家科学中心数据科学研究院</span>
+                  <span>合肥国家科学中心数据空间研究院</span>
                 </span>
               </span>
               <span aria-hidden="true" className={styles.nodeSeparator} />
@@ -474,7 +474,7 @@ export default function ResumePageWrapper() {
                     className={styles.inlineSeparator}
                     style={{ "--inline-separator-width": "2.5em" } as CSSProperties}
                   />
-                  <span>合肥国家科学中心数据科学研究院</span>
+                  <span>合肥国家科学中心数据空间研究院</span>
                 </span>
               </span>
               <span aria-hidden="true" className={styles.nodeSeparator} />
